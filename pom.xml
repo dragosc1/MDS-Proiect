@@ -15,4 +15,12 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>Belgradestra Dungeon</name>
+            <url>https://maven.pkg.github.com/dragosc1/MDS-Proiect</url>
+        </repository>
+    </distributionManagement>
+
 </project>

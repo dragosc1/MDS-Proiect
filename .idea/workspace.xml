@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="52acba96-8edc-4f36-ad59-88e433a8f2af" name="Changes" comment="Changed java version for maven v2">
+    <list default="true" id="52acba96-8edc-4f36-ad59-88e433a8f2af" name="Changes" comment="Changed java version for maven v3">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +16,20 @@
   <component name="Git.Settings">
     <branch-grouping />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "dragosc1"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="22a68d27-e93b-4955-a127-be8fe029f0db" />
+        <option name="url" value="https://github.com/dragosc1/MDS-Proiect" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
@@ -100,7 +113,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1709667360440</updated>
-      <workItem from="1709667361453" duration="2580000" />
+      <workItem from="1709667361453" duration="3149000" />
     </task>
     <task id="LOCAL-00001" summary="Initial files">
       <option name="closed" value="true" />
@@ -126,7 +139,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709669327806</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Changed java version for maven v3">
+      <option name="closed" value="true" />
+      <created>1709670122277</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1709670122277</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -164,6 +185,7 @@
     <MESSAGE value="Initial files" />
     <MESSAGE value="Changed java version for maven" />
     <MESSAGE value="Changed java version for maven v2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed java version for maven v2" />
+    <MESSAGE value="Changed java version for maven v3" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed java version for maven v3" />
   </component>
 </project>
