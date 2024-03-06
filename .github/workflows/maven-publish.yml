@@ -34,3 +34,6 @@ jobs:
       run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
       env:
         GITHUB_TOKEN: ${{ github.token }}
+    - name: automated-build-android-app-with-github-action
+      uses: amirisback/automated-build-android-app-with-github-action@2.2.3
+            
