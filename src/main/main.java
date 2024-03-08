@@ -15,7 +15,7 @@ public class Main {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                ImageIcon imageIcon = new ImageIcon("../../assets/mm.jpeg"); // Load the image
+                ImageIcon imageIcon = new ImageIcon("../../assets/mmu.jpeg"); // Load the image
                 Image image = imageIcon.getImage(); // Transform it 
                 g.drawImage(image, 0, 0, getWidth(), getHeight(), this); // Draw the image to fill the panel
             }
