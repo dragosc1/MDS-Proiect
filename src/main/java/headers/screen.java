@@ -48,6 +48,17 @@ public class screen extends JFrame {
         repaint();
     }
 
+    public void updateTextPosition(String text, int x, int y) {
+        for (TextPixel textPixel : textPixels) {
+            if (textPixel.text.equals(text)) {
+                textPixel.x = x;
+                textPixel.y = y;
+                repaint();
+                break;
+            }
+        }
+    }
+
     private void drawText(Graphics g, TextPixel textPixel) {
         try {
             Font customFont = Font.createFont(Font.TRUETYPE_FONT, new File("../../../fonts/OLDENGL.TTF")).deriveFont(12f);
@@ -63,6 +74,11 @@ public class screen extends JFrame {
     public void clearTextPixels() {
         textPixels.clear();
         repaint();
+    }
+
+    public void clearScreen() {
+        this.image = null;
+        clearTextPixels();
     }
 
     private static class TextPixel {
