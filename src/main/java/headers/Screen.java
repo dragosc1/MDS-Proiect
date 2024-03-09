@@ -7,16 +7,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class screen extends JFrame {
+public class Screen extends JFrame {
     private Image image;
     private List<TextPixel> textPixels = new ArrayList<>();
 
-    public screen(String imagePath) {
+    public Screen(String imagePath) {
         this.image = new ImageIcon(imagePath).getImage();
         initUI();
     }
 
-    public screen() {
+    public Screen() {
         this.image = null;
         initUI();
     }

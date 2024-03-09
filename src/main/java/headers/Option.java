@@ -1,10 +1,10 @@
 package headers;
 
-public class option {
+public class Option {
     private String text;
     private int x, y;
 
-    public option(String text, int x, int y) {
+    public Option(String text, int x, int y) {
         this.text = text;
         this.x = x;
         this.y = y;
