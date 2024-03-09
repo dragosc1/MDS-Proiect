@@ -27,7 +27,7 @@ public class Game {
                 } else if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     if (menu.getCurrentPosition() == 2) {
                         window.dispose(); // Close the window
-                        System.exit(0); // Exit the program
+                        running = false;
                     }
                 }
             }
