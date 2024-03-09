@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="52acba96-8edc-4f36-ad59-88e433a8f2af" name="Changes" comment="changed option interior class to exterior class">
-      <change afterPath="$PROJECT_DIR$/src/main/java/headers/Menu.java" afterDir="false" />
+    <list default="true" id="52acba96-8edc-4f36-ad59-88e433a8f2af" name="Changes" comment="created Menu class">
+      <change afterPath="$PROJECT_DIR$/src/main/java/headers/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/bd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bd.java" afterDir="false" />
     </list>
@@ -137,7 +137,7 @@
       <option name="presentableId" value="Default" />
       <updated>1709667360440</updated>
       <workItem from="1709667361453" duration="4080000" />
-      <workItem from="1709995598853" duration="1667000" />
+      <workItem from="1709995598853" duration="3849000" />
     </task>
     <task id="LOCAL-00001" summary="Initial files">
       <option name="closed" value="true" />
@@ -195,7 +195,31 @@
       <option name="project" value="LOCAL" />
       <updated>1709997095858</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="created Menu class">
+      <option name="closed" value="true" />
+      <created>1709997347560</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1709997347560</updated>
+    </task>
+    <task id="LOCAL-00009" summary="created Menu class">
+      <option name="closed" value="true" />
+      <created>1709997353739</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1709997353739</updated>
+    </task>
+    <task id="LOCAL-00010" summary="created Menu class">
+      <option name="closed" value="true" />
+      <created>1709997366611</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1709997366611</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -237,6 +261,7 @@
     <MESSAGE value="updated pom" />
     <MESSAGE value="changed artifactid to lowercase" />
     <MESSAGE value="changed option interior class to exterior class" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed option interior class to exterior class" />
+    <MESSAGE value="created Menu class" />
+    <option name="LAST_COMMIT_MESSAGE" value="created Menu class" />
   </component>
 </project>
