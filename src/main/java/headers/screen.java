@@ -61,7 +61,7 @@ public class screen extends JFrame {
 
     private void drawText(Graphics g, TextPixel textPixel) {
         try {
-            Font customFont = Font.createFont(Font.TRUETYPE_FONT, new File("../../../fonts/OLDENGL.TTF")).deriveFont(12f);
+            Font customFont = Font.createFont(Font.TRUETYPE_FONT, new File("fonts/OLDENGL.TTF")).deriveFont(12f);
             g.setFont(customFont);
         } catch (FontFormatException | IOException e) {
             e.printStackTrace();

@@ -1,4 +1,4 @@
-import headers.screen;
+import headers.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.List;
@@ -6,19 +6,9 @@ import java.util.ArrayList;
 
 public class bd {
     public static void main(String[] args) {
+        option options;
         class Menu {
-            class Option {
-                String text;
-                int x, y;
-
-                Option(String text, int x, int y) {
-                    this.text = text;
-                    this.x = x;
-                    this.y = y;
-                }
-            }
-
-            private List<Option> options;
+            private List<option> options;
             private int currentPosition;
 
             public Menu() {
@@ -27,23 +17,23 @@ public class bd {
             }
 
             public void addOption(String text, int x, int y) {
-                options.add(new Option(text, x, y));
+                options.add(new option(text, x, y));
             }
 
-            public Option getOptionAt(int index) {
+            public option getOptionAt(int index) {
                 return options.get(index);
             }
 
             public void displayMenu() {
                 for (int i = 0; i < options.size(); i++) {
-                    String option = options.get(i).text;
+                    String option = options.get(i).getText();
                     if (option.startsWith("> ")) {
                         option = option.substring(2);
                     }
                     if (i == currentPosition) {
                         option = "> " + option;
                     }
-                    options.get(i).text = option; // Update the option in the list
+                    options.get(i).setText(option); // Update the option in the list
                 }
             }
             
@@ -63,7 +53,7 @@ public class bd {
         }
 
         // initialize the window screen with the menu image
-        screen window = new screen("../../../assets/mmu.png");
+        screen window = new screen("assets/mmu.png");
         
         Menu menu = new Menu();
         
@@ -74,8 +64,8 @@ public class bd {
         menu.displayMenu();
 
         for (int i = 0; i < 3; i++) {
-            Menu.Option option = menu.getOptionAt(i);
-            window.addTextAtPixel(option.text, option.x, option.y);
+            option option = menu.getOptionAt(i);
+            window.addTextAtPixel(option.getText(), option.getX(), option.getY());
         }
 
         // add key listener
@@ -97,8 +87,8 @@ public class bd {
                 window.clearTextPixels();
                 menu.displayMenu();
                 for (int i = 0; i < 3; i++) {
-                    Menu.Option option = menu.getOptionAt(i);
-                    window.addTextAtPixel(option.text, option.x, option.y);
+                    option option = menu.getOptionAt(i);
+                    window.addTextAtPixel(option.getText(), option.getX(), option.getY());
                 }
             }
         });
