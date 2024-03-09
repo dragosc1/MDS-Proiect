@@ -8,8 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Screen extends JFrame {
+
     private Image image;
     private List<TextPixel> textPixels = new ArrayList<>();
+
+    private Scene scene;
 
     public Screen(String imagePath) {
         this.image = new ImageIcon(imagePath).getImage();
@@ -17,8 +20,23 @@ public class Screen extends JFrame {
     }
 
     public Screen() {
-        this.image = null;
         initUI();
+    }
+
+    public void addTextAtPixel(String text, int x, int y) {
+        textPixels.add(new TextPixel(text, x, y));
+        repaint();
+    }
+
+    public void updateTextPosition(String text, int x, int y) {
+        for (TextPixel textPixel : textPixels) {
+            if (textPixel.text.equals(text)) {
+                textPixel.x = x;
+                textPixel.y = y;
+                repaint();
+                break;
+            }
+        }
     }
 
     private void initUI() {
@@ -43,22 +61,6 @@ public class Screen extends JFrame {
         setLocationRelativeTo(null);
     }
 
-    public void addTextAtPixel(String text, int x, int y) {
-        textPixels.add(new TextPixel(text, x, y));
-        repaint();
-    }
-
-    public void updateTextPosition(String text, int x, int y) {
-        for (TextPixel textPixel : textPixels) {
-            if (textPixel.text.equals(text)) {
-                textPixel.x = x;
-                textPixel.y = y;
-                repaint();
-                break;
-            }
-        }
-    }
-
     private void drawText(Graphics g, TextPixel textPixel) {
         try {
             Font customFont = Font.createFont(Font.TRUETYPE_FONT, new File("fonts/OLDENGL.TTF")).deriveFont(12f);
@@ -81,14 +83,16 @@ public class Screen extends JFrame {
         clearTextPixels();
     }
 
-    private static class TextPixel {
-        String text;
-        int x, y;
-
-        public TextPixel(String text, int x, int y) {
-            this.text = text;
-            this.x = x;
-            this.y = y;
-        }
+    public void setCurentScene(Scene _scene) {
+        this.scene = _scene;
     }
+
+    public void displayCurentScene() {
+        this.scene.display();
+    }
+
+    public void listenToInput() {
+        this.scene.listenToInput();
+    }
+
 }

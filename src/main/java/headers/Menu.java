@@ -1,15 +1,25 @@
 package headers;
 
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Menu {
+public class Menu implements Scene {
+
     private List<Option> options;
     private int currentPosition;
+    private Screen window;
+    private NewGame gameScene;
 
-    public Menu() {
+    public Menu(Screen _window) {
         options = new ArrayList<>();
         currentPosition = -5;
+        window = _window;
+        initGameScene();
+        addOption("New Game", 180, 460);
+        addOption("Options", 180, 500);
+        addOption("Exit", 180, 540);
     }
 
     public void addOption(String text, int x, int y) {
@@ -20,7 +30,18 @@ public class Menu {
         return options.get(index);
     }
 
-    public void displayMenu() {
+    // Initialize the game scene
+    private void initGameScene() {
+        gameScene = new NewGame(this.window);
+    }
+
+    private void startNewGame() {
+        window.clearScreen();
+        window.setCurentScene(gameScene);
+    }
+
+    @Override
+    public void display() {
         for (int i = 0; i < options.size(); i++) {
             String option = options.get(i).getText();
             if (option.startsWith("> ")) {
@@ -31,6 +52,33 @@ public class Menu {
             }
             options.get(i).setText(option); // Update the option in the list
         }
+        for (int i = 0; i < 3; i++) {
+            Option option = getOptionAt(i);
+            window.addTextAtPixel(option.getText(), option.getX(), option.getY());
+        }
+    }
+
+    @Override
+    public void listenToInput() {
+        window.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_UP) {
+                    moveUp();
+                } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+                    moveDown();
+                } else if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    if (getCurrentPosition() == 2) {
+                        window.dispose(); // Close the window
+                        Game.running = false;
+                    }
+                    if (getCurrentPosition() == 0) {
+                        // Start new game
+                        startNewGame();
+                    }
+                }
+            }
+        });
     }
 
     public int getCurrentPosition() {
