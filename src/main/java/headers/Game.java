@@ -44,7 +44,6 @@ public class Game {
 
     // Main game loop
     public void startGameLoop() {
-        window.listenToInput();
         long lastTickTime = System.currentTimeMillis();
         while (isRunning()) {
             long currentTime = System.currentTimeMillis();

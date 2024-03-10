@@ -12,11 +12,12 @@ public class Menu implements Scene {
     private Screen window;
     private NewGame gameScene;
 
+    private KeyAdapter menuKeyAdapter;
+
     public Menu(Screen _window) {
         options = new ArrayList<>();
         currentPosition = -5;
         window = _window;
-        initGameScene();
         addOption("New Game", 180, 460);
         addOption("Options", 180, 500);
         addOption("Exit", 180, 540);
@@ -35,7 +36,13 @@ public class Menu implements Scene {
         gameScene = new NewGame(this.window);
     }
 
+    void removeKeyAdaptor() {
+        window.removeKeyListener(menuKeyAdapter);
+    }
+
     private void startNewGame() {
+        initGameScene();
+        removeKeyAdaptor();
         window.clearScreen();
         window.setCurentScene(gameScene);
     }
@@ -52,7 +59,7 @@ public class Menu implements Scene {
             }
             options.get(i).setText(option); // Update the option in the list
         }
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < options.size(); i++) {
             Option option = getOptionAt(i);
             window.addTextAtPixel(option.getText(), option.getX(), option.getY());
         }
@@ -60,7 +67,7 @@ public class Menu implements Scene {
 
     @Override
     public void listenToInput() {
-        window.addKeyListener(new KeyAdapter() {
+        menuKeyAdapter = new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_UP) {
@@ -78,7 +85,9 @@ public class Menu implements Scene {
                     }
                 }
             }
-        });
+        };
+
+        window.addKeyListener(menuKeyAdapter);
     }
 
     public int getCurrentPosition() {

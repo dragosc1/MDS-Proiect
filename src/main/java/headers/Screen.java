@@ -85,6 +85,7 @@ public class Screen extends JFrame {
 
     public void setCurentScene(Scene _scene) {
         this.scene = _scene;
+        listenToInput();
     }
 
     public void displayCurentScene() {
@@ -95,4 +96,8 @@ public class Screen extends JFrame {
         this.scene.listenToInput();
     }
 
+    public void setBackground(String imagePath) {
+        this.image = new ImageIcon(imagePath).getImage();
+        repaint();
+    }
 }
