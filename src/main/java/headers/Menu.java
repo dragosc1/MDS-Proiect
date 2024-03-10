@@ -33,7 +33,7 @@ public class Menu implements Scene {
 
     // Initialize the game scene
     private void initGameScene() {
-        gameScene = new NewGame(this.window);
+        gameScene = new NewGame(this.window, this);
     }
 
     void removeKeyAdaptor() {
@@ -41,9 +41,9 @@ public class Menu implements Scene {
     }
 
     private void startNewGame() {
-        initGameScene();
         removeKeyAdaptor();
         window.clearScreen();
+        initGameScene();
         window.setCurentScene(gameScene);
     }
 
@@ -61,7 +61,7 @@ public class Menu implements Scene {
         }
         for (int i = 0; i < options.size(); i++) {
             Option option = getOptionAt(i);
-            window.addTextAtPixel(option.getText(), option.getX(), option.getY());
+            window.addTextAtPixel(option.getText(), option.getX(), option.getY(), "WHITE", 0);
         }
     }
 

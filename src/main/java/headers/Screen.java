@@ -24,9 +24,26 @@ public class Screen extends JFrame {
         initUI();
     }
 
-    public void addTextAtPixel(String text, int x, int y) {
+    public void addTextAtPixel(String text, int x, int y, String color, float fontSize) {
+        if (color == null || color.isEmpty()) {
+            color = "WHITE"; // Set default color to "WHITE"
+        }
+        if (fontSize == 0f)
+            fontSize = 30f;
         synchronized (textPixels) {
-            textPixels.add(new TextPixel(text, x, y));
+            textPixels.add(new TextPixel(text, x, y, color, fontSize));
+        }
+        repaint();
+    }
+
+    public void addTextAtPixel(String text, int x, int y, String color, float fontSize, String fontName) {
+        if (color == null || color.isEmpty()) {
+            color = "WHITE"; // Set default color to "WHITE"
+        }
+        if (fontSize == 0f)
+            fontSize = 30f;
+        synchronized (textPixels) {
+            textPixels.add(new TextPixel(text, x, y, color, fontSize, fontName));
         }
         repaint();
     }
@@ -68,13 +85,13 @@ public class Screen extends JFrame {
 
     private void drawText(Graphics g, TextPixel textPixel) {
         try {
-            Font customFont = Font.createFont(Font.TRUETYPE_FONT, new File("fonts/OLDENGL.TTF")).deriveFont(12f);
+            Font customFont = Font.createFont(Font.TRUETYPE_FONT, new File("fonts/" + textPixel.fontName + ".TTF")).deriveFont(textPixel.fontSize);
             g.setFont(customFont);
         } catch (FontFormatException | IOException e) {
             e.printStackTrace();
         }
-        g.setColor(Color.WHITE);
-        g.setFont(g.getFont().deriveFont(30f)); // float value
+        g.setColor(ColorConverter.getColorFromString(textPixel.color));
+        g.setFont(g.getFont().deriveFont(textPixel.fontSize));
         g.drawString(textPixel.text, textPixel.x, textPixel.y);
     }
 
@@ -103,6 +120,6 @@ public class Screen extends JFrame {
 
     public void setBackground(String imagePath) {
         this.image = new ImageIcon(imagePath).getImage();
-        repaint();
+        initUI();
     }
 }

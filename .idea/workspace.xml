@@ -4,9 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="52acba96-8edc-4f36-ad59-88e433a8f2af" name="Changes" comment="restructured some parts of the code">
+    <list default="true" id="52acba96-8edc-4f36-ad59-88e433a8f2af" name="Changes" comment="fixed concurrency issues">
+      <change afterPath="$PROJECT_DIR$/src/main/java/headers/ColorConverter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/headers/Trait.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/headers/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/headers/NewGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/NewGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/headers/Screen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/Screen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/headers/TextPixel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/TextPixel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,7 +148,8 @@
       <workItem from="1710016442464" duration="108000" />
       <workItem from="1710016694241" duration="3251000" />
       <workItem from="1710021907443" duration="351000" />
-      <workItem from="1710060981148" duration="2524000" />
+      <workItem from="1710060981148" duration="6797000" />
+      <workItem from="1710093122119" duration="2301000" />
     </task>
     <task id="LOCAL-00001" summary="Initial files">
       <option name="closed" value="true" />
@@ -257,7 +263,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710062864613</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="fixed concurrency issues">
+      <option name="closed" value="true" />
+      <created>1710063578727</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1710063578727</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -304,6 +318,7 @@
     <MESSAGE value="set running false when closing" />
     <MESSAGE value="refactored the code such that it supports different scenes" />
     <MESSAGE value="restructured some parts of the code" />
-    <option name="LAST_COMMIT_MESSAGE" value="restructured some parts of the code" />
+    <MESSAGE value="fixed concurrency issues" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed concurrency issues" />
   </component>
 </project>
