@@ -5,12 +5,13 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Screen extends JFrame {
 
     private Image image;
-    private List<TextPixel> textPixels = new ArrayList<>();
+    private final List<TextPixel> textPixels = Collections.synchronizedList(new ArrayList<>());
 
     private Scene scene;
 
@@ -24,7 +25,9 @@ public class Screen extends JFrame {
     }
 
     public void addTextAtPixel(String text, int x, int y) {
-        textPixels.add(new TextPixel(text, x, y));
+        synchronized (textPixels) {
+            textPixels.add(new TextPixel(text, x, y));
+        }
         repaint();
     }
 
@@ -47,11 +50,13 @@ public class Screen extends JFrame {
             @Override
             public void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                if (image != null) {
-                    g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
-                }
-                for (TextPixel textPixel : textPixels) {
-                    drawText(g, textPixel);
+                synchronized (textPixels) {
+                    if (image != null) {
+                        g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
+                    }
+                    for (TextPixel textPixel : textPixels) {
+                        drawText(g, textPixel);
+                    }
                 }
             }
         };
