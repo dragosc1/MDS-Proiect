@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="52acba96-8edc-4f36-ad59-88e433a8f2af" name="Changes" comment="Added all functionalities for new game">
-      <change afterPath="$PROJECT_DIR$/src/main/java/headers/Button.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/headers/Player.java" afterDir="false" />
+    <list default="true" id="52acba96-8edc-4f36-ad59-88e433a8f2af" name="Changes" comment="Finished new game scene">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/headers/NewGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/NewGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/headers/Screen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/Screen.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,12 +24,10 @@
     <branch-grouping />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;dragosc1&quot;
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
   }
-}</component>
+}]]></component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
@@ -51,6 +46,9 @@
         <option name="workspaceImportForciblyTurnedOn" value="true" />
       </MavenImportingSettings>
     </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
@@ -157,7 +155,7 @@
       <workItem from="1710412432929" duration="11267000" />
       <workItem from="1710426729232" duration="55000" />
       <workItem from="1710441686195" duration="2820000" />
-      <workItem from="1710444872607" duration="931000" />
+      <workItem from="1710444872607" duration="1471000" />
     </task>
     <task id="LOCAL-00001" summary="Initial files">
       <option name="closed" value="true" />
@@ -295,7 +293,23 @@
       <option name="project" value="LOCAL" />
       <updated>1710426776562</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Finished new game scene">
+      <option name="closed" value="true" />
+      <created>1710445919764</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1710445919765</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Finished new game scene">
+      <option name="closed" value="true" />
+      <created>1710446102056</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1710446102056</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -345,6 +359,7 @@
     <MESSAGE value="fixed concurrency issues" />
     <MESSAGE value="created partial new game scene" />
     <MESSAGE value="Added all functionalities for new game" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added all functionalities for new game" />
+    <MESSAGE value="Finished new game scene" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished new game scene" />
   </component>
 </project>

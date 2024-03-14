@@ -45,6 +45,7 @@ public class NewGame implements Scene {
         enteredName = new StringBuilder(); // Initialize the StringBuilder
         canWriteName = false;
         haveEnteredName = false;
+        name = "";
     }
 
     private void startNewGame() {
@@ -83,7 +84,7 @@ public class NewGame implements Scene {
     }
 
     boolean calculateIfHereButtonAndCanPress(int index) {
-        if (index == getCurrentPosition() && name != "" && points == 0 && chosenTrait != null)
+        if (index == getCurrentPosition() && !name.isEmpty() && points == 0 && chosenTrait != null)
             return true;
         else return false;
     }
