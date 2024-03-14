@@ -12,8 +12,11 @@ public class Screen extends JFrame {
 
     private Image image;
     private final List<TextPixel> textPixels = Collections.synchronizedList(new ArrayList<>());
+    private final List<Square> squares = Collections.synchronizedList((new ArrayList<>()));
 
     private Scene scene;
+
+    private JButton newGameButton;
 
     public Screen(String imagePath) {
         this.image = new ImageIcon(imagePath).getImage();
@@ -48,6 +51,11 @@ public class Screen extends JFrame {
         repaint();
     }
 
+    public void addSquareAtPixel(int x, int y, String color, int dimX, int dimY) {
+        squares.add(new Square(x, y, color, dimX, dimY));
+        repaint();
+    }
+
     public void updateTextPosition(String text, int x, int y) {
         for (TextPixel textPixel : textPixels) {
             if (textPixel.text.equals(text)) {
@@ -74,6 +82,11 @@ public class Screen extends JFrame {
                     for (TextPixel textPixel : textPixels) {
                         drawText(g, textPixel);
                     }
+                    for (Square square : squares) {
+                        drawSquare(g, square);
+                    }
+
+                    // draw newGameButton
                 }
             }
         };
@@ -95,14 +108,29 @@ public class Screen extends JFrame {
         g.drawString(textPixel.text, textPixel.x, textPixel.y);
     }
 
+    private void drawSquare(Graphics g, Square square) {
+        g.setColor(ColorConverter.getColorFromString(square.getColor())); // Set the color
+        g.fillRect(square.getX(), square.getY(), square.getDimX(), square.getDimY()); // Draw the filled square at the specified position and dimensions
+    }
+
+    public void drawNewGameButton(int x, int y, int dimX, int dimY) {
+        newGameButton = new JButton("Click Me");
+        newGameButton.setBounds(x, y, dimX, dimY);
+    }
+
     public void clearTextPixels() {
         textPixels.clear();
         repaint();
     }
 
+    public void clearSquares() {
+        squares.clear();
+        repaint();
+    }
+
     public void clearScreen() {
-        this.image = null;
         clearTextPixels();
+        clearSquares();
     }
 
     public void setCurentScene(Scene _scene) {

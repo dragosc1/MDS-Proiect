@@ -15,7 +15,7 @@ public class Game {
 
     public void clearWindow() {
         // refresh screen
-        window.clearTextPixels();
+        window.clearScreen();
     }
 
     public void drawWindow() {
