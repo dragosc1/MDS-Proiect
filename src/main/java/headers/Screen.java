@@ -13,10 +13,9 @@ public class Screen extends JFrame {
     private Image image;
     private final List<TextPixel> textPixels = Collections.synchronizedList(new ArrayList<>());
     private final List<Square> squares = Collections.synchronizedList((new ArrayList<>()));
+    private final List<Button> buttons = Collections.synchronizedList((new ArrayList<>()));
 
     private Scene scene;
-
-    private JButton newGameButton;
 
     public Screen(String imagePath) {
         this.image = new ImageIcon(imagePath).getImage();
@@ -79,14 +78,15 @@ public class Screen extends JFrame {
                     if (image != null) {
                         g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
                     }
+                    // draw Buttons
+                    for (Button button : buttons)
+                        drawButton(g, button);
                     for (TextPixel textPixel : textPixels) {
                         drawText(g, textPixel);
                     }
                     for (Square square : squares) {
                         drawSquare(g, square);
                     }
-
-                    // draw newGameButton
                 }
             }
         };
@@ -113,9 +113,18 @@ public class Screen extends JFrame {
         g.fillRect(square.getX(), square.getY(), square.getDimX(), square.getDimY()); // Draw the filled square at the specified position and dimensions
     }
 
-    public void drawNewGameButton(int x, int y, int dimX, int dimY) {
-        newGameButton = new JButton("Click Me");
-        newGameButton.setBounds(x, y, dimX, dimY);
+    void drawButton(Graphics g, Button button) {
+        g.drawImage(new ImageIcon(button.getImage()).getImage(), button.getX(), button.getY(), button.getDimX(), button.getDimY(), null);
+    }
+
+    public void addButton(int x, int y, int dimX, int dimY, boolean active) {
+        buttons.add(new Button("", active, x, y, dimX, dimY));
+        repaint();
+    }
+
+    public void clearButtons() {
+        buttons.clear();
+        repaint();
     }
 
     public void clearTextPixels() {
@@ -131,6 +140,7 @@ public class Screen extends JFrame {
     public void clearScreen() {
         clearTextPixels();
         clearSquares();
+        clearButtons();
     }
 
     public void setCurentScene(Scene _scene) {

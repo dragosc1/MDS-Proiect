@@ -48,10 +48,8 @@ public class NewGame implements Scene {
     }
 
     private void startNewGame() {
-        // Implement the logic to start a new game here
-        // You might want to reset game-related variables, initialize a new game state, etc.
-        // For now, let's just print a message indicating that the new game is starting
-        System.out.println("Starting a new game...");
+        Player player = new Player(name, chosenTrait, statuses);
+        System.out.println("Starting new game");
     }
 
     private void updateButtonState() {
@@ -84,8 +82,15 @@ public class NewGame implements Scene {
         else return " ";
     }
 
+    boolean calculateIfHereButtonAndCanPress(int index) {
+        if (index == getCurrentPosition() && name != "" && points == 0 && chosenTrait != null)
+            return true;
+        else return false;
+    }
+
+
     String calculateIfHereTrait(int position, int index1, int index2) {
-        if (position == 0 && index1 == index2)
+        if (position == 1 && index1 == index2)
             return "> ";
         else return " ";
     }
@@ -98,7 +103,7 @@ public class NewGame implements Scene {
 
     void drawTexts() {
         window.addTextAtPixel("Choose trait", 175, 90, "WHITE", 0f);
-        window.addTextAtPixel(calculateIfHere(1) + "Name: ", 10, 250, "BLACK", 0f, "Arial");
+        window.addTextAtPixel(calculateIfHere(2) + "Name: ", 10, 250, "BLACK", 0f, "Arial");
         window.addTextAtPixel("Points: ", 165, 325, "WHITE", 0f);
     }
 
@@ -122,11 +127,19 @@ public class NewGame implements Scene {
         window.addTextAtPixel(enteredName.toString(), 130, 250, colorName(), 0f);
     }
 
+    void drawNewGameButton() {
+        window.addTextAtPixel(calculateIfHere(0), 100, 44, "WHITE", 0f);
+        window.addButton(125, -5, 0, 0, calculateIfHereButtonAndCanPress(0));
+        window.addTextAtPixel("Enter new game", 150, 44, "GREEN", 30.0f);
+    }
+
     @Override
     public void display() {
         drawTexts();
         drawPoints();
         drawEnteredName();
+        drawNewGameButton();
+
 
         // draw traits
         for (int i = 0; i < traits.size(); i++) {
@@ -136,7 +149,7 @@ public class NewGame implements Scene {
 
         // draw statuses
         for (int i = 0; i < statuses.size(); i++) {
-            window.addTextAtPixel(calculateIfHere(i + 2) + statuses.get(i).getName(), 25 - calculateIfHereMinus(i + 2), 415 + i * 68, "WHITE", 0f);
+            window.addTextAtPixel(calculateIfHere(i + 3) + statuses.get(i).getName(), 25 - calculateIfHereMinus(i + 3), 415 + i * 68, "WHITE", 0f);
             for (int j = 0; j < statuses.get(i).getPoints(); j++)
                 window.addSquareAtPixel(167 + 30 * j, 394 + 68 * i, "WHITE", 25, 25);
         }
@@ -169,33 +182,38 @@ public class NewGame implements Scene {
                     moveDown();
                     currentTraitPosition = 0;
                 } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-                    if (getCurrentPosition() == 0) {
+                    if (getCurrentPosition() == 1) {
                         currentTraitPosition = (currentTraitPosition + 1) % (traits.size());
                     }
-                    else if (getCurrentPosition() >= 2) {
+                    else if (getCurrentPosition() >= 3) {
                         if (points > 0) {
-                            int p = statuses.get(getCurrentPosition() - 2).getPoints();
+                            int p = statuses.get(getCurrentPosition() - 3).getPoints();
                             if (p < 9) {
-                                statuses.get(getCurrentPosition() - 2).setPointsInStatus(p + 1);
+                                statuses.get(getCurrentPosition() - 3).setPointsInStatus(p + 1);
                                 points--;
                             }
                         }
                     }
                 } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-                    if (getCurrentPosition() == 0) {
+                    if (getCurrentPosition() == 1) {
                         currentTraitPosition = (currentTraitPosition - 1 + traits.size()) % (traits.size());
                     }
-                    else if (getCurrentPosition() >= 2) {
-                        int p = statuses.get(getCurrentPosition() - 2).getPoints();
+                    else if (getCurrentPosition() >= 3) {
+                        int p = statuses.get(getCurrentPosition() - 3).getPoints();
                         if (p > 1) {
-                            statuses.get(getCurrentPosition() - 2).setPointsInStatus(p - 1);
+                            statuses.get(getCurrentPosition() - 3).setPointsInStatus(p - 1);
                             points++;
                         }
                     }
                 } else if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                    if (getCurrentPosition() == 0)
+                    if (getCurrentPosition() == 0) {
+                        if (calculateIfHereButtonAndCanPress(0)) {
+                            startNewGame();
+                        }
+                    }
+                    else if (getCurrentPosition() == 1)
                         chosenTrait = traits.get(currentTraitPosition);
-                    if (getCurrentPosition() == 1) {
+                    if (getCurrentPosition() == 2) {
                         if (canWriteName == false) {
                             canWriteName = true;
                             haveEnteredName = false;
@@ -208,7 +226,7 @@ public class NewGame implements Scene {
                         }
                     }
                     else canWriteName = false;
-                } else if (getCurrentPosition() == 1 && canWriteName) { // Check if the name field is selected
+                } else if (getCurrentPosition() == 2 && canWriteName) { // Check if the name field is selected
                     if (Character.isAlphabetic(e.getKeyChar()) || e.getKeyChar() == KeyEvent.VK_BACK_SPACE) {
                         // Only allow alphabetic characters or backspace
                         if (e.getKeyChar() != KeyEvent.VK_BACK_SPACE) {
@@ -232,12 +250,12 @@ public class NewGame implements Scene {
 
     public void moveUp() {
         if (currentPosition == -5) currentPosition = 0;
-        else currentPosition = (currentPosition - 1 + (2 + statuses.size())) % (2 + statuses.size());
+        else currentPosition = (currentPosition - 1 + (3 + statuses.size())) % (3 + statuses.size());
     }
 
     public void moveDown() {
         if (currentPosition == -5) currentPosition = 0;
-        else currentPosition = (currentPosition + 1) % (2 + statuses.size());
+        else currentPosition = (currentPosition + 1) % (3 + statuses.size());
     }
 
 }
