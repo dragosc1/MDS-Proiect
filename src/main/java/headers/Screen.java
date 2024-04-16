@@ -14,11 +14,16 @@ public class Screen extends JFrame {
     private final List<TextPixel> textPixels = Collections.synchronizedList(new ArrayList<>());
     private final List<Square> squares = Collections.synchronizedList((new ArrayList<>()));
     private final List<Button> buttons = Collections.synchronizedList((new ArrayList<>()));
+    private final List<ImageInfo> images = Collections.synchronizedList((new ArrayList<>()));
 
     private Scene scene;
 
     public Screen(String imagePath) {
         this.image = new ImageIcon(imagePath).getImage();
+//        ImageIcon image = new ImageIcon("assets/Game Menu/BlackSmithIcon.png");
+//        images.add(new ImageInfo(image.getImage(), 0, 0, 490, 40));
+        ImageIcon image2 = new ImageIcon("assets/Game Menu/CasleIcon.png");
+        images.add(new ImageInfo(image2.getImage(), 0, 0, 30, 30));
         initUI();
     }
 
@@ -55,6 +60,11 @@ public class Screen extends JFrame {
         repaint();
     }
 
+    public void addImageAtPixel(int x, int y, int dimX, int dimY, Image image) {
+        images.add(new ImageInfo(image, x, y, dimX, dimY));
+        repaint();
+    }
+
     public void updateTextPosition(String text, int x, int y) {
         for (TextPixel textPixel : textPixels) {
             if (textPixel.text.equals(text)) {
@@ -87,6 +97,9 @@ public class Screen extends JFrame {
                     for (Square square : squares) {
                         drawSquare(g, square);
                     }
+                    for (ImageInfo image : images) {
+                        drawImageInfo(g, image);
+                    }
                 }
             }
         };
@@ -115,6 +128,10 @@ public class Screen extends JFrame {
 
     void drawButton(Graphics g, Button button) {
         g.drawImage(new ImageIcon(button.getImage()).getImage(), button.getX(), button.getY(), button.getDimX(), button.getDimY(), null);
+    }
+
+    void drawImageInfo(Graphics g, ImageInfo image) {
+        g.drawImage(image.getImage(), image.getX(), image.getY(), image.getDimX(), image.getDimY(), null);
     }
 
     public void addButton(int x, int y, int dimX, int dimY, boolean active) {
@@ -158,6 +175,11 @@ public class Screen extends JFrame {
 
     public void setBackground(String imagePath) {
         this.image = new ImageIcon(imagePath).getImage();
+        initUI();
+    }
+
+    public void setBackground(ImageIcon img) {
+        this.image = img.getImage();
         initUI();
     }
 }

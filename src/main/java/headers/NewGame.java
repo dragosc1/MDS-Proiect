@@ -3,9 +3,7 @@ package headers;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
 import javax.swing.JButton;
 
 public class NewGame implements Scene {
@@ -25,6 +23,7 @@ public class NewGame implements Scene {
     private int points;
 
     private Trait chosenTrait;
+    private MainTransition mainTransition;
 
     private StringBuilder enteredName; // Added StringBuilder to store the name
 
@@ -48,9 +47,16 @@ public class NewGame implements Scene {
         name = "";
     }
 
+    void initMainTransition() {
+        mainTransition = new MainTransition(window);
+    }
+
     private void startNewGame() {
         Player player = new Player(name, chosenTrait, statuses);
-        System.out.println("Starting new game");
+        removeKeyAdaptor();
+        window.clearScreen();
+        initMainTransition();
+        window.setCurentScene(mainTransition);
     }
 
     private void updateButtonState() {

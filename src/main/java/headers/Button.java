@@ -48,6 +48,11 @@ public class Button {
         return y;
     }
 
+    public void setCoord(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
     public int getDimX() {
         return dimX;
     }

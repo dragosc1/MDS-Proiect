@@ -5,12 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="52acba96-8edc-4f36-ad59-88e433a8f2af" name="Changes" comment="Finished new game scene">
-      <change afterPath="$PROJECT_DIR$/src/main/java/headers/GameLobby.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/headers/ImageInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/headers/MainTransition.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/Game Menu/CastleIcon.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Game Menu/CasleIcon.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/Game Menu/GameMenuUpBar.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Game Menu/GameMenuUpBar.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/bd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bd.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/headers/Button.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/Button.java" afterDir="false" />
@@ -33,10 +27,9 @@
     <branch-grouping />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-  }
-}</component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {}
+}]]></component>
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
     "url": "https://github.com/dragosc1/MDS-Proiect.git",
@@ -178,7 +171,7 @@
       <workItem from="1712939417980" duration="184000" />
       <workItem from="1713276010173" duration="590000" />
       <workItem from="1713276625334" duration="4775000" />
-      <workItem from="1713281452516" duration="301000" />
+      <workItem from="1713281452516" duration="382000" />
     </task>
     <task id="LOCAL-00001" summary="Initial files">
       <option name="closed" value="true" />
