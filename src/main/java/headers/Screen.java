@@ -20,10 +20,6 @@ public class Screen extends JFrame {
 
     public Screen(String imagePath) {
         this.image = new ImageIcon(imagePath).getImage();
-//        ImageIcon image = new ImageIcon("assets/Game Menu/BlackSmithIcon.png");
-//        images.add(new ImageInfo(image.getImage(), 0, 0, 490, 40));
-        ImageIcon image2 = new ImageIcon("assets/Game Menu/CasleIcon.png");
-        images.add(new ImageInfo(image2.getImage(), 0, 0, 30, 30));
         initUI();
     }
 
@@ -91,14 +87,14 @@ public class Screen extends JFrame {
                     // draw Buttons
                     for (Button button : buttons)
                         drawButton(g, button);
-                    for (TextPixel textPixel : textPixels) {
-                        drawText(g, textPixel);
-                    }
                     for (Square square : squares) {
                         drawSquare(g, square);
                     }
                     for (ImageInfo image : images) {
                         drawImageInfo(g, image);
+                    }
+                    for (TextPixel textPixel : textPixels) {
+                        drawText(g, textPixel);
                     }
                 }
             }
@@ -154,10 +150,16 @@ public class Screen extends JFrame {
         repaint();
     }
 
+    public void clearImageInfo() {
+        images.clear();
+        repaint();
+    }
+
     public void clearScreen() {
         clearTextPixels();
         clearSquares();
         clearButtons();
+        clearImageInfo();
     }
 
     public void setCurentScene(Scene _scene) {

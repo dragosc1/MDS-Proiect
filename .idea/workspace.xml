@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="52acba96-8edc-4f36-ad59-88e433a8f2af" name="Changes" comment="Finished new game scene">
-      <change beforePath="$PROJECT_DIR$/assets/Game Menu/GameMenuUpBar.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Game Menu/GameMenuUpBar.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bd.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/headers/Button.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/Button.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/headers/NewGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/NewGame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Market/GoldIcon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/headers/GameLobby.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/GameLobby.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/headers/Market.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/Market.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/headers/Screen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/Screen.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -27,15 +27,15 @@
     <branch-grouping />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {}
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/dragosc1/MDS-Proiect.git",
-    "accountId": "7932e596-4633-4e8c-a4d6-24f4a9a87b29"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {}
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/dragosc1/MDS-Proiect.git&quot;,
+    &quot;accountId&quot;: &quot;7932e596-4633-4e8c-a4d6-24f4a9a87b29&quot;
   }
-}]]></component>
+}</component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
@@ -58,41 +58,44 @@
   &quot;associatedIndex&quot;: 8
 }</component>
   <component name="ProjectId" id="2dHaGNdKQ0uqOsbrkjYwlE8aagj" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.bd.executor&quot;: &quot;Run&quot;,
-    &quot;Application.main.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.Belgadrestra_Dungeon [clean:clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.Belgadrestra_Dungeon [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.Belgadrestra_Dungeon [compile].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/mihne/OneDrive/Desktop/II/II Sem II/MDS/MDS-Proiect/src/main/java&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.Main.executor": "Run",
+    "Application.bd.executor": "Run",
+    "Application.main.executor": "Run",
+    "Maven.Belgadrestra_Dungeon [clean:clean].executor": "Run",
+    "Maven.Belgadrestra_Dungeon [clean].executor": "Run",
+    "Maven.Belgadrestra_Dungeon [compile].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.go.formatter.settings.were.checked": "true",
+    "RunOnceActivity.go.migrated.go.modules.settings": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
+    "go.import.settings.migrated": "true",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/mihne/OneDrive/Desktop/II/II Sem II/MDS/MDS-Proiect/src/main/java",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="headers" />
@@ -172,6 +175,7 @@
       <workItem from="1713276010173" duration="590000" />
       <workItem from="1713276625334" duration="4775000" />
       <workItem from="1713281452516" duration="382000" />
+      <workItem from="1713281848560" duration="12570000" />
     </task>
     <task id="LOCAL-00001" summary="Initial files">
       <option name="closed" value="true" />
@@ -360,6 +364,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Initial files" />
     <MESSAGE value="Changed java version for maven" />
     <MESSAGE value="Changed java version for maven v2" />
