@@ -5,8 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="52acba96-8edc-4f36-ad59-88e433a8f2af" name="Changes" comment="Finished new game scene">
+      <change afterPath="$PROJECT_DIR$/src/main/java/headers/GameLobby.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/headers/ImageInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/headers/MainTransition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Game Menu/CastleIcon.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Game Menu/CasleIcon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Game Menu/GameMenuUpBar.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Game Menu/GameMenuUpBar.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bd.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/headers/Button.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/Button.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/headers/NewGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/NewGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/headers/Screen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/Screen.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,18 +33,20 @@
     <branch-grouping />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/dragosc1/MDS-Proiect.git",
+    "accountId": "7932e596-4633-4e8c-a4d6-24f4a9a87b29"
   }
 }]]></component>
-  <component name="GithubPullRequestsUISettings">
-    <option name="selectedUrlAndAccountId">
-      <UrlAndAccount>
-        <option name="accountId" value="22a68d27-e93b-4955-a127-be8fe029f0db" />
-        <option name="url" value="https://github.com/dragosc1/MDS-Proiect" />
-      </UrlAndAccount>
-    </option>
-  </component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -69,10 +80,14 @@
     &quot;Maven.Belgadrestra_Dungeon [compile].executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/drago/IdeaProjects/Belgradestra Dungeon/target/classes/org&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/mihne/OneDrive/Desktop/II/II Sem II/MDS/MDS-Proiect/src/main/java&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -81,7 +96,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.runner&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -103,7 +118,7 @@
   <component name="RunManager">
     <configuration name="bd" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="bd" />
-      <module name="Belgadrestra_Dungeon" />
+      <module name="belgadrestra_dungeon" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="org.example.*" />
@@ -127,7 +142,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
       </set>
     </attachedChunks>
   </component>
@@ -156,6 +172,13 @@
       <workItem from="1710426729232" duration="55000" />
       <workItem from="1710441686195" duration="2820000" />
       <workItem from="1710444872607" duration="1471000" />
+      <workItem from="1712481353364" duration="82000" />
+      <workItem from="1712481448425" duration="532000" />
+      <workItem from="1712672083540" duration="6617000" />
+      <workItem from="1712939417980" duration="184000" />
+      <workItem from="1713276010173" duration="590000" />
+      <workItem from="1713276625334" duration="4775000" />
+      <workItem from="1713281452516" duration="301000" />
     </task>
     <task id="LOCAL-00001" summary="Initial files">
       <option name="closed" value="true" />
@@ -361,5 +384,8 @@
     <MESSAGE value="Added all functionalities for new game" />
     <MESSAGE value="Finished new game scene" />
     <option name="LAST_COMMIT_MESSAGE" value="Finished new game scene" />
+  </component>
+  <component name="VgoProject">
+    <settings-migrated>true</settings-migrated>
   </component>
 </project>
