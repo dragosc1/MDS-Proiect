@@ -102,7 +102,6 @@ public class Screen extends JFrame {
 
         add(panel);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
     }
 
     private void drawText(Graphics g, TextPixel textPixel) {
