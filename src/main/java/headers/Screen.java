@@ -21,6 +21,7 @@ public class Screen extends JFrame {
     public Screen(String imagePath) {
         this.image = new ImageIcon(imagePath).getImage();
         initUI();
+        setLocationRelativeTo(null);
     }
 
     public Screen() {

@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="52acba96-8edc-4f36-ad59-88e433a8f2af" name="Changes" comment="fixed name bug">
+    <list default="true" id="52acba96-8edc-4f36-ad59-88e433a8f2af" name="Changes" comment="fixed relative position change">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/headers/Screen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/Screen.java" afterDir="false" />
     </list>
@@ -176,7 +176,7 @@
       <workItem from="1713281452516" duration="382000" />
       <workItem from="1713281848560" duration="12570000" />
       <workItem from="1713375108962" duration="46000" />
-      <workItem from="1713375161693" duration="441000" />
+      <workItem from="1713375161693" duration="1759000" />
     </task>
     <task id="LOCAL-00001" summary="Initial files">
       <option name="closed" value="true" />
@@ -330,7 +330,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710446102056</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="fixed relative position change">
+      <option name="closed" value="true" />
+      <created>1713376838314</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1713376838314</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -382,7 +390,8 @@
     <MESSAGE value="created partial new game scene" />
     <MESSAGE value="Added all functionalities for new game" />
     <MESSAGE value="Finished new game scene" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished new game scene" />
+    <MESSAGE value="fixed relative position change" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed relative position change" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
