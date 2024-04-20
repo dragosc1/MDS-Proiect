@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="52acba96-8edc-4f36-ad59-88e433a8f2af" name="Changes" comment="fixed relative position change">
+    <list default="true" id="52acba96-8edc-4f36-ad59-88e433a8f2af" name="Changes" comment="fixed relative position change 2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/headers/Screen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/Screen.java" afterDir="false" />
     </list>
@@ -28,14 +28,17 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {}
-}</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/dragosc1/MDS-Proiect.git&quot;,
-    &quot;accountId&quot;: &quot;7932e596-4633-4e8c-a4d6-24f4a9a87b29&quot;
+  &quot;lastFilter&quot;: {
   }
 }</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="22a68d27-e93b-4955-a127-be8fe029f0db" />
+        <option name="url" value="https://github.com/dragosc1/MDS-Proiect" />
+      </UrlAndAccount>
+    </option>
+  </component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
@@ -176,7 +179,8 @@
       <workItem from="1713281452516" duration="382000" />
       <workItem from="1713281848560" duration="12570000" />
       <workItem from="1713375108962" duration="46000" />
-      <workItem from="1713375161693" duration="1759000" />
+      <workItem from="1713375161693" duration="2465000" />
+      <workItem from="1713627013519" duration="52000" />
     </task>
     <task id="LOCAL-00001" summary="Initial files">
       <option name="closed" value="true" />
@@ -338,7 +342,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713376838314</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="fixed relative position change 2">
+      <option name="closed" value="true" />
+      <created>1713379327624</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1713379327624</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -391,7 +403,8 @@
     <MESSAGE value="Added all functionalities for new game" />
     <MESSAGE value="Finished new game scene" />
     <MESSAGE value="fixed relative position change" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed relative position change" />
+    <MESSAGE value="fixed relative position change 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed relative position change 2" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>

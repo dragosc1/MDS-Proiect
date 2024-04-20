@@ -82,20 +82,26 @@ public class Screen extends JFrame {
             public void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 synchronized (textPixels) {
-                    if (image != null) {
-                        g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
-                    }
-                    // draw Buttons
-                    for (Button button : buttons)
-                        drawButton(g, button);
-                    for (Square square : squares) {
-                        drawSquare(g, square);
-                    }
-                    for (ImageInfo image : images) {
-                        drawImageInfo(g, image);
-                    }
-                    for (TextPixel textPixel : textPixels) {
-                        drawText(g, textPixel);
+                    synchronized (squares) {
+                        synchronized (buttons) {
+                            synchronized (images) {
+                                if (image != null) {
+                                    g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
+                                }
+                                // draw Buttons
+                                for (Button button : buttons)
+                                    drawButton(g, button);
+                                for (Square square : squares) {
+                                    drawSquare(g, square);
+                                }
+                                for (ImageInfo image : images) {
+                                    drawImageInfo(g, image);
+                                }
+                                for (TextPixel textPixel : textPixels) {
+                                    drawText(g, textPixel);
+                                }
+                            }
+                        }
                     }
                 }
             }
