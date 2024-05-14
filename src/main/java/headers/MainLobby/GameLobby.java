@@ -1,14 +1,14 @@
-package headers;
+package headers.MainLobby;
 
-import javax.swing.*;
-import java.awt.*;
+import headers.Player;
+import headers.Scene;
+import headers.Screen;
+
 import java.awt.event.*;
 import javax.swing.ImageIcon;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
-public class GameLobby implements  Scene {
+public class GameLobby implements Scene {
     private final Screen window;
     private KeyListener gameLobbyListener;
     private int width, height;
@@ -16,7 +16,14 @@ public class GameLobby implements  Scene {
     private final ArrayList <ArrayList <ImageIcon>> matrix = new ArrayList<>();
     private final ArrayList <ArrayList <String>> matrix2 = new ArrayList<>();
     private final ArrayList <ImageIcon> assetsImg = new ArrayList<>();
+    private Guild gameGuild;
     private Market gameMarket;
+    private Blacksmith blackSmith;
+    private MagicShop magicshop;
+    private SkillShop skillShop;
+    private RunesShop runesShop;
+    private Character character;
+    private WorldMap worldMap;
 
     public GameLobby(Screen window) {
         this.window = window;
@@ -77,10 +84,10 @@ public class GameLobby implements  Scene {
         int yValue = 260;
         window.addImageAtPixel(0, yValue, 245, 80, assetsImg.get(0).getImage());
         window.addImageAtPixel(10, yValue + 15, 40, 40, assetsImg.get(4).getImage());
-        window.addTextAtPixel("Gold: 500", 55, yValue + 45, "WHITE", 25f);
+        window.addTextAtPixel("Gold: " + Player.getInstance().getGold(), 55, yValue + 45, "WHITE", 25f);
         window.addImageAtPixel(245, yValue, 240, 80, assetsImg.get(0).getImage());
         window.addImageAtPixel(255, yValue + 15, 40, 40, assetsImg.get(5).getImage());
-        window.addTextAtPixel("Supplies: 5", 300, yValue + 45, "WHITE", 25f);
+        window.addTextAtPixel("Supplies: " + Player.getInstance().getSupplies(), 300, yValue + 45, "WHITE", 25f);
         // second row
         yValue += 80;
         window.addImageAtPixel(0, yValue, 245, 80, matrix.get(0).get(0).getImage());
@@ -119,12 +126,60 @@ public class GameLobby implements  Scene {
         window.removeKeyListener(gameLobbyListener);
     }
 
-    void enterMarkert() {
+    void enterMarket() {
         removeKeyAdaptor();
         window.clearScreen();
-        gameMarket = new Market(window);
+        gameMarket = new Market(window, this);
         window.setCurentScene(gameMarket);
+    }
 
+    void enterGuild() {
+        removeKeyAdaptor();
+        window.clearScreen();
+        gameGuild = new Guild(window, this);
+        window.setCurentScene(gameGuild);
+    }
+
+    void enterBlackSmith() {
+        removeKeyAdaptor();
+        window.clearScreen();
+        blackSmith = new Blacksmith(window, this);
+        window.setCurentScene(blackSmith);
+    }
+
+    void enterMagicShop() {
+        removeKeyAdaptor();
+        window.clearScreen();
+        magicshop = new MagicShop(window, this);
+        window.setCurentScene(magicshop);
+    }
+
+    void enterSkillShop() {
+        removeKeyAdaptor();
+        window.clearScreen();
+        skillShop = new SkillShop(window, this);
+        window.setCurentScene(skillShop);
+    }
+
+    void enterRunesShop() {
+        removeKeyAdaptor();
+        window.clearScreen();
+        runesShop = new RunesShop(window, this);
+        window.setCurentScene(runesShop);
+    }
+
+    void enterCharacter() {
+        removeKeyAdaptor();
+        window.clearScreen();
+        character = new Character(window, this);
+        window.setCurentScene(character);
+    }
+
+    void enterWorldMap() {
+        removeKeyAdaptor();
+        window.clearScreen();
+        worldMap = new WorldMap(window, this);
+        window.setCurentScene(worldMap);
     }
 
     @Override
@@ -139,8 +194,36 @@ public class GameLobby implements  Scene {
             public void keyPressed(KeyEvent e) {
                 handleArrowKeys(e);
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    if (height == 0 && width == 0) {
+                        enterGuild();
+                    }
+
                     if (height == 0 && width == 1) {
-                        enterMarkert();
+                        enterMarket();
+                    }
+
+                    if (height == 1 && width == 0) {
+                        enterBlackSmith();
+                    }
+
+                    if (height == 1 && width == 1) {
+                        enterMagicShop();
+                    }
+
+                    if (height == 2 && width == 0) {
+                        enterSkillShop();
+                    }
+
+                    if (height == 2 && width == 1) {
+                        enterRunesShop();
+                    }
+
+                    if (height == 3 && width == 0) {
+                        enterCharacter();
+                    }
+
+                    if (height == 3 && width == 1) {
+                        enterWorldMap();
                     }
                 }
             }

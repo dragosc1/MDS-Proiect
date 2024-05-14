@@ -1,5 +1,8 @@
 package headers;
 
+import headers.MainLobby.MainTransition;
+import headers.Utility.Items;
+
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -52,7 +55,8 @@ public class NewGame implements Scene {
     }
 
     private void startNewGame() {
-        Player player = new Player(name, chosenTrait, statuses);
+        Player.getInstance(name, chosenTrait, statuses);
+        Items.getInstance();
         removeKeyAdaptor();
         window.clearScreen();
         initMainTransition();

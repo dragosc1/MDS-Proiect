@@ -15,6 +15,10 @@ public class Screen extends JFrame {
     private final List<Square> squares = Collections.synchronizedList((new ArrayList<>()));
     private final List<Button> buttons = Collections.synchronizedList((new ArrayList<>()));
     private final List<ImageInfo> images = Collections.synchronizedList((new ArrayList<>()));
+    private final List<ImageInfo> popups = Collections.synchronizedList((new ArrayList<>()));
+    private final List<TextPixel> textPixelsPopUp = Collections.synchronizedList(new ArrayList<>());
+    private final List<ImageInfo> checkups = Collections.synchronizedList((new ArrayList<>()));
+    private final List<TextPixel> textPixelscheckups = Collections.synchronizedList(new ArrayList<>());
 
     private Scene scene;
 
@@ -36,6 +40,30 @@ public class Screen extends JFrame {
             fontSize = 30f;
         synchronized (textPixels) {
             textPixels.add(new TextPixel(text, x, y, color, fontSize));
+        }
+        repaint();
+    }
+
+    public void addPopUpTextAtPixel(String text, int x, int y, String color, float fontSize) {
+        if (color == null || color.isEmpty()) {
+            color = "WHITE"; // Set default color to "WHITE"
+        }
+        if (fontSize == 0f)
+            fontSize = 30f;
+        synchronized (textPixelsPopUp) {
+            textPixelsPopUp.add(new TextPixel(text, x, y, color, fontSize));
+        }
+        repaint();
+    }
+
+    public void addCheckUpText(String text, int x, int y, String color, float fontSize) {
+        if (color == null || color.isEmpty()) {
+            color = "WHITE"; // Set default color to "WHITE"
+        }
+        if (fontSize == 0f)
+            fontSize = 30f;
+        synchronized (textPixelscheckups) {
+            textPixelscheckups.add(new TextPixel(text, x, y, color, fontSize));
         }
         repaint();
     }
@@ -62,6 +90,16 @@ public class Screen extends JFrame {
         repaint();
     }
 
+    public void addPopUpAtPixel(int x, int y, int dimX, int dimY, Image image) {
+        popups.add(new ImageInfo(image, x, y, dimX, dimY));
+        repaint();
+    }
+
+    public void addCheckUpAtPixel(int x, int y, int dimX, int dimY, Image image) {
+        checkups.add(new ImageInfo(image, x, y, dimX, dimY));
+        repaint();
+    }
+
     public void updateTextPosition(String text, int x, int y) {
         for (TextPixel textPixel : textPixels) {
             if (textPixel.text.equals(text)) {
@@ -85,20 +123,42 @@ public class Screen extends JFrame {
                     synchronized (squares) {
                         synchronized (buttons) {
                             synchronized (images) {
-                                if (image != null) {
-                                    g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
-                                }
-                                // draw Buttons
-                                for (Button button : buttons)
-                                    drawButton(g, button);
-                                for (Square square : squares) {
-                                    drawSquare(g, square);
-                                }
-                                for (ImageInfo image : images) {
-                                    drawImageInfo(g, image);
-                                }
-                                for (TextPixel textPixel : textPixels) {
-                                    drawText(g, textPixel);
+                                synchronized (popups) {
+                                    synchronized (textPixelsPopUp) {
+                                        synchronized (checkups) {
+                                            synchronized (textPixelscheckups) {
+                                                if (image != null) {
+                                                    g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
+                                                }
+
+                                                // draw Buttons
+                                                for (Button button : buttons)
+                                                    drawButton(g, button);
+                                                for (Square square : squares) {
+                                                    drawSquare(g, square);
+                                                }
+                                                for (ImageInfo image : images) {
+                                                    drawImageInfo(g, image);
+                                                }
+                                                for (TextPixel textPixel : textPixels) {
+                                                    drawText(g, textPixel);
+                                                }
+                                                for (ImageInfo popup : popups) {
+                                                    drawImageInfo(g, popup);
+                                                }
+                                                for (TextPixel textPixel : textPixelsPopUp) {
+                                                    drawText(g, textPixel);
+                                                }
+
+                                                for (ImageInfo popup : checkups) {
+                                                    drawImageInfo(g, popup);
+                                                }
+                                                for (TextPixel textPixel : textPixelscheckups) {
+                                                    drawText(g, textPixel);
+                                                }
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -161,11 +221,25 @@ public class Screen extends JFrame {
         repaint();
     }
 
+    void clearPopUps() {
+        popups.clear();
+        textPixelsPopUp.clear();
+        repaint();
+    }
+
+    void clearCheckUps() {
+        checkups.clear();
+        textPixelscheckups.clear();
+        repaint();
+    }
+
     public void clearScreen() {
         clearTextPixels();
         clearSquares();
         clearButtons();
         clearImageInfo();
+        clearPopUps();
+        clearCheckUps();
     }
 
     public void setCurentScene(Scene _scene) {

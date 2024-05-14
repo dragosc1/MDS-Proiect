@@ -1,4 +1,7 @@
-package headers;
+package headers.MainLobby;
+
+import headers.Scene;
+import headers.Screen;
 
 import javax.swing.*;
 import java.awt.*;

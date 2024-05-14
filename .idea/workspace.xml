@@ -5,7 +5,58 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="52acba96-8edc-4f36-ad59-88e433a8f2af" name="Changes" comment="fixed relative position change 2">
+      <change afterPath="$PROJECT_DIR$/assets/Character/Chback.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Guild/challangesbg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/headers/MainLobby/Blacksmith.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/headers/MainLobby/Character.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/headers/MainLobby/Dungeon.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/headers/MainLobby/Guild.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/headers/MainLobby/MagicShop.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/headers/MainLobby/RunesShop.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/headers/MainLobby/SkillShop.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/headers/MainLobby/TierUp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/headers/MainLobby/WorldMap.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/headers/Utility/Items.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Guild/Cicon.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Guild/Cicon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/weapon icons/amour/ComonArmourNoTier.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/weapon icons/amour/CommonArmourNoTier.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/weapon icons/amour/ComonArmourTier1.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/weapon icons/amour/CommonArmourTier1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/weapon icons/amour/ComonArmourTier10.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/weapon icons/amour/CommonArmourTier10.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/weapon icons/amour/ComonArmourTier2.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/weapon icons/amour/CommonArmourTier2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/weapon icons/amour/ComonArmourTier3.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/weapon icons/amour/CommonArmourTier3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/weapon icons/amour/ComonArmourTier4.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/weapon icons/amour/CommonArmourTier4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/weapon icons/amour/ComonArmourTier5.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/weapon icons/amour/CommonArmourTier5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/weapon icons/amour/ComonArmourTier6.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/weapon icons/amour/CommonArmourTier6.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/weapon icons/amour/ComonArmourTier7.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/weapon icons/amour/CommonArmourTier7.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/weapon icons/amour/ComonArmourTier8.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/weapon icons/amour/CommonArmourTier8.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/weapon icons/amour/ComonArmourTier9.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/weapon icons/amour/CommonArmourTier9.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/weapon icons/bows/ComonBowNoTier.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/weapon icons/bows/CommonBowNoTier.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/weapon icons/bows/ComonBowTier1.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/weapon icons/bows/CommonBowTier1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/weapon icons/bows/ComonBowTier10.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/weapon icons/bows/CommonBowTier10.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/weapon icons/bows/ComonBowTier2.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/weapon icons/bows/CommonBowTier2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/weapon icons/bows/ComonBowTier3.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/weapon icons/bows/CommonBowTier3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/weapon icons/bows/ComonBowTier4.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/weapon icons/bows/CommonBowTier4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/weapon icons/bows/ComonBowTier5.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/weapon icons/bows/CommonBowTier5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/weapon icons/bows/ComonBowTier6.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/weapon icons/bows/CommonBowTier6.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/weapon icons/bows/ComonBowTier7.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/weapon icons/bows/CommonBowTier7.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/weapon icons/bows/ComonBowTier8.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/weapon icons/bows/CommonBowTier8.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/weapon icons/bows/ComonBowTier9.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/weapon icons/bows/CommonBowTier9.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/weapon icons/staff/ComonStaffNoTier.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/weapon icons/staff/CommonStaffNoTier.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/weapon icons/staff/ComonStaffTier1.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/weapon icons/staff/CommonStaffTier1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/weapon icons/staff/ComonStaffTier10.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/weapon icons/staff/CommonStaffTier10.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/weapon icons/staff/ComonStaffTier2.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/weapon icons/staff/CommonStaffTier2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/weapon icons/staff/ComonStaffTier3.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/weapon icons/staff/CommonStaffTier3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/weapon icons/staff/ComonStaffTier4.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/weapon icons/staff/CommonStaffTier4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/weapon icons/staff/ComonStaffTier5.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/weapon icons/staff/CommonStaffTier5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/weapon icons/staff/ComonStaffTier6.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/weapon icons/staff/CommonStaffTier6.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/weapon icons/staff/ComonStaffTier7.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/weapon icons/staff/CommonStaffTier7.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/weapon icons/staff/ComonStaffTier8.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/weapon icons/staff/CommonStaffTier8.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/weapon icons/staff/ComonStaffTier9.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/weapon icons/staff/CommonStaffTier9.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/headers/GameLobby.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/MainLobby/GameLobby.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/headers/MainTransition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/MainLobby/MainTransition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/headers/Market.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/MainLobby/Market.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/headers/NewGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/NewGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/headers/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/headers/Screen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/Screen.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -16,6 +67,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Python Script" />
         <option value="Class" />
       </list>
     </option>
@@ -28,17 +80,14 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
+  &quot;lastFilter&quot;: {}
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/dragosc1/MDS-Proiect.git&quot;,
+    &quot;accountId&quot;: &quot;7932e596-4633-4e8c-a4d6-24f4a9a87b29&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">
-    <option name="selectedUrlAndAccountId">
-      <UrlAndAccount>
-        <option name="accountId" value="22a68d27-e93b-4955-a127-be8fe029f0db" />
-        <option name="url" value="https://github.com/dragosc1/MDS-Proiect" />
-      </UrlAndAccount>
-    </option>
-  </component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
@@ -86,7 +135,7 @@
     &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/mihne/OneDrive/Desktop/II/II Sem II/MDS/MDS-Proiect/src/main/java&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/mihne/OneDrive/Desktop/II/II Sem II/MDS/MDS-Proiect/assets/Guild&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -104,6 +153,7 @@
       <recent name="headers" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\mihne\OneDrive\Desktop\II\II Sem II\MDS\MDS-Proiect\assets\Guild" />
       <recent name="C:\Users\drago\IdeaProjects\Belgradestra Dungeon\target\classes\org" />
     </key>
   </component>
@@ -117,7 +167,7 @@
   <component name="RunManager">
     <configuration name="bd" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="bd" />
-      <module name="Belgadrestra_Dungeon" />
+      <module name="belgadrestra_dungeon" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="org.example.*" />
@@ -141,7 +191,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
       </set>
     </attachedChunks>
   </component>
@@ -181,6 +232,13 @@
       <workItem from="1713375108962" duration="46000" />
       <workItem from="1713375161693" duration="2465000" />
       <workItem from="1713627013519" duration="52000" />
+      <workItem from="1715354615447" duration="681000" />
+      <workItem from="1715355325280" duration="5135000" />
+      <workItem from="1715369123763" duration="1489000" />
+      <workItem from="1715370635785" duration="2110000" />
+      <workItem from="1715507953016" duration="676000" />
+      <workItem from="1715540915781" duration="600000" />
+      <workItem from="1715675422516" duration="27965000" />
     </task>
     <task id="LOCAL-00001" summary="Initial files">
       <option name="closed" value="true" />
