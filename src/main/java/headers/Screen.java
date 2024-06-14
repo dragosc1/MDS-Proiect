@@ -114,6 +114,7 @@ public class Screen extends JFrame {
     private void initUI() {
         setSize(500, 700);
         setResizable(false);
+        setIconImage(new ImageIcon("assets/Market/Cicon.png").getImage());
 
         JPanel panel = new JPanel() {
             @Override

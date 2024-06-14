@@ -2,6 +2,7 @@ package headers;
 
 import headers.MainLobby.MainTransition;
 import headers.Utility.Items;
+import headers.Utility.Quests;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -56,6 +57,7 @@ public class NewGame implements Scene {
 
     private void startNewGame() {
         Player.getInstance(name, chosenTrait, statuses);
+        Quests.getInstance();
         Items.getInstance();
         removeKeyAdaptor();
         window.clearScreen();
@@ -159,10 +161,11 @@ public class NewGame implements Scene {
         }
 
         // draw statuses
+        int add = 3;
         for (int i = 0; i < statuses.size(); i++) {
             window.addTextAtPixel(calculateIfHere(i + 3) + statuses.get(i).getName(), 25 - calculateIfHereMinus(i + 3), 415 + i * 68, "WHITE", 0f);
             for (int j = 0; j < statuses.get(i).getPoints(); j++)
-                window.addSquareAtPixel(167 + 30 * j, 394 + 68 * i, "WHITE", 25, 25);
+                window.addSquareAtPixel(167 + 30 * j, 394 + 68 * i + (i > 1? add : 0), "WHITE", 25, 25);
         }
 
     }

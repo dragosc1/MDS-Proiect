@@ -1,7 +1,9 @@
 package headers.MainLobby;
 
+import headers.Player;
 import headers.Scene;
 import headers.Screen;
+import headers.Utility.Quests;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,11 +19,13 @@ public class TierUp implements Scene {
     private KeyListener tierUpListener;
     private ImageIcon back, wood, bar, ic0;
     private ImageIcon holder, ic1, ic2;
+    private Boolean checkA;
 
     public TierUp(Screen window, GameLobby _lobby) {
         this.window = window;
         this.lobby = _lobby;
         this.window.setBackground("WHITE");
+        checkA = false;
         loadAssets();
     }
 
@@ -71,6 +75,24 @@ public class TierUp implements Scene {
         holder = new ImageIcon("assets/Market/itemholder.png");
     }
 
+    private static int getNr(String str) {
+        int number = 0;
+        boolean foundNumber = false;
+
+        for (char c : str.toCharArray()) {
+            if (c >= '0' && c <= '9') {
+                number = (number * 10) + (c - '0');
+                foundNumber = true;
+            } else {
+                if (foundNumber) {
+                    break;
+                }
+            }
+        }
+
+        return number;
+    }
+
     private void removeKeyAdaptor() {
         window.removeKeyListener(tierUpListener);
     }
@@ -101,6 +123,21 @@ public class TierUp implements Scene {
 
         int yValue = 510;
         window.addImageAtPixel(10, yValue, 470, 80, holder.getImage());
+        window.addTextAtPixel(Quests.getInstance().getTierUp(), 80, yValue + 45,  "WHITE", 25f);
+
+        if (checkA) {
+            window.addPopUpAtPixel(0, 40, 490, 400, holder.getImage());
+            window.addPopUpTextAtPixel("You have completed", 150, 90, "WHITE", 25f);
+            int nr1 = Player.getInstance().getDungeon(0);
+            int nr2 = getNr(Quests.getInstance().getTierUp());
+            String color = "RED";
+            if (nr1 >= nr2 / 2) color = "YELLOW";
+            if (nr1 == nr2) color = "GREEN";
+            window.addPopUpTextAtPixel(nr1 + "     out of     " + nr2, 150, 120, color, 25f);
+            if (nr1 >= nr2) {
+                window.addPopUpTextAtPixel("Complete", 200, 250, "GREEN", 25f);
+            }
+        }
     }
 
     @Override
@@ -114,7 +151,30 @@ public class TierUp implements Scene {
             @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                    if (checkA) {
+                        checkA = false;
+                        return;
+                    }
+
                     enterLobby();
+                }
+
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    if (!checkA) {
+                        checkA = true;
+                        return;
+                    }
+
+                    if (checkA) {
+                        int nr1 = Player.getInstance().getDungeon(0);
+                        int nr2 = getNr(Quests.getInstance().getTierUp());
+                        if (nr1 >= nr2) {
+                            Quests.getInstance().progressTier();
+                            checkA = false;
+                            return;
+                        }
+                    }
+
                 }
 
                 if (e.getKeyCode() == KeyEvent.VK_1) {

@@ -7,6 +7,7 @@ import headers.Utility.Items;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Objects;
 import javax.swing.ImageIcon;
 
 import static java.lang.Math.max;
@@ -19,16 +20,16 @@ public class Market implements Scene {
     private ImageIcon back, wood, bar, ic0;
     private ImageIcon holder, ic1, ic2, ic3;
     private Boolean drawA, drawB;
-    private Boolean checkA;
+    private Boolean checkA, checkB;
     private Integer popUpHeight, checkUpWidth;
-    private Integer InventoryH, signH;
+    private Integer InventoryH;
 
     public Market(Screen window, GameLobby _lobby) {
         this.window = window;
         this.lobby = _lobby;
         this.window.setBackground("WHITE");
-        drawA = checkA = drawB = false;
-        popUpHeight = checkUpWidth = InventoryH = signH = 0;
+        drawA = checkA = drawB = checkB = false;
+        popUpHeight = checkUpWidth = InventoryH = 0;
         loadAssets();
     }
 
@@ -101,13 +102,13 @@ public class Market implements Scene {
 
         if (drawB) {
             int popUpYvalue = 40;
-            for (int i = 0; i < 4; ++i) {
-                int curr = (InventoryH + i) % 10;
+            for (int i = -2; i < 3; ++i) {
+                int curr = ((InventoryH + i) % 10 + 10) % 10;
                 Image x = Player.getInstance().getInventory1Img(curr);
                 String name = Player.getInstance().getInventory1Str(curr);
                 window.addPopUpAtPixel(5, popUpYvalue, 410, 50, holder.getImage());
                 window.addPopUpAtPixel(25, popUpYvalue + 5, 40, 40, x);
-                window.addPopUpTextAtPixel((signH == i? "> " : "") + name, 75, popUpYvalue + 35,  "WHITE", 25f);
+                window.addPopUpTextAtPixel((i == 0? "> " : "") + name, 75, popUpYvalue + 35,  (i == 0? "GREEN" : "WHITE"), 25f);
                 window.addPopUpTextAtPixel("Slot: " + (curr + 1), 280, popUpYvalue + 35,  "WHITE", 25f);
                 popUpYvalue += 50;
             }
@@ -141,11 +142,25 @@ public class Market implements Scene {
 
             window.addCheckUpAtPixel(0, 40, 490, 400, holder.getImage());
             window.addCheckUpText("Buy ", 150, 90,  "WHITE", 25f);
-            window.addCheckUpText(itemBuy, 200, 90,  "RED", 25f);
+            window.addCheckUpText(itemBuy, 200, 90,  "YELLOW", 25f);
             window.addCheckUpText("For ", 180, 120,  "WHITE", 25f);
             window.addCheckUpText(price + " Gold?", 240, 120,  "GREEN", 25f);
 
             window.addCheckUpText((checkUpWidth == 0? ">"  : "") + "No", 20, 220,  "RED", 25f);
+            window.addCheckUpText((checkUpWidth == 1? ">"  : "") + "Yes", 420, 220,  "GREEN", 25f);
+        }
+
+        if (checkB) {
+            String ItemSell = Player.getInstance().getItemName(InventoryH);
+            Integer price = Player.getInstance().getItemPrice(InventoryH);
+
+            window.addCheckUpAtPixel(0, 40, 490, 400, holder.getImage());
+            window.addCheckUpText("Sell ", 150, 90,  "WHITE", 25f);
+            window.addCheckUpText(ItemSell, 210, 90,  "RED", 25f);
+            window.addCheckUpText("For ", 180, 120,  "WHITE", 25f);
+            window.addCheckUpText(price + " Gold?", 240, 120,  "GREEN", 25f);
+
+            window.addCheckUpText((checkUpWidth == 0? ">"  : "")  + "No", 20, 220,  "RED", 25f);
             window.addCheckUpText((checkUpWidth == 1? ">"  : "") + "Yes", 420, 220,  "GREEN", 25f);
         }
     }
@@ -172,6 +187,11 @@ public class Market implements Scene {
             @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                    if (checkB) {
+                        checkB = false;
+                        return;
+                    }
+
                     if (drawB == true) {
                         drawB = false;
                         return;
@@ -195,7 +215,6 @@ public class Market implements Scene {
                 if (e.getKeyCode() == KeyEvent.VK_UP) {
                     if (drawB == true) {
                         InventoryH = ((InventoryH - 1) % 10 + 10) % 10;
-                        signH = max(0, signH - 1);
                         return;
                     }
 
@@ -212,7 +231,6 @@ public class Market implements Scene {
                 if (e.getKeyCode() == KeyEvent.VK_DOWN) {
                     if (drawB == true) {
                         InventoryH = (InventoryH + 1) % 10;
-                        signH = min(3, signH + 1);
                         return;
                     }
 
@@ -231,6 +249,11 @@ public class Market implements Scene {
                         checkUpWidth = ((checkUpWidth - 1) % 2 + 2) % 2;
                         return;
                     }
+
+                    if (checkB == true) {
+                        checkUpWidth = ((checkUpWidth - 1) % 2 + 2) % 2;
+                        return;
+                    }
                 }
 
                 if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
@@ -238,11 +261,16 @@ public class Market implements Scene {
                         checkUpWidth = (checkUpWidth + 1) % 2;
                         return;
                     }
+
+                    if (checkB == true) {
+                        checkUpWidth = (checkUpWidth + 1) % 2;
+                        return;
+                    }
                 }
 
                 if (e.getKeyCode() == KeyEvent.VK_B) {
                     drawA = true;
-                    drawB = false;
+                    drawB = checkB = false;
                     checkUpWidth = 0;
                     return;
                 }
@@ -267,7 +295,7 @@ public class Market implements Scene {
                     if (popUpHeight == 0) {
                         checkA = false;
                         if (checkUpWidth == 1) {
-                            Player.getInstance().addItem1(Items.getInstance().getSwordCommonTier(0), "Common Sword");
+                            Player.getInstance().addItem1(Items.getInstance().getSwordCommonTier(0), "Common Sword", 125, 0);
                             Player.getInstance().subtractFromGold(250);
                         }
                         checkUpWidth = 0;
@@ -276,7 +304,7 @@ public class Market implements Scene {
                     if (popUpHeight == 1) {
                         checkA = false;
                         if (checkUpWidth == 1) {
-                            Player.getInstance().addItem1(Items.getInstance().getStaffCommonTier(0), "Common Staff");
+                            Player.getInstance().addItem1(Items.getInstance().getStaffCommonTier(0), "Common Staff", 125, 0);
                             Player.getInstance().subtractFromGold(250);
                         }
                         checkUpWidth = 0;
@@ -285,7 +313,7 @@ public class Market implements Scene {
                     if (popUpHeight == 2) {
                         checkA = false;
                         if (checkUpWidth == 1) {
-                            Player.getInstance().addItem1(Items.getInstance().getBowCommonTier(0), "Common Bow");
+                            Player.getInstance().addItem1(Items.getInstance().getBowCommonTier(0), "Common Bow", 125,0);
                             Player.getInstance().subtractFromGold(250);
                         }
                         checkUpWidth = 0;
@@ -294,7 +322,7 @@ public class Market implements Scene {
                     if (popUpHeight == 3) {
                         checkA = false;
                         if (checkUpWidth == 1) {
-                            Player.getInstance().addItem1(Items.getInstance().getArmourCommonTier(0), "Common Armour");
+                            Player.getInstance().addItem1(Items.getInstance().getArmourCommonTier(0), "Common Armour", 125, 0);
                             Player.getInstance().subtractFromGold(250);
                         }
                         checkUpWidth = 0;
@@ -308,6 +336,24 @@ public class Market implements Scene {
                         }
                         checkUpWidth = 0;
                     }
+                }
+
+                if (e.getKeyCode() == KeyEvent.VK_ENTER && drawB && !checkB) {
+                    checkB |= (!Objects.equals(Player.getInstance().getInventory1Str(InventoryH), "Empty"));
+                    return;
+                }
+
+                if (e.getKeyCode() == KeyEvent.VK_ENTER && drawB && checkB && checkUpWidth == 0) {
+                    checkB = false;
+                    checkUpWidth = 0;
+                    return;
+                }
+
+                if (e.getKeyCode() == KeyEvent.VK_ENTER && drawB && checkB && checkUpWidth == 1) {
+                    Player.getInstance().subtractFromGold(-Player.getInstance().getItemPrice(InventoryH));
+                    Player.getInstance().remItem1(InventoryH);
+                    checkB = false;
+                    checkUpWidth = 0;
                 }
             }
         };

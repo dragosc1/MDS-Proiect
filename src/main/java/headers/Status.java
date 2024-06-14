@@ -14,6 +14,7 @@ public class Status {
     public int getPoints() {
         return pointsInStatus;
     }
+    public void addPoint() { ++pointsInStatus;}
 
     public void setPointsInStatus(int pointsInStatus) {
         this.pointsInStatus = pointsInStatus;

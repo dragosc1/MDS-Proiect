@@ -12,6 +12,7 @@ public class ColorConverter {
         colorMap.put("RED", Color.RED);
         colorMap.put("GREEN", Color.GREEN);
         colorMap.put("BLUE", Color.BLUE);
+        colorMap.put("YELLOW", Color.YELLOW);
         colorMap.put("PURPLE", new Color(128, 0, 128));
     }
 
