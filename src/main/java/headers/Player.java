@@ -1,7 +1,5 @@
 package headers;
 
-import headers.Utility.Items;
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -13,14 +11,14 @@ public class Player {
     private String name;
     private Trait trait;
     private ArrayList<Status> statuses;
-    private int Gold, Supply, currTier;
-    private int InventorySpace, PotionsSpace;
-    private ArrayList <Image> inventory1 = new ArrayList<>(), inventory2 = new ArrayList<>();
-    private ArrayList <String> nameinventory1 = new ArrayList<>(), nameinventory2 = new ArrayList<>();
-    private ArrayList <Integer> price1 = new ArrayList<>(), price2 = new ArrayList<>();
-    private ArrayList <Integer> dungeons = new ArrayList<>();
-    private ArrayList <Integer> invtiers = new ArrayList<>();
-
+    private int Gold, Supply;
+    private final int currTier;
+    private int InventorySpace, PotionsSpace, SInventorySpace;
+    private ArrayList<Image> inventory1 = new ArrayList<>(), inventory2 = new ArrayList<>(), inventory3 = new ArrayList<>();
+    private ArrayList<String> nameinventory1 = new ArrayList<>(), nameinventory2 = new ArrayList<>();
+    private ArrayList<Integer> price1 = new ArrayList<>(), price2 = new ArrayList<>();
+    private ArrayList<Integer> dungeons = new ArrayList<>();
+    private ArrayList<Integer> invtiers = new ArrayList<>();
 
     public Player(String name, Trait trait, ArrayList<Status> statuses) {
         this.name = name;
@@ -29,10 +27,19 @@ public class Player {
         this.Gold = 10000;
         this.Supply = 100;
         this.currTier = 1;
+        this.SInventorySpace = 3;
         this.InventorySpace = this.PotionsSpace = 10;
         for (int i = 0; i < 5; ++i) {
             dungeons.add(0);
         }
+    }
+
+    public void updateSInventorySpace() {
+        this.SInventorySpace += 2;
+    }
+
+    public int getSInventorySpace() {
+        return this.SInventorySpace;
     }
 
     public int getCurrPlayerTier() {
@@ -47,15 +54,25 @@ public class Player {
         return trait;
     }
 
-
     public int getDungeon(int pos) {
         return dungeons.get(pos);
     }
 
-    public int getInventorySpace() {return InventorySpace;}
-    public int getPotionsSpace() {return PotionsSpace;}
-    public int getGold() {return Gold;}
-    public int getSupplies() {return Supply;}
+    public int getInventorySpace() {
+        return InventorySpace;
+    }
+
+    public int getPotionsSpace() {
+        return PotionsSpace;
+    }
+
+    public int getGold() {
+        return Gold;
+    }
+
+    public int getSupplies() {
+        return Supply;
+    }
 
     public void subtractFromGold(int cap) {
         assert Gold >= cap;
@@ -185,4 +202,3 @@ public class Player {
         return single_instance;
     }
 }
-

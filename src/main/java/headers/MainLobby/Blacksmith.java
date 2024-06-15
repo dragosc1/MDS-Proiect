@@ -39,16 +39,16 @@ public class Blacksmith implements Scene {
 
     void loadAssets() {
         currTxt = "Weapons";
-        back = new ImageIcon("assets/Black smith/blacksmith.png");
+        back = new ImageIcon("assets/BlackSmith/blacksmith.png");
         wood = new ImageIcon("assets/Market/woodytexturebackground.jpg");
         bar  = new ImageIcon("assets/Market/BrownBlackGround.png");
         ic0 = new ImageIcon("assets/Guild/Cicon.png");
-        ic1 = new ImageIcon("assets/Black smith/SwordCommonNoTier.png");
+        ic1 = new ImageIcon("assets/BlackSmith/SwordCommonNoTier.png");
         ic1 = modifyColors(ic1);
-        ic2 = new ImageIcon("assets/Black smith/armorIcon.png");
-        ic3 = new ImageIcon("assets/Black smith/inventoryicon.png");
+        ic2 = new ImageIcon("assets/BlackSmith/armorIcon.png");
+        ic3 = new ImageIcon("assets/BlackSmith/inventoryicon.png");
         ic4 = new ImageIcon("assets/Market/GoldIcon.png");
-        ic5 = new ImageIcon("assets/Black smith/BlackSmithIcon.png");
+        ic5 = new ImageIcon("assets/BlackSmith/BlackSmithIcon.png");
         holder = new ImageIcon("assets/Market/itemholder.png");
     }
 
@@ -250,7 +250,7 @@ public class Blacksmith implements Scene {
             window.addCheckUpText(price + " Gold?", 200, 150, (playerGold >= price)? "GREEN" : "RED", 25f);
 
             window.addCheckUpText((checkUpWidth == 0? ">"  : "")  + "No", 20, 220,  "RED", 25f);
-            if (playerGold >= price) window.addCheckUpText((checkUpWidth == 1? ">"  : "") + "Yes", 420, 220,  "GREEN", 25f);
+            if (playerGold >= price && Player.getInstance().getInventorySpace() > 0) window.addCheckUpText((checkUpWidth == 1? ">"  : "") + "Yes", 420, 220,  "GREEN", 25f);
         }
 
         if (drawB) {
@@ -345,16 +345,16 @@ public class Blacksmith implements Scene {
 
                 if (e.getKeyCode() == KeyEvent.VK_1) {
                     currTxt = "Weapons";
-                    ic1 = new ImageIcon("assets/Black smith/SwordCommonNoTier.png");
+                    ic1 = new ImageIcon("assets/BlackSmith/SwordCommonNoTier.png");
                     ic1 = modifyColors(ic1);
-                    ic2 = new ImageIcon("assets/Black smith/armorIcon.png");
+                    ic2 = new ImageIcon("assets/BlackSmith/armorIcon.png");
                     return;
                 }
 
                 if (e.getKeyCode() == KeyEvent.VK_2) {
                     currTxt = "Armour";
-                    ic1 = new ImageIcon("assets/Black smith/SwordCommonNoTier.png");
-                    ic2 = new ImageIcon("assets/Black smith/armorIcon.png");
+                    ic1 = new ImageIcon("assets/BlackSmith/SwordCommonNoTier.png");
+                    ic2 = new ImageIcon("assets/BlackSmith/armorIcon.png");
                     ic2 = modifyColors(ic2);
                     return;
                 }
@@ -440,7 +440,7 @@ public class Blacksmith implements Scene {
                     int playerGold = Player.getInstance().getGold();
                     String type = Items.getInstance().getTypeFromName(ItemSell);
                     Integer price = Items.getInstance().getPrice(type, tier);
-                    if (playerGold < price) {
+                    if (playerGold < price || Player.getInstance().getInventorySpace() <= 0) {
                         return;
                     }
 
