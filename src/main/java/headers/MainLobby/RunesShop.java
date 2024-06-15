@@ -90,7 +90,7 @@ public class RunesShop implements Scene {
                 pos = 3;
             }
 
-            int price = 10000;
+            int price = Player.getInstance().applyCharisma(10000);
             int playerGold = Player.getInstance().getGold();
 
             window.addPopUpAtPixel(0, 40, 490, 400, holder.getImage());
@@ -181,7 +181,7 @@ public class RunesShop implements Scene {
 
                 if (e.getKeyCode() == KeyEvent.VK_ENTER && drawA && checkUpWidth == 1) {
                     int playerGold = Player.getInstance().getGold();
-                    if (playerGold < 10000) {
+                    if (playerGold < Player.getInstance().applyCharisma(10000)) {
                         return;
                     }
 
@@ -191,7 +191,7 @@ public class RunesShop implements Scene {
                     else if (x == 1 && y == 0) pos = 2;
                     else if (x == 1 && y == 1) pos = 3;
 
-                    Player.getInstance().subtractFromGold(10000);
+                    Player.getInstance().subtractFromGold(Player.getInstance().applyCharisma(10000));
                     Player.getInstance().upgradeStatus(pos);
                     drawA = false;
                     return;

@@ -3,12 +3,13 @@ package headers;
 import headers.MainLobby.MainTransition;
 import headers.Utility.Items;
 import headers.Utility.Quests;
+import headers.Utility.Skills;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
-import javax.swing.JButton;
+import javax.swing.*;
 
 public class NewGame implements Scene {
     private Screen window;
@@ -58,6 +59,7 @@ public class NewGame implements Scene {
     private void startNewGame() {
         Player.getInstance(name, chosenTrait, statuses);
         Quests.getInstance();
+        Skills.getInstance();
         Items.getInstance();
         removeKeyAdaptor();
         window.clearScreen();
@@ -76,9 +78,9 @@ public class NewGame implements Scene {
 
     void initTraits() {
         traits = new ArrayList<Trait>();
-        traits.add(new Trait("Trait 1"));
-        traits.add(new Trait("Trait 2"));
-        traits.add(new Trait("Trait 3"));
+        traits.add(new Trait("The Strong", new ImageIcon("assets/Traits/TheStrong.png")));
+        traits.add(new Trait("The Swift", new ImageIcon("assets/Traits/TheSwift.png")));
+        traits.add(new Trait("The Wise", new ImageIcon("assets/Traits/TheWise.png")));
     }
 
     void initStatuses() {
@@ -156,7 +158,7 @@ public class NewGame implements Scene {
 
         // draw traits
         for (int i = 0; i < traits.size(); i++) {
-            window.addTextAtPixel(calculateIfHereTrait(currentPosition, currentTraitPosition, i) + traits.get(i).getName(), 50 + i * traits.get(i).getName().length() * 20, 150, colorTrait(i), 0f);
+            window.addTextAtPixel(calculateIfHereTrait(currentPosition, currentTraitPosition, i) + traits.get(i).getName(), 50 + i * 150, 150, colorTrait(i), 25f);
 
         }
 

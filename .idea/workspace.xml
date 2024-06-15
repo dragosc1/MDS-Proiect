@@ -4,9 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="52acba96-8edc-4f36-ad59-88e433a8f2af" name="Changes" comment="fixed relative position change">
+    <list default="true" id="52acba96-8edc-4f36-ad59-88e433a8f2af" name="Changes" comment="fixed relative position change 2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/headers/Screen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/Screen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/headers/MainLobby/Blacksmith.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/MainLobby/Blacksmith.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/headers/MainLobby/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/MainLobby/Character.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/headers/MainLobby/MagicShop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/MainLobby/MagicShop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/headers/MainLobby/MainTransition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/MainLobby/MainTransition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/headers/MainLobby/Market.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/MainLobby/Market.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/headers/MainLobby/RunesShop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/MainLobby/RunesShop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/headers/MainLobby/SkillShop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/MainLobby/SkillShop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/headers/MainLobby/TierUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/MainLobby/TierUp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/headers/NewGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/NewGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/headers/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/headers/Trait.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/Trait.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/headers/Utility/Quests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/Utility/Quests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/headers/Utility/Skills.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/Utility/Skills.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/PlayerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/PlayerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +29,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Python Script" />
         <option value="Class" />
       </list>
     </option>
@@ -83,7 +97,7 @@
     &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/mihne/OneDrive/Desktop/II/II Sem II/MDS/MDS-Proiect/src/main/java&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/mihne/OneDrive/Desktop/II/II Sem II/MDS/MDS-Proiect&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -101,6 +115,7 @@
       <recent name="headers" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\mihne\OneDrive\Desktop\II\II Sem II\MDS\MDS-Proiect\assets\Guild" />
       <recent name="C:\Users\drago\IdeaProjects\Belgradestra Dungeon\target\classes\org" />
     </key>
   </component>
@@ -111,10 +126,10 @@
       <command value="mvn compile" />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.PlayerTest">
+  <component name="RunManager">
     <configuration name="bd" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="bd" />
-      <module name="Belgadrestra_Dungeon" />
+      <module name="belgadrestra_dungeon" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="org.example.*" />
@@ -129,18 +144,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PlayerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Belgadrestra_Dungeon" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="PlayerTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.PlayerTest" />
         <item itemvalue="Application.bd" />
       </list>
     </recent_temporary>
@@ -148,7 +153,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
       </set>
     </attachedChunks>
   </component>
@@ -186,7 +192,26 @@
       <workItem from="1713281452516" duration="382000" />
       <workItem from="1713281848560" duration="12570000" />
       <workItem from="1713375108962" duration="46000" />
-      <workItem from="1713375161693" duration="1759000" />
+      <workItem from="1713375161693" duration="2465000" />
+      <workItem from="1713627013519" duration="52000" />
+      <workItem from="1715354615447" duration="681000" />
+      <workItem from="1715355325280" duration="5135000" />
+      <workItem from="1715369123763" duration="1489000" />
+      <workItem from="1715370635785" duration="2110000" />
+      <workItem from="1715507953016" duration="676000" />
+      <workItem from="1715540915781" duration="600000" />
+      <workItem from="1715675422516" duration="27965000" />
+      <workItem from="1715749411360" duration="724000" />
+      <workItem from="1715750153508" duration="1030000" />
+      <workItem from="1716046349781" duration="11290000" />
+      <workItem from="1716057879540" duration="1238000" />
+      <workItem from="1716121362522" duration="16907000" />
+      <workItem from="1716138703202" duration="7736000" />
+      <workItem from="1716206315344" duration="6284000" />
+      <workItem from="1716305979685" duration="275000" />
+      <workItem from="1718254926308" duration="1780000" />
+      <workItem from="1718394528392" duration="1030000" />
+      <workItem from="1718465695041" duration="2711000" />
     </task>
     <task id="LOCAL-00001" summary="Initial files">
       <option name="closed" value="true" />
@@ -348,7 +373,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713376838314</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="fixed relative position change 2">
+      <option name="closed" value="true" />
+      <created>1713379327624</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1713379327624</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -401,7 +434,8 @@
     <MESSAGE value="Added all functionalities for new game" />
     <MESSAGE value="Finished new game scene" />
     <MESSAGE value="fixed relative position change" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed relative position change" />
+    <MESSAGE value="fixed relative position change 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed relative position change 2" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>

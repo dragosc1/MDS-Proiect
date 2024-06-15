@@ -15,7 +15,7 @@ public class PlayerTest {
 
     @Before
     public void setUp() {
-        Trait trait = new Trait("some trait");
+        Trait trait = new Trait("some trait", new ImageIcon("assets/Traits/TheStrong.png"));
         Status status = new Status("Strength", 1);
         ArrayList<Status> statusList = new ArrayList<>();
         statusList.add(status);
@@ -101,7 +101,7 @@ public class PlayerTest {
 
     @Test
     public void testGetInstance() {
-        Player instance = Player.getInstance("Player2", new Trait("trait2"), new ArrayList<>());
+        Player instance = Player.getInstance("Player2", new Trait("trait2", new ImageIcon("assets/Traits/TheStrong.png")), new ArrayList<>());
         assertNotNull(instance);
         assertEquals("Player2", instance.getName());
     }

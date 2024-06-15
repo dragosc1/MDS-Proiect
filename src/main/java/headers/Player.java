@@ -11,31 +11,41 @@ public class Player {
     private String name;
     private Trait trait;
     private ArrayList<Status> statuses;
+    private int Hp;
     private int Gold, Supply;
-    private final int currTier;
+    private int currTier;
     private int InventorySpace, PotionsSpace, SInventorySpace;
     private ArrayList<Image> inventory1 = new ArrayList<>(), inventory2 = new ArrayList<>(), inventory3 = new ArrayList<>();
-    private ArrayList<String> nameinventory1 = new ArrayList<>(), nameinventory2 = new ArrayList<>();
+    private ArrayList<String> nameinventory1 = new ArrayList<>(), nameinventory2 = new ArrayList<>(), nameinventory3 = new ArrayList<>();
     private ArrayList<Integer> price1 = new ArrayList<>(), price2 = new ArrayList<>();
     private ArrayList<Integer> dungeons = new ArrayList<>();
     private ArrayList<Integer> invtiers = new ArrayList<>();
+    private Image heldWeapon, heldArmour;
 
     public Player(String name, Trait trait, ArrayList<Status> statuses) {
         this.name = name;
+        this.Hp = 100;
         this.trait = trait;
         this.statuses = statuses;
         this.Gold = 10000;
         this.Supply = 100;
         this.currTier = 1;
         this.SInventorySpace = 3;
+        heldWeapon = new ImageIcon("assets/Character/EmptyIcon.png").getImage();
+        heldArmour = new ImageIcon("assets/Character/EmptyIcon.png").getImage();
         this.InventorySpace = this.PotionsSpace = 10;
         for (int i = 0; i < 5; ++i) {
-            dungeons.add(0);
+            dungeons.add(i * 100 + 50);
         }
     }
 
+    public String getHp() {
+        if (Hp < 1000) return String.valueOf(Hp);
+        return Hp / 1000 + "." + (Hp / 100) % 10 + " K";
+    }
+
     public void updateSInventorySpace() {
-        this.SInventorySpace += 2;
+        ++this.SInventorySpace;
     }
 
     public int getSInventorySpace() {
@@ -44,6 +54,10 @@ public class Player {
 
     public int getCurrPlayerTier() {
         return this.currTier;
+    }
+
+    public void progressCurrPlayerTier() {
+        ++currTier;
     }
 
     public String getName() {
@@ -109,6 +123,17 @@ public class Player {
         --PotionsSpace;
     }
 
+    public void addItem3(Image item, String name) {
+        assert SInventorySpace != 0;
+        inventory3.add(item);
+        nameinventory3.add(name);
+        --SInventorySpace;
+    }
+
+    public Boolean checkItem3(String name) {
+        return nameinventory3.contains(name);
+    }
+
     public void remItem2(int position) {
         inventory2.remove(position);
         nameinventory2.remove(position);
@@ -135,6 +160,16 @@ public class Player {
     public String getInventory2Str(int pos) {
         if (pos >= nameinventory2.size()) return "Empty";
         return nameinventory2.get(pos);
+    }
+
+    public Image getInventory3Img(int pos) {
+        if (pos >= inventory3.size()) return new ImageIcon("assets/Character/EmptyIcon.png").getImage();
+        return inventory3.get(pos);
+    }
+
+    public String getInventory3Str(int pos) {
+        if (pos >= nameinventory3.size()) return "Empty";
+        return nameinventory3.get(pos);
     }
 
     public void upgradeItem1(int pos, Image item, String name, Integer price, int tier) {
@@ -188,6 +223,29 @@ public class Player {
 
     public void setStatuses(ArrayList<Status> statuses) {
         this.statuses = statuses;
+    }
+
+    public synchronized int applyCharisma(int price) {
+        double x = price;
+        x *= (100.0 / (100.0 + 6.0 * (getStatus(3) - 1)));
+        x = Math.ceil(x);
+        return (int) x;
+    }
+
+    public void setHeldWeapon(Image ig) {
+        heldWeapon = ig;
+    }
+
+    public void setHeldArmour(Image ig) {
+        heldArmour = ig;
+    }
+
+    public Image getHeldWeapon() {
+        return heldWeapon;
+    }
+
+    public Image getHeldArmour() {
+        return heldArmour;
     }
 
     public static synchronized Player getInstance(String name, Trait trait, ArrayList<Status> statuses) {

@@ -9,14 +9,16 @@ public class Quests {
 
     private ArrayList <String> Quests = new ArrayList<>();
     private ArrayList <Integer> Progress = new ArrayList<>();
-    private ArrayList <String> TierUp = new ArrayList<>();
+    private final ArrayList <String> TierUp = new ArrayList<>();
+    private ArrayList <Integer> Type = new ArrayList<>();
     private ArrayList <Integer> Prize = new ArrayList<>();
-    private Integer progressT;
+    private Integer progressT, limit;
 
     Random random;
 
     public Quests(){
         random = new Random();
+        limit = 3;
         GenerateRandomQuests();
         GenerateRandomTier();
     }
@@ -87,6 +89,28 @@ public class Quests {
         TierUp.add("Reach level 50 in the third dungeon");
         TierUp.add("Reach level 50 in the fourth dungeon");
         TierUp.add("Maximum Tier Reached");
+        Type.add(0);
+        Type.add(1);
+        Type.add(2);
+        Type.add(3);
+        Type.add(4);
+        Type.add(0);
+        Type.add(1);
+        Type.add(2);
+        Type.add(3);
+        Type.add(5);
+    }
+
+    public Integer getWhatType(int pos) {
+        return Type.get(pos);
+    }
+
+    public void progressLimit() {
+        ++limit;
+    }
+
+    public int getLimit() {
+        return limit;
     }
 
     public void progressTier() {

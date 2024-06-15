@@ -112,7 +112,7 @@ public class TierUp implements Scene {
         window.setCurentScene(qguild);
     }
 
-    void drawEverything() {
+    synchronized void drawEverything() {
         window.addImageAtPixel(0, 40, 500, 400, back.getImage());
         window.addImageAtPixel(0, 0, 490, 40, bar.getImage());
         window.addImageAtPixel(5, 0, 40, 40, ic0.getImage());
@@ -126,9 +126,13 @@ public class TierUp implements Scene {
         window.addTextAtPixel(Quests.getInstance().getTierUp(), 80, yValue + 45,  "WHITE", 25f);
 
         if (checkA) {
+            if (Player.getInstance().getCurrPlayerTier() == 10) return;
             window.addPopUpAtPixel(0, 40, 490, 400, holder.getImage());
             window.addPopUpTextAtPixel("You have completed", 150, 90, "WHITE", 25f);
-            int nr1 = Player.getInstance().getDungeon(0);
+
+            int poss = Player.getInstance().getCurrPlayerTier() - 1;
+            int pos = Quests.getInstance().getWhatType(poss);
+            int nr1 = Player.getInstance().getDungeon(pos);
             int nr2 = getNr(Quests.getInstance().getTierUp());
             String color = "RED";
             if (nr1 >= nr2 / 2) color = "YELLOW";
@@ -161,16 +165,28 @@ public class TierUp implements Scene {
 
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     if (!checkA) {
+                        if (Player.getInstance().getCurrPlayerTier() == 10)
+                            return;
                         checkA = true;
                         return;
                     }
 
                     if (checkA) {
-                        int nr1 = Player.getInstance().getDungeon(0);
+                        if (Player.getInstance().getCurrPlayerTier() == 10)
+                            return;
+
+                        int poss = Player.getInstance().getCurrPlayerTier() - 1;
+                        int pos = Quests.getInstance().getWhatType(poss);
+                        int nr1 = Player.getInstance().getDungeon(pos);
                         int nr2 = getNr(Quests.getInstance().getTierUp());
                         if (nr1 >= nr2) {
+                            Player.getInstance().progressCurrPlayerTier();
                             Quests.getInstance().progressTier();
-                            Player.getInstance().updateSInventorySpace();
+                            if (Player.getInstance().getCurrPlayerTier() % 2 == 1) {
+                                Player.getInstance().updateSInventorySpace();
+                                Quests.getInstance().progressLimit();
+                            }
+
                             checkA = false;
                             return;
                         }

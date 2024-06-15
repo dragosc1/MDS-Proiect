@@ -47,10 +47,10 @@ public class MainTransition implements Scene {
         timer.start();
     }
 
-    void drawEnterButton() {
+    synchronized void drawEnterButton() {
         window.addTextAtPixel(" ", 100, 44, "WHITE", 0f);
         window.addButton(125, 520, 0, 0, true);
-        window.addTextAtPixel("Begin Journey", 150, 568, "GREEN", 30.0f);
+        window.addTextAtPixel("Begin Journey", 160, 568, "GREEN", 30.0f);
     }
 
     public ImageIcon makeDarkImage(float darkness) {

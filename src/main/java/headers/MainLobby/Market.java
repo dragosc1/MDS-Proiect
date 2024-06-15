@@ -75,29 +75,32 @@ public class Market implements Scene {
         if (drawA) {
             Items x = Items.getInstance();
             int popUpYvalue = 40;
+            int priceX = Player.getInstance().applyCharisma(250);
+            int priceY = Player.getInstance().applyCharisma(25);
+
             window.addPopUpAtPixel(150, popUpYvalue, 335, 50, holder.getImage());
             window.addPopUpAtPixel(175, popUpYvalue + 5, 40, 40, x.getSwordCommonTier(0));
-            window.addPopUpTextAtPixel((popUpHeight == 0? "> " : "") + "Sword      Price: 250", 220, popUpYvalue + 35, (popUpHeight == 0? "GREEN" : "WHITE"), 25f);
+            window.addPopUpTextAtPixel((popUpHeight == 0? "> " : "") + "Sword      Price: " + priceX, 220, popUpYvalue + 35, (popUpHeight == 0? "GREEN" : "WHITE"), 25f);
 
             popUpYvalue += 50;
             window.addPopUpAtPixel(150, popUpYvalue, 335, 50, holder.getImage());
             window.addPopUpAtPixel(175, popUpYvalue + 5, 40, 40, x.getStaffCommonTier(0));
-            window.addPopUpTextAtPixel((popUpHeight == 1? "> " : "") + "Staff        Price: 250", 220, popUpYvalue + 35,  (popUpHeight == 1? "GREEN" : "WHITE"), 25f);
+            window.addPopUpTextAtPixel((popUpHeight == 1? "> " : "") + "Staff        Price: " + priceX, 220, popUpYvalue + 35,  (popUpHeight == 1? "GREEN" : "WHITE"), 25f);
 
             popUpYvalue += 50;
             window.addPopUpAtPixel(150, popUpYvalue, 335, 50, holder.getImage());
             window.addPopUpAtPixel(175, popUpYvalue + 5, 40, 40, x.getBowCommonTier(0));
-            window.addPopUpTextAtPixel((popUpHeight == 2? "> " : "") + "Bow         Price: 250", 220, popUpYvalue + 35,  (popUpHeight == 2? "GREEN" : "WHITE"), 25f);
+            window.addPopUpTextAtPixel((popUpHeight == 2? "> " : "") + "Bow         Price: " + priceX, 220, popUpYvalue + 35,  (popUpHeight == 2? "GREEN" : "WHITE"), 25f);
 
             popUpYvalue += 50;
             window.addPopUpAtPixel(150, popUpYvalue, 335, 50, holder.getImage());
             window.addPopUpAtPixel(175, popUpYvalue + 5, 40, 40, x.getArmourCommonTier(0));
-            window.addPopUpTextAtPixel((popUpHeight == 3? "> " : "") + "Armour     Price: 250", 220, popUpYvalue + 35,  (popUpHeight == 3? "GREEN" : "WHITE"), 25f);
+            window.addPopUpTextAtPixel((popUpHeight == 3? "> " : "") + "Armour     Price: " + priceX, 220, popUpYvalue + 35,  (popUpHeight == 3? "GREEN" : "WHITE"), 25f);
 
             popUpYvalue += 50;
             window.addPopUpAtPixel(150, popUpYvalue, 335, 50, holder.getImage());
             window.addPopUpAtPixel(175, popUpYvalue + 5, 40, 40, ic3.getImage());
-            window.addPopUpTextAtPixel((popUpHeight == 4? "> " : "") + "Supplies   Price: 25", 220, popUpYvalue + 35,  (popUpHeight == 4? "GREEN" : "WHITE"), 25f);
+            window.addPopUpTextAtPixel((popUpHeight == 4? "> " : "") + "Supplies   Price: " + priceY, 220, popUpYvalue + 35,  (popUpHeight == 4? "GREEN" : "WHITE"), 25f);
         }
 
         if (drawB) {
@@ -120,23 +123,23 @@ public class Market implements Scene {
             switch (popUpHeight) {
                 case 0:
                     itemBuy = "Common Sword";
-                    price = 250;
+                    price = Player.getInstance().applyCharisma(250);
                     break;
                 case 1:
                     itemBuy = "Common Staff";
-                    price = 250;
+                    price = Player.getInstance().applyCharisma(250);
                     break;
                 case 2:
                     itemBuy = "Common Bow";
-                    price = 250;
+                    price = Player.getInstance().applyCharisma(250);
                     break;
                 case 3:
                     itemBuy = "Common Armour";
-                    price = 250;
+                    price = Player.getInstance().applyCharisma(250);
                     break;
                 case 4:
                     itemBuy = "25 Supplies";
-                    price = 25;
+                    price = Player.getInstance().applyCharisma(25);
                     break;
             }
 
@@ -296,7 +299,7 @@ public class Market implements Scene {
                         checkA = false;
                         if (checkUpWidth == 1) {
                             Player.getInstance().addItem1(Items.getInstance().getSwordCommonTier(0), "Common Sword", 125, 0);
-                            Player.getInstance().subtractFromGold(250);
+                            Player.getInstance().subtractFromGold(Player.getInstance().applyCharisma(250));
                         }
                         checkUpWidth = 0;
                     }
@@ -305,7 +308,7 @@ public class Market implements Scene {
                         checkA = false;
                         if (checkUpWidth == 1) {
                             Player.getInstance().addItem1(Items.getInstance().getStaffCommonTier(0), "Common Staff", 125, 0);
-                            Player.getInstance().subtractFromGold(250);
+                            Player.getInstance().subtractFromGold(Player.getInstance().applyCharisma(250));
                         }
                         checkUpWidth = 0;
                     }
@@ -314,7 +317,7 @@ public class Market implements Scene {
                         checkA = false;
                         if (checkUpWidth == 1) {
                             Player.getInstance().addItem1(Items.getInstance().getBowCommonTier(0), "Common Bow", 125,0);
-                            Player.getInstance().subtractFromGold(250);
+                            Player.getInstance().subtractFromGold(Player.getInstance().applyCharisma(250));
                         }
                         checkUpWidth = 0;
                     }
@@ -323,7 +326,7 @@ public class Market implements Scene {
                         checkA = false;
                         if (checkUpWidth == 1) {
                             Player.getInstance().addItem1(Items.getInstance().getArmourCommonTier(0), "Common Armour", 125, 0);
-                            Player.getInstance().subtractFromGold(250);
+                            Player.getInstance().subtractFromGold(Player.getInstance().applyCharisma(250));
                         }
                         checkUpWidth = 0;
                     }
@@ -332,7 +335,7 @@ public class Market implements Scene {
                         checkA = false;
                         if (checkUpWidth == 1) {
                             Player.getInstance().addSupplies(25);
-                            Player.getInstance().subtractFromGold(25);
+                            Player.getInstance().subtractFromGold(Player.getInstance().applyCharisma(25));
                         }
                         checkUpWidth = 0;
                     }

@@ -113,7 +113,7 @@ public class MagicShop implements Scene {
         if (checkA) {
             String pname = Items.getInstance().getNamePotion(popUpHeight);
             Integer price = Items.getInstance().getPricePotions(popUpHeight);
-            Integer currGold = Player.getInstance().getGold();
+            Integer currGold = Player.getInstance().applyCharisma(Player.getInstance().getGold());
 
             window.addCheckUpAtPixel(0, 40, 490, 400, holder.getImage());
             window.addCheckUpText("Buy ", 150, 90,  "WHITE", 25f);
@@ -276,8 +276,8 @@ public class MagicShop implements Scene {
                     drawA = true;
                     checkUpWidth = 0;
                     String pname = Items.getInstance().getNamePotion(popUpHeight);
-                    Integer price = Items.getInstance().getPricePotions(popUpHeight);
-                    Integer currGold = Player.getInstance().getGold();
+                    int price = Player.getInstance().applyCharisma(Items.getInstance().getPricePotions(popUpHeight));
+                    int currGold = Player.getInstance().getGold();
                     if (price > currGold || Player.getInstance().getPotionsSpace() <= 0) return;
 
                     Player.getInstance().addItem2(Items.getInstance().getPotion(popUpHeight), pname, price / 2);
