@@ -170,6 +170,7 @@ public class TierUp implements Scene {
                         int nr2 = getNr(Quests.getInstance().getTierUp());
                         if (nr1 >= nr2) {
                             Quests.getInstance().progressTier();
+                            Player.getInstance().updateSInventorySpace();
                             checkA = false;
                             return;
                         }
