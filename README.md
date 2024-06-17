@@ -10,7 +10,16 @@ Pentru mai multe detalii despre progresul proiectului, backlog și user stories 
 
 ## ([Documentatie](https://github.com/dragosc1/MDS-Proiect/wiki/Begadrestra-Wiki))
 
+-------------------------
+
 [link](https://github.com/dragosc1/MDS-Proiect/wiki/Begadrestra-Wiki)
+
+## Setup
+
+-------------------------
+
+<pre>git clone --recursive https://github.com/dragosc1/MDS-Proiect</pre>
+
 
 ## Demo
 
