@@ -171,4 +171,5 @@ public class Quests implements Serializable {
 
         return single_instance;
     }
+
 }
