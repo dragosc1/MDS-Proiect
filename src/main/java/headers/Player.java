@@ -14,6 +14,7 @@ import java.util.Random;
 
 import static java.lang.Math.*;
 
+// Class representing the player
 public class Player implements Serializable {
     private static Player single_instance = null;
     private String name;
@@ -30,6 +31,7 @@ public class Player implements Serializable {
     private ArrayList<Integer> cooldowns = new ArrayList<>();
     private transient Image heldWeapon, heldArmour;
 
+    // Constructor
     public Player(String name, Trait trait, ArrayList<Status> statuses) {
         this.name = name;
         this.trait = trait;
@@ -70,6 +72,7 @@ public class Player implements Serializable {
         return name;
     }
 
+    // Saving the settings
     public void saveSettings() {
         int idx = 0;
         trait.setImageCorrect();

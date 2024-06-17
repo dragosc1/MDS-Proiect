@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+// Class representing the window and managing all that it is displayed
 public class Screen extends JFrame {
 
     private Image image;
@@ -20,18 +21,22 @@ public class Screen extends JFrame {
     private final List<ImageInfo> checkups = Collections.synchronizedList((new ArrayList<>()));
     private final List<TextPixel> textPixelscheckups = Collections.synchronizedList(new ArrayList<>());
 
+    // Current scene
     private Scene scene;
 
+    // Constructor
     public Screen(String imagePath) {
         this.image = new ImageIcon(imagePath).getImage();
         initUI();
         setLocationRelativeTo(null);
     }
 
+    // First initialize the ui
     public Screen() {
         initUI();
     }
 
+    // Add text at some point with different variations (overloading)
     public void addTextAtPixel(String text, int x, int y, String color, float fontSize) {
         if (color == null || color.isEmpty()) {
             color = "WHITE"; // Set default color to "WHITE"
@@ -80,21 +85,25 @@ public class Screen extends JFrame {
         repaint();
     }
 
+    // Adding a square at some position
     public void addSquareAtPixel(int x, int y, String color, int dimX, int dimY) {
         squares.add(new Square(x, y, color, dimX, dimY));
         repaint();
     }
 
+    // Adding an image at some position
     public void addImageAtPixel(int x, int y, int dimX, int dimY, Image image) {
         images.add(new ImageInfo(image, x, y, dimX, dimY));
         repaint();
     }
 
+    // Adding a popup at some position
     public void addPopUpAtPixel(int x, int y, int dimX, int dimY, Image image) {
         popups.add(new ImageInfo(image, x, y, dimX, dimY));
         repaint();
     }
 
+    // Adding checkups at some position
     public void addCheckUpAtPixel(int x, int y, int dimX, int dimY, Image image) {
         checkups.add(new ImageInfo(image, x, y, dimX, dimY));
         repaint();
@@ -111,6 +120,7 @@ public class Screen extends JFrame {
         }
     }
 
+    // Initialize the ui and synchronize all arrays
     private void initUI() {
         setSize(500, 700);
         setResizable(false);
@@ -172,6 +182,7 @@ public class Screen extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
+    // drawing the text
     private void drawText(Graphics g, TextPixel textPixel) {
         try {
             Font customFont = Font.createFont(Font.TRUETYPE_FONT, new File("fonts/" + textPixel.fontName + ".TTF")).deriveFont(textPixel.fontSize);
@@ -184,19 +195,23 @@ public class Screen extends JFrame {
         g.drawString(textPixel.text, textPixel.x, textPixel.y);
     }
 
+    // Drawing the rectangles
     private void drawSquare(Graphics g, Square square) {
         g.setColor(ColorConverter.getColorFromString(square.getColor())); // Set the color
         g.fillRect(square.getX(), square.getY(), square.getDimX(), square.getDimY()); // Draw the filled square at the specified position and dimensions
     }
 
+    // Drawing the buttons
     void drawButton(Graphics g, Button button) {
         g.drawImage(new ImageIcon(button.getImage()).getImage(), button.getX(), button.getY(), button.getDimX(), button.getDimY(), null);
     }
 
+    // Drawing the images
     void drawImageInfo(Graphics g, ImageInfo image) {
         g.drawImage(image.getImage(), image.getX(), image.getY(), image.getDimX(), image.getDimY(), null);
     }
 
+    // Helper functions
     public void addButton(int x, int y, int dimX, int dimY, boolean active) {
         buttons.add(new Button("", active, x, y, dimX, dimY));
         repaint();
@@ -243,19 +258,23 @@ public class Screen extends JFrame {
         clearCheckUps();
     }
 
+    // Setting the current scene
     public void setCurentScene(Scene _scene) {
         this.scene = _scene;
         listenToInput();
     }
 
+    // Display teh current scene
     public void displayCurentScene() {
         this.scene.display();
     }
 
+    // Listen to input
     public void listenToInput() {
         this.scene.listenToInput();
     }
 
+    // Setting the background with different variations (overloading)
     public void setBackground(String imagePath) {
         this.image = new ImageIcon(imagePath).getImage();
         initUI();
