@@ -3,16 +3,21 @@ package headers;
 import java.awt.*;
 
 public class ImageInfo {
-    private Image image;
-    private int x;
-    private int y;
-    private int dimX;
-    private int dimY;
+    private Image image; // The image
+    private int x; // X-coordinate of the image
+    private int y; // Y-coordinate of the image
+    private int dimX; // Width of the image
+    private int dimY; // Height of the image
+
+    // Constructor to initialize ImageInfo object with provided parameters
 
     public ImageInfo(Image image, int x, int y, int dimX, int dimY) {
+        //Set image
         this.image = image;
+        //Set coordinates
         this.x = x;
         this.y = y;
+        //Set width and height
         this.dimX = dimX;
         this.dimY = dimY;
     }

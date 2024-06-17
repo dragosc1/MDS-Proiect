@@ -4,8 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ColorConverter {
+    // Map to store color names and corresponding Color objects
     private static final Map<String, Color> colorMap = new HashMap<>();
 
+    // Static block to initialize the color map
     static {
         colorMap.put("WHITE", Color.WHITE);
         colorMap.put("BLACK", Color.BLACK);
@@ -16,6 +18,7 @@ public class ColorConverter {
         colorMap.put("PURPLE", new Color(128, 0, 128));
     }
 
+    // Method to get a Color object from a given color name string
     public static Color getColorFromString(String colorString) {
         return colorMap.getOrDefault(colorString.toUpperCase(), Color.WHITE);
     }

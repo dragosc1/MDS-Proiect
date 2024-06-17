@@ -1,16 +1,16 @@
 package headers;
 
 public class Game {
-    private Screen window;
-    private Menu menu;
-    static public boolean running;
-    private final int TICK_RATE = 60;
-    private final long TICK_INTERVAL = 1000 / TICK_RATE;
+    private Screen window; // The game window
+    private Menu menu; // The game menu
+    static public boolean running; // Flag indicating whether the game is running
+    private final int TICK_RATE = 60; // Desired tick rate per second
+    private final long TICK_INTERVAL = 1000 / TICK_RATE; // Time interval between ticks
 
     public Game() {
-        running = true;
-        initScreen();
-        initMenu();
+        running = true; // Set the game as running
+        initScreen(); // Initialize the game window
+        initMenu(); // Initialize the game menu
     }
 
     public void clearWindow() {
@@ -18,15 +18,18 @@ public class Game {
         window.clearScreen();
     }
 
+    // Method to draw the game window
     public void drawWindow() {
         window.displayCurentScene();
     }
 
+    // Method to initialize the game menu
     public void initMenu() {
         menu = new Menu(window);
         window.setCurentScene(menu);
     }
 
+    // Method to initialize the game window
     public void initScreen() {
         window = new Screen("assets/mmu.png");
         setTheWindowVisible();
