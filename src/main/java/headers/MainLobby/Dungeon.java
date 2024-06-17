@@ -17,24 +17,49 @@ import static java.lang.Math.max;
 import static java.lang.Math.min;
 
 public class Dungeon implements Scene {
+    // Represents the screen where the game is displayed.
     private final Screen window;
+
+    // Represents the lobby where the game is hosted.
     private final GameLobby lobby;
+
+    // Represents the key listener for dungeon interaction.
     private KeyListener dunegonKeyListener;
+
+    // Image icons used in the game.
     private ImageIcon back, bar, ic0, blocked, wood, ic1, ic2, ic3, ic4, ic9, holder;
+
+    // Height and width of the game window.
     private Integer height, width;
+
+    // Represents the maze layout.
     private char[][] maze;
+
+    // Represents the visibility of each cell in the maze.
     private boolean[][] visible;
+
+    // Starting and ending positions in the maze.
     private static Integer sx, sy, ex, ey;
 
+    // Size of each cell in the maze.
     private static final int SIZE = 20;
+
+    // Characters representing different elements in the maze.
     private static final char FREE = '.';
     private static final char OBSTACLE = '#';
     private static final char START = 'S';
     private static final char EXIT = 'E';
+
+    // Time limit for completing the dungeon.
     private int Tdungeon;
+
+    // Damage dealt during the game.
     private int DamageDealt;
 
+    // Indicates if it's the first move in the game.
     private Boolean firstMove;
+
+    // Starting time of the game.
     private static long stTime;
 
     public synchronized void setDamge(int dmg) {
@@ -95,11 +120,13 @@ public class Dungeon implements Scene {
         return grid;
     }
 
+    // Methode to check if there is a path to complete the dungeon level
     private static boolean isPathPossible(char[][] grid, int startX, int startY, int exitX, int exitY) {
         boolean[][] visited = new boolean[SIZE][SIZE];
         return dfs(grid, startX, startY, exitX, exitY, visited);
     }
 
+    // DFS to check the existence of the path
     private static boolean dfs(char[][] grid, int x, int y, int exitX, int exitY, boolean[][] visited) {
         if (x < 0 || x >= SIZE || y < 0 || y >= SIZE || grid[x][y] == OBSTACLE || visited[x][y]) {
             return false;
@@ -116,6 +143,7 @@ public class Dungeon implements Scene {
                 dfs(grid, x, y - 1, exitX, exitY, visited);
     }
 
+    // Methode to output the dungeon maze
     public static void printDungeon(char[][] grid) {
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
@@ -126,27 +154,31 @@ public class Dungeon implements Scene {
     }
 
     public Dungeon(Screen window, GameLobby _lobby, int typeDungeon) {
-        Tdungeon = typeDungeon;
+        Tdungeon = typeDungeon; // Assign the type of dungeon.
+        // Initialize the screen and lobby.
         this.window = window;
         this.lobby = _lobby;
-        this.firstMove = false;
-        this.window.setBackground("BLACK");
-        height = width = 0;
-        stTime = -1;
-        this.maze = generateDungeon();
-        this.visible = new boolean[SIZE][SIZE];
-        printDungeon(this.maze);
+        this.firstMove = false; // Set the first move to false.
+        this.window.setBackground("BLACK"); // Set the background of the window to black.
+        height = width = 0; // Set height and width to 0.
+        stTime = -1; // Set the starting time to -1.
+        this.maze = generateDungeon(); // Generate the dungeon.
+        this.visible = new boolean[SIZE][SIZE]; // Initialize visibility array.
+        printDungeon(this.maze); // Print the generated dungeon.
+
+        // Set the initial position.
         height = sx;
         width = sy;
         visible[height][width] = true;
-        DamageDealt = 0;
-        loadAssets();
+        DamageDealt = 0; // Set initial damage dealt to 0.
+        loadAssets(); // Load assets for the game.
     }
 
     public int getTdungeon() {
         return this.Tdungeon;
     }
 
+    // Method to load assets required for the scene
     void loadAssets() {
         holder = new ImageIcon("assets/Market/itemholder.png");
         back = new ImageIcon("assets/Character/Chback.png");
@@ -162,8 +194,12 @@ public class Dungeon implements Scene {
     }
 
     synchronized void drawEverything() {
+        // Get the current time.
         long endTime = System.currentTimeMillis();
+
+        // Check if the time limit for the dungeon has passed.
         if (stTime != -1 && endTime - stTime >= 1000) {
+            // Subtract supplies from the player.
             Player.getInstance().subSupplies();
             stTime = System.currentTimeMillis();
             if (Player.getInstance().getSupplies() == 0) {
@@ -172,12 +208,15 @@ public class Dungeon implements Scene {
             }
         }
 
+        // Draw the background.
         window.addImageAtPixel(0, 0, 490, 670, back.getImage());
 
+        // Draw the top bar.
         window.addImageAtPixel(0, 0, 490, 40, bar.getImage());
         window.addImageAtPixel(5, 0, 40, 40, ic0.getImage());
         window.addTextAtPixel("Dungeon", 55, 30, "WHITE", 25f);
 
+        // Draw the maze.
         int cellSize = 20;
         int gridSize = SIZE;
         for (int row = 0; row < gridSize; row++) {
@@ -197,8 +236,10 @@ public class Dungeon implements Scene {
             }
         }
 
+        // Draw the inventory.
         window.addImageAtPixel(0, 500, 500, 400, wood.getImage());
 
+        // Draw the supplies information.
         window.addImageAtPixel(150, 530, 245, 80, holder.getImage());
         window.addImageAtPixel(160, 550, 40, 40, ic9.getImage());
         window.addTextAtPixel("Supplies: " + Player.getInstance().getSupplies(), 210, 575, "WHITE", 25f);
@@ -206,18 +247,22 @@ public class Dungeon implements Scene {
     }
 
     void verify(int a, int b) {
+        // If it's the first move, set the start time and update firstMove flag
         if (!firstMove) {
             stTime = System.currentTimeMillis();
             firstMove = true;
         }
 
+        // Update the tile quest if the tile is not visible
         if (!visible[a][b])
             Quests.getInstance().updateTileQuest();
 
+        // If the tile is not an obstacle, update the position.
         if (this.maze[a][b] != OBSTACLE) {
             height = a;
             width = b;
 
+            // If the tile is not visible, check for encounter with a certain probability
             if (!visible[a][b]) {
                 Random rand = new Random();
                 if (rand.nextDouble() < 0.15)
@@ -225,13 +270,16 @@ public class Dungeon implements Scene {
             }
         }
 
+        // Mark the tile as visible.
         visible[a][b] = true;
     }
 
+    // Method to remove the key listener
     private void removeKeyAdaptor() {
         window.removeKeyListener(dunegonKeyListener);
     }
 
+    // Method to transition back to the lobby
     private void enterLobby() {
         removeKeyAdaptor();
         window.clearScreen();
@@ -239,6 +287,7 @@ public class Dungeon implements Scene {
         window.setCurentScene(lobby);
     }
 
+    // Method to transition to the Encounter scene
     private void enterEncounter() {
         removeKeyAdaptor();
         window.clearScreen();
@@ -246,11 +295,13 @@ public class Dungeon implements Scene {
         window.setCurentScene(enc);
     }
 
+    // Method to display the scene
     @Override
     public void display() {
         drawEverything();
     }
 
+    // Method to listen to user inputs
     @Override
     public void listenToInput() {
         dunegonKeyListener = new KeyAdapter() {

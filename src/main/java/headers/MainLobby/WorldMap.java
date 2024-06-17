@@ -12,13 +12,17 @@ import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 
 public class WorldMap implements Scene {
-    private final Screen window;
-    private final GameLobby lobby;
-    private Dungeon dungeon;
-    private KeyListener worldMapKeyListener;
-    private ImageIcon back, bar, ic0, ic1, ic2, ic3, ic4, ic5, ic6;
-    private Integer height, width, curr;
+    private final Screen window; // Reference to the game window/screen where the World Map scene is displayed
+    private final GameLobby lobby; // Reference to the game lobby scene
 
+    private Dungeon dungeon; // Reference to the dungeon scene for transitioning to dungeons
+
+    private KeyListener worldMapKeyListener; // Key listener to capture user input for the World Map scene
+
+    private ImageIcon back, bar, ic0, ic1, ic2, ic3, ic4, ic5, ic6; // Icons for various visual elements
+    private Integer height, width, curr; // Parameters to control the display and behavior of the World Map
+
+    // Constructor initializes the World Map scene with required assets
     public WorldMap(Screen window, GameLobby _lobby) {
         this.window = window;
         this.lobby = _lobby;
@@ -34,6 +38,7 @@ public class WorldMap implements Scene {
         loadAssets();
     }
 
+    // Load images and icons required for the World Map scene
     void loadAssets() {
         back = new ImageIcon("assets/World Map/worldMapInitial size.png");
         bar  = new ImageIcon("assets/Market/BrownBlackGround.png");
@@ -45,6 +50,7 @@ public class WorldMap implements Scene {
         ic5 = new ImageIcon("assets/World Map/Dungeon1Icon.png");
     }
 
+    // Modify colors of an ImageIcon to enhance visualization
     public static ImageIcon modifyColors(ImageIcon icon) {
         Image image = icon.getImage();
         BufferedImage bufferedImage = new BufferedImage(image.getWidth(null), image.getHeight(null), BufferedImage.TYPE_INT_ARGB);
@@ -86,6 +92,7 @@ public class WorldMap implements Scene {
         return new ImageIcon(bufferedImage);
     }
 
+    // Draw all elements of the World Map scene on the window
     synchronized void drawEverything() {
         window.addImageAtPixel(0, 0, 490, 670, back.getImage());
 
@@ -93,7 +100,7 @@ public class WorldMap implements Scene {
         window.addImageAtPixel(5, 0, 40, 40, ic0.getImage());
         window.addTextAtPixel("World Map", 55, 30, "WHITE", 25f);
 
-
+        // Set dungeon icons and modify colors for selected dungeons
         ic0 = new ImageIcon("assets/Market/Cicon.png");
         ic1 = new ImageIcon("assets/World Map/Dungeon1Icon.png");
         ic2 = new ImageIcon("assets/World Map/Dungeon1Icon.png");
@@ -108,6 +115,7 @@ public class WorldMap implements Scene {
         else if (width == 4) ic4 = modifyColors(ic4);
         else if (width == 5) ic5 = modifyColors(ic5);
 
+        // Display dungeon icons based on the current tier
         window.addImageAtPixel(250, 260, 40, 40, ic0.getImage());
         window.addImageAtPixel(100, 300, 40, 40, ic1.getImage());
         if (curr >= 3) window.addImageAtPixel(80, 360, 40, 40, ic2.getImage());
@@ -116,10 +124,12 @@ public class WorldMap implements Scene {
         if (curr >= 6) window.addImageAtPixel(300, 300, 40, 40, ic5.getImage());
     }
 
+    // Remove the KeyAdapter from the window
     private void removeKeyAdaptor() {
         window.removeKeyListener(worldMapKeyListener);
     }
 
+    // Transition back to the main lobby
     private void enterLobby() {
         removeKeyAdaptor();
         window.clearScreen();
@@ -127,6 +137,7 @@ public class WorldMap implements Scene {
         window.setCurentScene(lobby);
     }
 
+    // Transition to the dungeon scene
     private void enterDungeon() {
         removeKeyAdaptor();
         window.clearScreen();
@@ -134,6 +145,7 @@ public class WorldMap implements Scene {
         window.setCurentScene(dungeon);
     }
 
+    // Display the World Map scene
     @Override
     public void display() {
         drawEverything();
@@ -144,18 +156,22 @@ public class WorldMap implements Scene {
         worldMapKeyListener = new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
+                // Handle Escape key press to return to the lobby
                 if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
                     enterLobby();
                 }
 
+                // Handle left arrow key press to navigate to the left
                 if (e.getKeyCode() == KeyEvent.VK_LEFT) {
                     width = ((width - 1) % curr + curr) % curr;
                 }
 
+                // Handle right arrow key press to navigate to the right
                 if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
                     width = ((width + 1) % curr);
                 }
 
+                // Handle Enter key press to select a dungeon or return to the lobby
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     if (width == 0) {
                         enterLobby();

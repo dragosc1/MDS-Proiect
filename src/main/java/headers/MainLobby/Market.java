@@ -11,24 +11,29 @@ import java.util.Objects;
 import javax.swing.ImageIcon;
 
 public class Market implements Scene {
-    private final Screen window;
-    private final GameLobby lobby;
-    private KeyListener marketKeyListener;
-    private ImageIcon back, wood, bar, ic0;
-    private ImageIcon holder, ic1, ic2, ic3;
-    private Boolean drawA, drawB;
-    private Boolean checkA, checkB;
-    private Integer popUpHeight, checkUpWidth;
-    private Integer InventoryH;
+    private final Screen window;         // The screen on which the market interface is displayed
+    private final GameLobby lobby;       // Reference to the game lobby
+    private KeyListener marketKeyListener;  // Listener for keyboard input in the market scene
+    private ImageIcon back, wood, bar, ic0;  // Image icons for various background elements
+    private ImageIcon holder, ic1, ic2, ic3; // Image icons for UI elements
+    private Boolean drawA, drawB;          // Booleans to control drawing different parts of the market interface
+    private Boolean checkA, checkB;        // Booleans to control checking different actions in the market
+    private Integer popUpHeight, checkUpWidth;  // Heights and widths of various pop-up interfaces
+    private Integer InventoryH;            // Current inventory selection index
 
+    // Constructor
     public Market(Screen window, GameLobby lobby) {
         this.lobby = lobby;
         this.window = window;
+        // Initialize booleans
         drawA = checkA = drawB = checkB = false;
+        // Initialize integers
         popUpHeight = checkUpWidth = InventoryH = 0;
+        // Load image assets
         loadAssets();
     }
 
+    // Loading assets
     private void loadAssets() {
         back = new ImageIcon("assets/Market/market.jpg");
         wood = new ImageIcon("assets/Market/woodytexturebackground.jpg");
@@ -40,7 +45,9 @@ public class Market implements Scene {
         ic3 = new ImageIcon("assets/Market/25SuppliesIcon.png");
     }
 
+    // Draw everything on the screen
     void drawEverything() {
+        // Background images
         window.addImageAtPixel(0, 0, 500, 400, back.getImage());
 
         window.addImageAtPixel(0, 0, 490, 40, bar.getImage());
@@ -67,13 +74,14 @@ public class Market implements Scene {
         window.addImageAtPixel(245, yValue, 240, 80, holder.getImage());
         window.addTextAtPixel((drawA? "> " : "")+ "Supplies", 300, yValue + 45, "WHITE", 25f);
 
-
         if (drawA) {
+            // Draw additional items
             Items x = Items.getInstance();
             int popUpYvalue = 40;
             int priceX = Player.getInstance().applyCharisma(250);
             int priceY = Player.getInstance().applyCharisma(25);
 
+            // Add item pop-ups
             window.addPopUpAtPixel(150, popUpYvalue, 335, 50, holder.getImage());
             window.addPopUpAtPixel(175, popUpYvalue + 5, 40, 40, x.getSwordCommonTier(0));
             window.addPopUpTextAtPixel((popUpHeight == 0? "> " : "") + "Sword      Price: " + priceX, 220, popUpYvalue + 35, (popUpHeight == 0? "GREEN" : "WHITE"), 25f);
@@ -100,6 +108,7 @@ public class Market implements Scene {
         }
 
         if (drawB) {
+            // Draw inventory items
             int popUpYvalue = 40;
             for (int i = -2; i < 3; ++i) {
                 int curr = ((InventoryH + i) % 10 + 10) % 10;
@@ -114,6 +123,7 @@ public class Market implements Scene {
         }
 
         if (checkA) {
+            // Draw confirmation popup for checkA
             String itemBuy = "";
             int price = 0;
             switch (popUpHeight) {
@@ -150,6 +160,7 @@ public class Market implements Scene {
         }
 
         if (checkB) {
+            // Draw confirmation popup for checkB
             String ItemSell = Player.getInstance().getItemName(InventoryH);
             Integer price = Player.getInstance().getItemPrice(InventoryH);
 
@@ -164,10 +175,12 @@ public class Market implements Scene {
         }
     }
 
+    // Method to remove the key listener
     private void removeKeyAdaptor() {
         window.removeKeyListener(marketKeyListener);
     }
 
+    // Method to enter the lobby
     private void enterLobby() {
         removeKeyAdaptor();
         window.clearScreen();
@@ -175,11 +188,13 @@ public class Market implements Scene {
         window.setCurentScene(lobby);
     }
 
+    // Method to display the scene
     @Override
     public void display() {
         drawEverything();
     }
 
+    // Method to listen to user inputs
     @Override
     public void listenToInput() {
         marketKeyListener = new KeyAdapter() {

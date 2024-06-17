@@ -14,29 +14,32 @@ import java.awt.image.BufferedImage;
 import java.util.Objects;
 
 public class Blacksmith implements Scene {
-    private final Screen window;
-    private final GameLobby lobby;
-    private KeyListener blackSmithListener;
-    private ImageIcon back, wood, bar, ic0;
-    private ImageIcon holder, ic1, ic2, ic3, ic4, ic5;
-    private String currTxt;
-    private Integer InventoryH, checkUpWidth, popUpHeight;
-    private Boolean checkB, drawB;
-    private Boolean checkA, drawA, checkkA, checkkkA;
-    private int wblacksmith;
+    private final Screen window;  // The screen where the blacksmith interface is displayed
+    private final GameLobby lobby;  // Reference to the game lobby
+    private KeyListener blackSmithListener;  // Listener for blacksmith's key inputs
+    private ImageIcon back, wood, bar, ic0;  // ImageIcons for various visual assets
+    private ImageIcon holder, ic1, ic2, ic3, ic4, ic5;  // More ImageIcons for visual assets
+    private String currTxt;  // The current text being displayed
+    private Integer InventoryH, checkUpWidth, popUpHeight;  // Integer variables for inventory and popup dimensions
+    private Boolean checkB, drawB;  // Booleans for checking and drawing
+    private Boolean checkA, drawA, checkkA, checkkkA;  // More Booleans for various checks
+    private int wblacksmith;  // Integer representing blacksmith's state
 
+    // Constructor for Blacksmith class
     public Blacksmith(Screen window, GameLobby _lobby) {
-        this.window = window;
-        this.lobby = _lobby;
-        this.window.setBackground("WHITE");
-        popUpHeight = 0;
-        wblacksmith = -1;
-        drawB = checkB = drawA = checkA = checkkA = checkkkA = false;
-        InventoryH = checkUpWidth = 0;
-        currTxt = "Weapons";
-        loadAssets();
+        // Initializing instance variables
+        this.window = window;  // Assigning the provided window to the instance variable
+        this.lobby = _lobby;  // Assigning the provided lobby to the instance variable
+        this.window.setBackground("WHITE");  // Setting the background color of the window to white
+        popUpHeight = 0;  // Initializing popup height to 0
+        wblacksmith = -1;  // Initializing blacksmith state
+        drawB = checkB = drawA = checkA = checkkA = checkkkA = false;  // Initializing boolean variables
+        InventoryH = checkUpWidth = 0;  // Initializing inventory height and popup width to 0
+        currTxt = "Weapons";  // Setting current text to "Weapons"
+        loadAssets();  // Loading necessary assets
     }
 
+    // Method to load assets required for the scene
     void loadAssets() {
         currTxt = "Weapons";
         back = new ImageIcon("assets/BlackSmith/blacksmith.png");
@@ -95,15 +98,19 @@ public class Blacksmith implements Scene {
         return (alpha << 24) | (red << 16) | (green << 8) | blue;
     }
 
+    // Method to draw all elements of the Blacksmith interface on the screen
     synchronized void drawEverything() {
+        // Draw the background image
         window.addImageAtPixel(0, 0, 500, 400, back.getImage());
 
+        // Draw the top bar
         window.addImageAtPixel(0, 0, 490, 40, bar.getImage());
         window.addImageAtPixel(5, 0, 40, 40, ic0.getImage());
         window.addTextAtPixel("BlackSmith", 55, 30, "WHITE", 25f);
         window.addImageAtPixel(305, 0, 40, 40, ic1.getImage());
         window.addImageAtPixel(355, 0, 40, 40, ic2.getImage());
 
+        // Draw the wood background
         window.addImageAtPixel(0, 400, 500, 400, wood.getImage());
 
         // first row
@@ -126,6 +133,7 @@ public class Blacksmith implements Scene {
         window.addTextAtPixel((wblacksmith == 1? ">" : "") + "Supplies", 300, yValue + 45, "WHITE", 25f);
 
         if (drawA) {
+            // draw the upgrade popup
             int popUpYvalue = 40;
             ImageIcon ic1 = new ImageIcon("assets/Character/EmptyIcon.png");
             window.addPopUpAtPixel(150, popUpYvalue, 335, 50, holder.getImage());
@@ -199,6 +207,7 @@ public class Blacksmith implements Scene {
         }
 
         if (checkA) {
+            //draw the checkup popup
             window.addCheckUpAtPixel(0, 40, 490, 400, holder.getImage());
             int popUpYvalue = 100;
             for (int i = -2; i < 3; ++i) {
@@ -214,6 +223,7 @@ public class Blacksmith implements Scene {
         }
 
         if (checkkA) {
+            // draw the upgrade confirmation popup
             String ItemSell = Player.getInstance().getItemName(InventoryH);
             Integer tier = Player.getInstance().getItemTier(InventoryH);
             ++tier;
@@ -233,6 +243,7 @@ public class Blacksmith implements Scene {
         }
 
         if (checkkkA) {
+            // draw the purchase confirmation popup
             Items x = Items.getInstance();
             String ItemSell = Objects.equals(currTxt, "Weapons")? x.getBSWN(popUpHeight - 1) : x.getBSAN(popUpHeight - 1);
             Integer tier = Objects.equals(currTxt, "Weapons")? x.getBSWT(popUpHeight - 1) : x.getBSAT(popUpHeight - 1);
@@ -252,6 +263,7 @@ public class Blacksmith implements Scene {
         }
 
         if (drawB) {
+            // draw the sell popup
             int popUpYvalue = 40;
             for (int i = -2; i < 3; ++i) {
                 int curr = ((InventoryH + i) % 10 + 10) % 10;
@@ -266,6 +278,7 @@ public class Blacksmith implements Scene {
         }
 
         if (checkB) {
+            // draw the confirmation popup for selling an item
             String ItemSell = Player.getInstance().getItemName(InventoryH);
             Integer price = Player.getInstance().getItemPrice(InventoryH);
 
@@ -280,10 +293,12 @@ public class Blacksmith implements Scene {
         }
     }
 
+    // Method to remove the key listener
     private void removeKeyAdaptor() {
         window.removeKeyListener(blackSmithListener);
     }
 
+    // Method to transition back to the lobby
     private void enterLobby() {
         removeKeyAdaptor();
         window.clearScreen();
@@ -291,11 +306,13 @@ public class Blacksmith implements Scene {
         window.setCurentScene(lobby);
     }
 
+    // Method to display the scene
     @Override
     public void display() {
         drawEverything();
     }
 
+    // Method to listen to user inputs
     @Override
     public void listenToInput() {
         blackSmithListener = new KeyAdapter() {

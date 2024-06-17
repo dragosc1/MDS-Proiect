@@ -14,14 +14,14 @@ import java.util.Objects;
 
 
 public class MagicShop implements Scene {
-    private final Screen window;
-    private final GameLobby lobby;
-    private KeyListener magicShopListener;
-    private ImageIcon back, wood, bar, ic0;
-    private ImageIcon holder, ic1, ic2, ic3;
-    private Boolean drawA, drawB, checkB, checkA;
-    private Integer magicWidth, inventoryH, checkUpWidth, popUpHeight;
+    private final Screen window; // The window where the scene will be displayed
+    private final GameLobby lobby; // Reference to the game lobby for scene transitions
+    private KeyListener magicShopListener; // Key listener for handling user inputs
+    private ImageIcon back, wood, bar, ic0, holder, ic1, ic2, ic3; // Images used in the UI
+    private Boolean drawA, drawB, checkB, checkA; // Booleans to manage different UI states
+    private Integer magicWidth, inventoryH, checkUpWidth, popUpHeight; // Variables for managing UI navigation
 
+    // Constructor to initialize the MagicShop scene
     public MagicShop(Screen window, GameLobby _lobby) {
         this.window = window;
         this.lobby = _lobby;
@@ -32,6 +32,7 @@ public class MagicShop implements Scene {
         loadAssets();
     }
 
+    // Method to load assets required for the scene
     void loadAssets()  {
         back = new ImageIcon("assets/Magic shop/MagicShop.jpg");
         wood = new ImageIcon("assets/Market/woodytexturebackground.jpg");
@@ -44,6 +45,7 @@ public class MagicShop implements Scene {
     }
 
 
+    // Method to draw all UI elements on the screen
     void drawEverything() {
         window.addImageAtPixel(0, 0, 500, 400, back.getImage());
 
@@ -72,6 +74,7 @@ public class MagicShop implements Scene {
         window.addImageAtPixel(245, yValue, 240, 80, holder.getImage());
         window.addTextAtPixel((magicWidth == 1? ">" : "") + "Supplies", 300, yValue + 45, "WHITE", 25f);
 
+        // Drawing popup if drawA is true
         if (drawA) {
             Items x = Items.getInstance();
             int popUpYvalue = 40;
@@ -110,6 +113,7 @@ public class MagicShop implements Scene {
             window.addPopUpTextAtPixel((popUpHeight == 6? "> " : "") + x.getNamePotion(6), 220, popUpYvalue + 35,  (popUpHeight == 6? "GREEN" : "WHITE"), 25f);
         }
 
+        // Drawing confirmation dialog if checkA is true
         if (checkA) {
             String pname = Items.getInstance().getNamePotion(popUpHeight);
             Integer price = Items.getInstance().getPricePotions(popUpHeight);
@@ -128,6 +132,7 @@ public class MagicShop implements Scene {
             if (price <= currGold && Player.getInstance().getPotionsSpace() > 0) window.addCheckUpText((checkUpWidth == 1? ">"  : "") + "Yes", 420, 220,  "GREEN", 25f);
         }
 
+        // Drawing inventory if drawB is true
         if (drawB) {
             int popUpYvalue = 40;
             for (int i = -2; i < 3; ++i) {
@@ -142,6 +147,7 @@ public class MagicShop implements Scene {
             }
         }
 
+        // Drawing confirmation dialog if checkB is true
         if (checkB) {
             String ItemSell = Player.getInstance().getItem2Name(inventoryH);
             Integer price = Player.getInstance().getItem2Price(inventoryH);
@@ -157,10 +163,12 @@ public class MagicShop implements Scene {
         }
     }
 
+    // Method to remove the key listener
     private void removeKeyAdaptor() {
         window.removeKeyListener(magicShopListener);
     }
 
+    // Method to transition back to the lobby
     private void enterLobby() {
         removeKeyAdaptor();
         window.clearScreen();
@@ -168,12 +176,13 @@ public class MagicShop implements Scene {
         window.setCurentScene(lobby);
     }
 
-
+    // Method to display the scene
     @Override
     public void display() {
         drawEverything();
     }
 
+    // Method to listen to user inputs
     @Override
     public void listenToInput() {
         magicShopListener = new KeyAdapter() {

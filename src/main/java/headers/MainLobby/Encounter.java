@@ -13,47 +13,67 @@ import java.awt.event.*;
 import java.util.ArrayList;
 
 public class Encounter implements Scene {
-    private KeyListener EncounterListener;
-    private final Screen window;
-    private Dungeon dungeon;
-    private GameLobby lobby;
-    private ImageIcon back, holder, wood, ic2, ic1, colorr, colorb;
-    private Enemy m1, m2, m3;
-    private Integer curr, width, howMany, widthC;;
-    private Integer ani1, ani2, ani3, InventoryH, checkUpWidth;
-    private long stTimer1, stTimer2, stTimer3;
-    private int DamageDealtbyMob;
-    private Boolean checkA, checkB;
+    private KeyListener EncounterListener; // Key listener for encounters
+    private final Screen window; // The screen where the encounter is displayed.
+    private Dungeon dungeon;     // The dungeon where the encounter takes place
+
+    private GameLobby lobby;     // The lobby where the encounter is initiated
+
+    private ImageIcon back, holder, wood, ic2, ic1, colorr, colorb; // Image icons used in the encounter
+    private Enemy m1, m2, m3;     // Enemies in the encounter
+    private Integer curr, width, howMany, widthC;     // Current state and width of the encounter
+    private Integer ani1, ani2, ani3;     // Animation states for enemies
+    private Integer InventoryH;     // Height of the inventory
+    private Integer checkUpWidth;     // Width for checking
+    private long stTimer1, stTimer2, stTimer3;     // Timers for enemies
+    private int DamageDealtbyMob;     // Damage dealt by enemies
+    private Boolean checkA, checkB;     // Check flags
 
     public Encounter(Screen window, Dungeon dungeon, GameLobby lobby, int howMany) {
+        // Initialize enemies based on the number specified
         if (howMany >= 1) m1 = new Enemy(dungeon.getTdungeon());
         if (howMany >= 2) m2 = new Enemy(dungeon.getTdungeon());
         if (howMany >= 3) m3 = new Enemy(dungeon.getTdungeon());
 
+        // Set initial check flags and widths
         checkA = checkB = false;
         this.checkUpWidth = -1;
         widthC = -1;
+
+        // Initialize lobby, window, and dungeon
         this.lobby = lobby;
         this.window = window;
         this.dungeon = dungeon;
+
+        // Initialize timers
         stTimer1 = stTimer2 = stTimer3 = 0;
+
+        // Set initial values for current state, width, and inventory height
         this.curr = -1;
         this.width = this.InventoryH = -1;
+
+        // Initialize animation states for enemies and number of enemies
         this.ani1 = this.ani2 = this.ani3 = 0;
         this.howMany = howMany;
-        DamageDealtbyMob = dungeon.getDamageDealt();
-        loadAssets();
+
+        DamageDealtbyMob = dungeon.getDamageDealt(); // Get the damage dealt by enemies from the dungeon
+        loadAssets(); // Load assets for the encounter
     }
 
+    // Applies heal effect during the encounter.
     void applyPassive() {
         if (Player.getInstance().heals())
             DamageDealtbyMob -= (int)Math.ceil(0.1 * (double)Player.getInstance().getHpI(0));
     }
 
+    // Applies effects of potions during the encounter
     void applyPotions() {
+        // Get the name of the potion from the player's inventory
         String name = Player.getInstance().getItem2Name(InventoryH);
+        // Get the position of the potion in the Items instance
         int pos = Items.getInstance().getIndexPotion(name);
 
+        // Check the type of potion and apply corresponding effects
         if (pos <= 2) {
             DamageDealtbyMob -= Items.getInstance().getPotionProperties(pos);
         } else if (pos == 3) {
@@ -75,21 +95,28 @@ public class Encounter implements Scene {
         }
     }
 
+    // Checks the status of the encounter.
     void check() {
+        // If any enemy is still animating, return
         if ((howMany >= 1  && ani1 != 0) || (howMany >= 2 && ani2 != 0) || (howMany >= 3 && ani3 != 0)) {
             return;
         }
 
+        // Check if player's health is zero
         if (Player.getInstance().getHp(DamageDealtbyMob).equals("0")) {
+            // If so, subtract gold based on the number of enemies and return to the lobby
             if (howMany == 1) Player.getInstance().subtractFromGold(100 * Player.getInstance().getCurrPlayerTier());
             if (howMany == 2) Player.getInstance().subtractFromGold(200 * Player.getInstance().getCurrPlayerTier());
             if (howMany == 3) Player.getInstance().subtractFromGold(300 * Player.getInstance().getCurrPlayerTier());
             enterLobby();
         }
 
+        // Count the number of defeated enemies
         int ok = (howMany >= 1 && m1.currHealth() == 0)? 1 : 0;
         ok += (howMany >= 2 && m2.currHealth() == 0)? 1 : 0;
         ok += (howMany >= 3 && m3.currHealth() == 0)? 1  : 0;
+
+        // Handle cases based on the number of defeated enemies.
         if (ok == 1 && howMany == 1) {
             Quests.getInstance().updateKillQuest(m1.getTypeEnemy());
             Player.getInstance().subtractFromGold(-100 * Player.getInstance().getCurrPlayerTier());
@@ -110,6 +137,7 @@ public class Encounter implements Scene {
         }
     }
 
+    // Method to load assets required for the scene
     void loadAssets() {
         back = new ImageIcon("assets/Inamici Dungeon/Dungeon I/DungeonFightBackGround.png");
         wood = new ImageIcon("assets/Market/woodytexturebackground.jpg");
@@ -120,10 +148,14 @@ public class Encounter implements Scene {
         colorb = new ImageIcon("assets/Inamici Dungeon/Dungeon I/blackBar.png");
     }
 
+    // Draws all the elements of the encounter
     synchronized void drawEverything() {
+        // Check the status of the encounter
         check();
+        // Draw the background image
         window.addImageAtPixel(0, 0, 500, 400, back.getImage());
 
+        // Draw the first enemy if it exists and is alive
         if (howMany >= 1 && m1.currHealth() > 0) {
             if (ani1 == 0 || (ani1 == 2 && System.currentTimeMillis()- stTimer1 < 1500)) {
                 window.addImageAtPixel(200, 150, 80, 80, m1.getIcon().getImage());
@@ -136,6 +168,7 @@ public class Encounter implements Scene {
             }
         }
 
+        // Draw the second enemy if it exists and is alive
         if (howMany >= 2  && m2.currHealth() > 0) {
             if (ani2 == 0 || (ani2 == 2 && System.currentTimeMillis()- stTimer2 < 1500)) {
                 window.addImageAtPixel(100, 150, 80, 80, m2.getIcon().getImage());
@@ -148,6 +181,7 @@ public class Encounter implements Scene {
             }
         }
 
+        // Draw the third enemy if it exists and is alive.
         if (howMany >= 3 && m3.currHealth() > 0) {
             if (ani3 == 0 || (ani3 == 2 && System.currentTimeMillis()- stTimer3 < 1500)) {
                 window.addImageAtPixel(300, 150, 80, 80, m3.getIcon().getImage());
@@ -160,12 +194,15 @@ public class Encounter implements Scene {
             }
         }
 
+        // Draw the wood background image.
         window.addImageAtPixel(0, 400, 500, 400, wood.getImage());
 
+        // Draw the first header
         int yValue = 400;
         window.addImageAtPixel(0, yValue, 490, 80, holder.getImage());
         window.addTextAtPixel("You are being attacked!", 135, yValue + 45, "RED", 25f);
 
+        // Draw the second header
         yValue += 120;
         window.addImageAtPixel(0, yValue, 245, 80, holder.getImage());
         window.addImageAtPixel(10, yValue + 20, 40, 40, ic2.getImage());
@@ -183,10 +220,12 @@ public class Encounter implements Scene {
             window.addTextAtPixel((curr != -1 ? ">" : "") + what + ": " + space, 55, yValue + 45, "WHITE", 25f);
         }
 
+        // Draw the third header
         window.addImageAtPixel(245, yValue, 240, 80, holder.getImage());
         window.addImageAtPixel(255, yValue + 20, 40, 40, ic1.getImage());
         window.addTextAtPixel("Health: " + Player.getInstance().getHp(DamageDealtbyMob), 300, yValue + 45, "WHITE", 25f);
 
+        // Draw the pop-up for inventory items
         if (InventoryH != -1 && curr == 0) {
             int popUpYvalue = 40;
             for (int i = -2; i < 3; ++i) {
@@ -201,6 +240,7 @@ public class Encounter implements Scene {
             }
         }
 
+        // Draw the pop-up for quest items
         if (InventoryH != -1 && curr == 1) {
             int popUpYvalue = 40;
             for (int i = -2; i < 3; ++i) {
@@ -216,6 +256,7 @@ public class Encounter implements Scene {
             }
         }
 
+        // Draw the pop-up for using a potion
         if (InventoryH != -1 && curr == 0 && checkA) {
             String name = Player.getInstance().getInventory2Str(InventoryH);
             int pos = Items.getInstance().getIndexPotion(name);
@@ -231,6 +272,7 @@ public class Encounter implements Scene {
             window.addCheckUpText((checkUpWidth == 1? ">"  : "") + "Yes", 420, 220,  "GREEN", 25f);
         }
 
+        // Draw the pop-up for using a skill
         if (InventoryH != -1 && curr == 1 && checkB) {
             String name = Player.getInstance().getInventory3Str(InventoryH);
             int pos = Skills.getInstance().index(name);
@@ -261,7 +303,7 @@ public class Encounter implements Scene {
             }
         }
 
-
+        // Shake animation for the first enemy
         if (howMany >= 1 && ani1 == 1) {
             shake(m1.getIcon(), 200, 150);
             stTimer1 = stTimer2 = stTimer3 = System.currentTimeMillis();
@@ -274,6 +316,7 @@ public class Encounter implements Scene {
             return;
         }
 
+        // Shake animation for the second enemy.
         if (howMany >= 2 && ani2 == 1) {
             shake(m2.getIcon(), 100, 150);
             stTimer1 = stTimer2 = stTimer3 = System.currentTimeMillis();
@@ -286,6 +329,7 @@ public class Encounter implements Scene {
             return;
         }
 
+        // Shake animation for the third enemy.
         if (howMany >= 3 && ani3 == 1) {
             shake(m3.getIcon(), 300, 150);
             stTimer1 = stTimer2 = stTimer3 = System.currentTimeMillis();
@@ -298,18 +342,21 @@ public class Encounter implements Scene {
             return;
         }
 
+        // If the first enemy's animation is in stage 2 and the time limit has exceeded, initiate move animation
         if (howMany >= 1 && ani1 == 2 && System.currentTimeMillis()- stTimer1 >= 1500) {
             if (m1.currHealth() > 0) startMoveAnimation(m1.getIcon());
             stTimer1 = System.currentTimeMillis();
             ani1 = 3;
         }
 
+        // If the second enemy's animation is in stage 2 and the time limit has exceeded, initiate move animation
         if (howMany >= 2 && ani2 == 2 && System.currentTimeMillis()- stTimer2 >= 1500) {
             if (m2.currHealth() > 0) startMoveAnimation(m2.getIcon());
             stTimer2 = System.currentTimeMillis();
             ani2 = 3;
         }
 
+        // If the third enemy's animation is in stage 2 and the time limit has exceeded, initiate move animation
         if (howMany >= 3 && ani3 == 2 && System.currentTimeMillis()- stTimer3 >= 1500) {
             if (m3.currHealth() > 0) startMoveAnimation(m3.getIcon());
             stTimer3 = System.currentTimeMillis();
@@ -317,6 +364,7 @@ public class Encounter implements Scene {
         }
 
 
+        // Check if the animation for the first enemy is in stage 3 and the time limit has exceeded, then proceed to the next stage
         boolean ok = false;
         if (howMany >= 1 && ani1 == 3 && System.currentTimeMillis() - stTimer1 >= 1500) {
             double resist = Player.getInstance().getArmI();
@@ -329,6 +377,7 @@ public class Encounter implements Scene {
             ani1 = 0;
         }
 
+        // Check if the animation for the second enemy is in stage 3 and the time limit has exceeded, then proceed to the next stage
         if (howMany >= 2 && ani2 == 3 && System.currentTimeMillis() - stTimer2 >= 1500) {
             double resist = Player.getInstance().getArmI();
             DamageDealtbyMob += (int) Math.ceil((m2.dealDamage() * (1.0 - resist / (resist + 100))));
@@ -340,6 +389,7 @@ public class Encounter implements Scene {
             ani2 = 0;
         }
 
+        // Check if the animation for the third enemy is in stage 3 and the time limit has exceeded, then proceed to the next stage
         if (howMany >= 3 && ani3 == 3 && System.currentTimeMillis() - stTimer3 >= 1500) {
             double resist = Player.getInstance().getArmI();
             DamageDealtbyMob += (int) Math.ceil((m3.dealDamage() * (1.0 - resist / (resist + 100))));
@@ -463,22 +513,25 @@ public class Encounter implements Scene {
         delayTimer.start(); // Start the delay timer
     }
 
-
+    // Method to display the scene
     @Override
     public void display() {
         drawEverything();
     }
 
+    // Method to remove the key listener
     private void removeKeyAdaptor() {
         window.removeKeyListener(EncounterListener);
     }
 
+    // Method to transition to the dungeon scene
     private void enterDungeon() {
         removeKeyAdaptor();
         window.clearScreen();
         window.setCurentScene(dungeon);
     }
 
+    // Method to transition to the lobby scene
     private void enterLobby() {
         removeKeyAdaptor();
         window.clearScreen();
@@ -486,6 +539,7 @@ public class Encounter implements Scene {
         window.setCurentScene(lobby);
     }
 
+    // Method to listen to user inputs
     @Override
     public void listenToInput() {
         EncounterListener = new KeyAdapter() {
