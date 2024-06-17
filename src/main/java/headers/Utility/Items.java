@@ -69,6 +69,7 @@ public class Items {
         GenerateBlackSmithArmour();
     }
 
+    // Check if image path is valid
     public static boolean isImagePathValid(String path) {
         File file = new File(path);
         return file.exists() && file.canRead();
