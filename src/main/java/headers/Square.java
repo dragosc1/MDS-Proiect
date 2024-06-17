@@ -1,11 +1,18 @@
 package headers;
 
+// Class for drawing rectangles on screen
 public class Square {
+    // position (x, y)
     private int x;
     private int y;
+    // color
     private String color;
+
+    // dimensions X and Y
     private int dimX;
     private int dimY;
+
+    // Constructor
     public Square(int x, int y, String color, int dimX, int dimY) {
         this.x = x;
         this.y = y;
@@ -14,6 +21,7 @@ public class Square {
         this.dimY = dimY;
     }
 
+    // Getters
     public int getX() {
         return x;
     }

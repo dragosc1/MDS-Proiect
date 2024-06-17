@@ -2,6 +2,7 @@ package headers;
 
 import java.io.Serializable;
 
+// Class representing a status for the player
 public class Status implements Serializable {
     private String name;
     private int pointsInStatus;
@@ -10,6 +11,8 @@ public class Status implements Serializable {
         this.name = name;
         this.pointsInStatus = pointsInStatus;
     }
+
+    // Getters and setters
     public String getName() {
         return this.name;
     }

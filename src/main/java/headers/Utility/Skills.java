@@ -5,6 +5,7 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class Skills {
+    // Implemented using Singleton pattern
     private static Skills single_instance = null;
     private ArrayList<ImageIcon> skills = new ArrayList<>();
     private ArrayList<String> skillName = new ArrayList<>();
@@ -14,6 +15,7 @@ public class Skills {
         initAll();
     }
 
+    // Initialize all type of skills
     private void initAll() {
         skills.add(new ImageIcon("assets/Skill Shop/BeginnerMagic.png"));
         skills.add(new ImageIcon("assets/Skill Shop/IntermediarMagic.png"));
@@ -61,6 +63,7 @@ public class Skills {
         skillDescription.add("Heals for 50 Hp cooldown 4 turns"); // 13
     }
 
+    // Helper methods for getting data
     public int index(String name) {
         return skillName.indexOf(name);
     }
@@ -77,6 +80,7 @@ public class Skills {
         return skillDescription.get(pos);
     }
 
+    // Singleton pattern getInstance()
     public static synchronized Skills getInstance() {
         if (single_instance == null) single_instance = new Skills();
         return single_instance;

@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="52acba96-8edc-4f36-ad59-88e433a8f2af" name="Changes" comment="fixed relative position change 2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/headers/Button.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/Button.java" afterDir="false" />
@@ -11,6 +12,10 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/headers/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/headers/ImageInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/ImageInfo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/headers/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/Menu.java" afterDir="false" />
+=======
+    <list default="true" id="52acba96-8edc-4f36-ad59-88e433a8f2af" name="Changes" comment="Added unit tests for player">
+      <change beforePath="$PROJECT_DIR$/src/main/java/headers/Utility/Items.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/Utility/Items.java" afterDir="false" />
+>>>>>>> c16e61354501a4c1bdcacbf8d91e6e6e24a62410
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,9 +81,12 @@
     &quot;Application.Main.executor&quot;: &quot;Run&quot;,
     &quot;Application.bd.executor&quot;: &quot;Run&quot;,
     &quot;Application.main.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.PlayerTest.testAddItem2.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ItemsTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ItemsTest.testPotionPrices.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.PlayerTest.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.PlayerTest.testAddSupplies.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.PlayerTest.testGetInstance.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.QuestsTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.QuestsTest.testGetWhatType.executor&quot;: &quot;Debug&quot;,
     &quot;Maven.Belgadrestra_Dungeon [clean:clean].executor&quot;: &quot;Run&quot;,
     &quot;Maven.Belgadrestra_Dungeon [clean].executor&quot;: &quot;Run&quot;,
     &quot;Maven.Belgadrestra_Dungeon [compile].executor&quot;: &quot;Run&quot;,
@@ -91,7 +99,7 @@
     &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Belgradestra Dungeon/MDS-Proiect&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/mihne/OneDrive/Desktop/II/II Sem II/MDS/MDS-Proiect&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -121,12 +129,25 @@
     </option>
   </component>
   <component name="RunManager">
+<<<<<<< HEAD
     <configuration name="PlayerTest.testAddItem2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="belgadrestra_dungeon" />
+=======
+    <configuration name="ItemsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Belgadrestra_Dungeon" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ItemsTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PlayerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Belgadrestra_Dungeon" />
+>>>>>>> c16e61354501a4c1bdcacbf8d91e6e6e24a62410
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="PlayerTest" />
-      <option name="METHOD_NAME" value="testAddItem2" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -136,26 +157,6 @@
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="PlayerTest" />
       <option name="METHOD_NAME" value="testGetInstance" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PlayerTest.testRemItem1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="belgadrestra_dungeon" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="PlayerTest" />
-      <option name="METHOD_NAME" value="testRemItem1" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PlayerTest.testRemItem2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="belgadrestra_dungeon" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="PlayerTest" />
-      <option name="METHOD_NAME" value="testRemItem2" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -171,20 +172,30 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="QuestsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Belgadrestra_Dungeon" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="QuestsTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.PlayerTest.testAddItem2" />
+        <item itemvalue="JUnit.QuestsTest" />
+        <item itemvalue="JUnit.ItemsTest" />
+        <item itemvalue="JUnit.PlayerTest" />
         <item itemvalue="JUnit.PlayerTest.testGetInstance" />
         <item itemvalue="JUnit.PlayerTest.testUpgradeStatus" />
-        <item itemvalue="JUnit.PlayerTest.testRemItem2" />
-        <item itemvalue="JUnit.PlayerTest.testRemItem1" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
       </set>
     </attachedChunks>
   </component>
@@ -246,6 +257,7 @@
       <workItem from="1718520982167" duration="49936000" />
       <workItem from="1718589206202" duration="1173000" />
       <workItem from="1718590409264" duration="1704000" />
+<<<<<<< HEAD
       <workItem from="1718596939938" duration="2172000" />
       <workItem from="1718599347405" duration="371000" />
       <workItem from="1718600503238" duration="795000" />
@@ -258,6 +270,8 @@
       <workItem from="1718620272314" duration="501000" />
       <workItem from="1718620995941" duration="47000" />
       <workItem from="1718621454163" duration="1803000" />
+=======
+>>>>>>> c16e61354501a4c1bdcacbf8d91e6e6e24a62410
     </task>
     <task id="LOCAL-00001" summary="Initial files">
       <option name="closed" value="true" />
@@ -427,7 +441,31 @@
       <option name="project" value="LOCAL" />
       <updated>1713379327624</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Added unit tests for player">
+      <option name="closed" value="true" />
+      <created>1718615559992</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1718615559992</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Added unit tests for player">
+      <option name="closed" value="true" />
+      <created>1718621821522</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1718621821522</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Added unit tests for player">
+      <option name="closed" value="true" />
+      <created>1718621888324</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1718621888325</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -481,7 +519,8 @@
     <MESSAGE value="Finished new game scene" />
     <MESSAGE value="fixed relative position change" />
     <MESSAGE value="fixed relative position change 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed relative position change 2" />
+    <MESSAGE value="Added unit tests for player" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added unit tests for player" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>

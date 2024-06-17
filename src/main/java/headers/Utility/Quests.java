@@ -6,6 +6,7 @@ import java.io.Serializable;
 import java.util.*;
 
 public class Quests implements Serializable {
+    // Implemented using Singleton pattern
     private static Quests single_instance = null;
 
     private ArrayList <String> Quests = new ArrayList<>();
@@ -17,6 +18,7 @@ public class Quests implements Serializable {
 
     Random random;
 
+    // Constructor for Quests
     public Quests(){
         random = new Random();
         limit = 3;
@@ -29,10 +31,12 @@ public class Quests implements Serializable {
         Quests = arr;
     }
 
+    // Set instance for singleton pattern
     public static void setInstance(Quests quests) {
         single_instance = quests;
     }
 
+    // Generate random quests
     public void GenerateRandomQuests() {
         Quests.clear(); // Clear previous quests if any
 
@@ -59,7 +63,7 @@ public class Quests implements Serializable {
         }
     }
 
-
+    // Set a random quest
     public void setRandomQuest(int pos) {
         int questType = random.nextInt(2); // Generate a random number between 0 and 2
 
@@ -82,6 +86,7 @@ public class Quests implements Serializable {
         }
     }
 
+    // Generate random tier from hardcoded tierUps and types
     public void GenerateRandomTier() {
         progressT = 0;
         TierUp.add("Reach level 25 in the first dungeon");
@@ -106,6 +111,7 @@ public class Quests implements Serializable {
         Type.add(5);
     }
 
+    // Updating tile quest
     public synchronized void updateTileQuest() {
         int idx = 0;
         for (String x : Quests) {
@@ -117,6 +123,7 @@ public class Quests implements Serializable {
         }
     }
 
+    // Updating kill quest
     public synchronized void updateKillQuest(String Type) {
         int idx = 0;
         for (String x : Quests) {
@@ -127,6 +134,8 @@ public class Quests implements Serializable {
             ++idx;
         }
     }
+
+    // Getters for data
 
     public Integer getWhatType(int pos) {
         return Type.get(pos);
@@ -160,10 +169,12 @@ public class Quests implements Serializable {
         return TierUp.get(progressT);
     }
 
+    // Modify progress by setting it up by one
     public void ModifyProgress(int pos) {
         Progress.set(pos, Progress.get(pos) + 1);
     }
 
+    // For the Singleton design pattern getInstance() method
     public static synchronized Quests getInstance() {
         if (single_instance == null) {
             single_instance = new Quests();
