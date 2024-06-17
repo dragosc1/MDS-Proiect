@@ -53,7 +53,7 @@ public class NewGame implements Scene {
     }
 
     void initMainTransition() {
-        mainTransition = new MainTransition(window);
+        mainTransition = new MainTransition(window, 0);
     }
 
     private void startNewGame() {
@@ -66,6 +66,7 @@ public class NewGame implements Scene {
         initMainTransition();
         window.setCurentScene(mainTransition);
     }
+
 
     private void updateButtonState() {
         // Example condition: Enable the button if the player has entered their name

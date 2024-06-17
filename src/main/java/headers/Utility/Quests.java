@@ -2,9 +2,10 @@ package headers.Utility;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.Serializable;
 import java.util.*;
 
-public class Quests {
+public class Quests implements Serializable {
     private static Quests single_instance = null;
 
     private ArrayList <String> Quests = new ArrayList<>();
@@ -26,6 +27,10 @@ public class Quests {
     public Quests(ArrayList <String> arr) {
         random = new Random();
         Quests = arr;
+    }
+
+    public static void setInstance(Quests quests) {
+        single_instance = quests;
     }
 
     public void GenerateRandomQuests() {
@@ -99,6 +104,28 @@ public class Quests {
         Type.add(2);
         Type.add(3);
         Type.add(5);
+    }
+
+    public synchronized void updateTileQuest() {
+        int idx = 0;
+        for (String x : Quests) {
+            if (x.charAt(0) == 'V') {
+                int curr = Progress.get(idx);
+                Progress.set(idx, curr + 1);
+            }
+            ++idx;
+        }
+    }
+
+    public synchronized void updateKillQuest(String Type) {
+        int idx = 0;
+        for (String x : Quests) {
+            if (x.charAt(0) == 'K' && x.toLowerCase().contains(Type.toLowerCase())) {
+                int curr = Progress.get(idx);
+                Progress.set(idx, curr + 1);
+            }
+            ++idx;
+        }
     }
 
     public Integer getWhatType(int pos) {

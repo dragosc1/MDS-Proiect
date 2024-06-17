@@ -1,6 +1,7 @@
 package headers.MainLobby;
 
 import headers.Player;
+import headers.Save;
 import headers.Scene;
 import headers.Screen;
 
@@ -182,6 +183,12 @@ public class GameLobby implements Scene {
         window.setCurentScene(worldMap);
     }
 
+    void enterSave() {
+        removeKeyAdaptor();
+        window.clearScreen();
+        window.setCurentScene(new Save(window,  this));
+    }
+
     @Override
     public void display() {
         drawEverything();
@@ -193,6 +200,11 @@ public class GameLobby implements Scene {
             @Override
             public void keyPressed(KeyEvent e) {
                 handleArrowKeys(e);
+
+                if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                    enterSave();
+                }
+
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     if (height == 0 && width == 0) {
                         enterGuild();

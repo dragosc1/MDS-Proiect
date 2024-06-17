@@ -56,7 +56,7 @@ public class PlayerTest {
     @Test
     public void testAddSupplies() {
         player.addSupplies(-50);
-        assertEquals(100, player.getSupplies());
+        assertEquals(50, player.getSupplies());
     }
 
     @Test

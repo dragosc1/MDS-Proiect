@@ -241,6 +241,14 @@ public class Items {
         return potions.get(pos).getImage();
     }
 
+    public Integer getIndexPotion(String name) {
+        return potionsName.indexOf(name);
+    }
+
+    public Integer getPotionProperties(int pos) {
+        return potionsProperties.get(pos);
+    }
+
     public String getNamePotion(int pos) {
         return potionsName.get(pos);
     }
@@ -490,6 +498,82 @@ public class Items {
         return tierRoman;
     }
 
+    public Image getImageFromX(String what, String type, Integer tier) {
+        if (what.toLowerCase().contains("bow")) {
+            if (type.toLowerCase().contains("common")) {
+                return bowCommon.get(tier).getImage();
+            }
+            if (type.toLowerCase().contains("rare")) {
+                return bowRare.get(tier).getImage();
+            }
+            if (type.toLowerCase().contains("epic")) {
+                return bowEpic.get(tier).getImage();
+            }
+            if (type.toLowerCase().contains("legendary")) {
+                return bowLeg.get(tier).getImage();
+            }
+            if (type.toLowerCase().contains("mythical")) {
+                return bowMyth.get(tier).getImage();
+            }
+        }
+
+        if (what.toLowerCase().contains("armour")) {
+            if (type.toLowerCase().contains("common")) {
+                return armourCommon.get(tier).getImage();
+            }
+            if (type.toLowerCase().contains("rare")) {
+                return armourRare.get(tier).getImage();
+            }
+            if (type.toLowerCase().contains("epic")) {
+                return armourEpic.get(tier).getImage();
+            }
+            if (type.toLowerCase().contains("legendary")) {
+                return armourLeg.get(tier).getImage();
+            }
+            if (type.toLowerCase().contains("mythical")) {
+                return armourMyth.get(tier).getImage();
+            }
+        }
+
+        if (what.toLowerCase().contains("sword")) {
+            if (type.toLowerCase().contains("common")) {
+                return swordsCommon.get(tier).getImage();
+            }
+            if (type.toLowerCase().contains("rare")) {
+                return swordsRare.get(tier).getImage();
+            }
+            if (type.toLowerCase().contains("epic")) {
+                return swordsEpic.get(tier).getImage();
+            }
+            if (type.toLowerCase().contains("legendary")) {
+                return swordsLeg.get(tier).getImage();
+            }
+            if (type.toLowerCase().contains("mythical")) {
+                return swordsMyth.get(tier).getImage();
+            }
+        }
+
+        if (what.toLowerCase().contains("staff")) {
+            if (type.toLowerCase().contains("common")) {
+                return staffCommon.get(tier).getImage();
+            }
+            if (type.toLowerCase().contains("rare")) {
+                return staffRare.get(tier).getImage();
+            }
+            if (type.toLowerCase().contains("epic")) {
+                return staffEpic.get(tier).getImage();
+            }
+            if (type.toLowerCase().contains("legendary")) {
+                return staffLeg.get(tier).getImage();
+            }
+            if (type.toLowerCase().contains("mythical")) {
+                return staffMyth.get(tier).getImage();
+            }
+        }
+
+        return new ImageIcon("assets/Guild/challangesbackground.png").getImage();
+    }
+
     public String getTypeFromName(String name) {
         if (name.toLowerCase().contains("common"))
             return "Common";
@@ -502,6 +586,18 @@ public class Items {
         if (name.toLowerCase().contains("mythical"))
             return "Mythical";
         return "invalid";
+    }
+
+    public String getWhatFromName(String name) {
+        if (name.toLowerCase().contains("bow"))
+            return "Bow";
+        if (name.toLowerCase().contains("armour"))
+            return "Armour";
+        if (name.toLowerCase().contains("sword"))
+            return "Sword";
+        if (name.toLowerCase().contains("staff"))
+            return "Staff";
+        return "Invalid";
     }
 
     public Integer getPrice(String type, int tier){

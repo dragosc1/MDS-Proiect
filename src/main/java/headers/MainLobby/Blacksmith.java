@@ -217,7 +217,6 @@ public class Blacksmith implements Scene {
             String ItemSell = Player.getInstance().getItemName(InventoryH);
             Integer tier = Player.getInstance().getItemTier(InventoryH);
             ++tier;
-            String tierRoman = Items.getInstance().TierRoman(tier);
             int playerGold = Player.getInstance().getGold();
             String type = Items.getInstance().getTypeFromName(ItemSell);
             int price = Player.getInstance().applyCharisma(Items.getInstance().getPrice(type, tier));
@@ -237,7 +236,6 @@ public class Blacksmith implements Scene {
             Items x = Items.getInstance();
             String ItemSell = Objects.equals(currTxt, "Weapons")? x.getBSWN(popUpHeight - 1) : x.getBSAN(popUpHeight - 1);
             Integer tier = Objects.equals(currTxt, "Weapons")? x.getBSWT(popUpHeight - 1) : x.getBSAT(popUpHeight - 1);
-            String tierRoman = Items.getInstance().TierRoman(tier);
             int playerGold = Player.getInstance().getGold();
             String type = Items.getInstance().getTypeFromName(ItemSell);
             int price = Player.getInstance().applyCharisma(Items.getInstance().getPriceT(type, tier));
@@ -439,7 +437,7 @@ public class Blacksmith implements Scene {
                     Integer tier = Objects.equals(currTxt, "Weapons")? x.getBSWT(popUpHeight - 1) : x.getBSAT(popUpHeight - 1);
                     int playerGold = Player.getInstance().getGold();
                     String type = Items.getInstance().getTypeFromName(ItemSell);
-                    int price = Player.getInstance().applyCharisma(Items.getInstance().getPrice(type, tier));
+                    int price = Player.getInstance().applyCharisma(Items.getInstance().getPriceT(type, tier));
                     if (playerGold < price || Player.getInstance().getInventorySpace() <= 0) {
                         return;
                     }

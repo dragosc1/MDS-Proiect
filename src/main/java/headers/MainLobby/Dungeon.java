@@ -1,7 +1,10 @@
 package headers.MainLobby;
 
+import headers.Player;
 import headers.Scene;
 import headers.Screen;
+import headers.Utility.Items;
+import headers.Utility.Quests;
 
 import javax.swing.*;
 import java.awt.event.KeyAdapter;
@@ -17,7 +20,7 @@ public class Dungeon implements Scene {
     private final Screen window;
     private final GameLobby lobby;
     private KeyListener dunegonKeyListener;
-    private ImageIcon back, bar, ic0, blocked, wood, ic1, ic2, ic3, ic4;
+    private ImageIcon back, bar, ic0, blocked, wood, ic1, ic2, ic3, ic4, ic9, holder;
     private Integer height, width;
     private char[][] maze;
     private boolean[][] visible;
@@ -28,6 +31,19 @@ public class Dungeon implements Scene {
     private static final char OBSTACLE = '#';
     private static final char START = 'S';
     private static final char EXIT = 'E';
+    private int Tdungeon;
+    private int DamageDealt;
+
+    private Boolean firstMove;
+    private static long stTime;
+
+    public synchronized void setDamge(int dmg) {
+        DamageDealt = dmg;
+    }
+
+    public synchronized int getDamageDealt() {
+        return DamageDealt;
+    }
 
     public static char[][] generateDungeon() {
         char[][] grid = new char[SIZE][SIZE];
@@ -109,21 +125,30 @@ public class Dungeon implements Scene {
         }
     }
 
-    public Dungeon(Screen window, GameLobby _lobby) {
+    public Dungeon(Screen window, GameLobby _lobby, int typeDungeon) {
+        Tdungeon = typeDungeon;
         this.window = window;
         this.lobby = _lobby;
+        this.firstMove = false;
         this.window.setBackground("BLACK");
         height = width = 0;
+        stTime = -1;
         this.maze = generateDungeon();
         this.visible = new boolean[SIZE][SIZE];
         printDungeon(this.maze);
         height = sx;
         width = sy;
         visible[height][width] = true;
+        DamageDealt = 0;
         loadAssets();
     }
 
+    public int getTdungeon() {
+        return this.Tdungeon;
+    }
+
     void loadAssets() {
+        holder = new ImageIcon("assets/Market/itemholder.png");
         back = new ImageIcon("assets/Character/Chback.png");
         bar  = new ImageIcon("assets/Market/BrownBlackGround.png");
         ic0 = new ImageIcon("assets/Dungeon/CharacterIcon.png");
@@ -133,9 +158,20 @@ public class Dungeon implements Scene {
         ic2 = new ImageIcon("assets/Dungeon/dugeonTiles.png");
         ic3 = new ImageIcon("assets/Dungeon/dungeonExitDoor.png");
         ic4 = new ImageIcon("assets/Dungeon/Untitled.png");
+        ic9 = new ImageIcon("assets/Game Menu/SuppliesIcon.png");
     }
 
-    void drawEverything() {
+    synchronized void drawEverything() {
+        long endTime = System.currentTimeMillis();
+        if (stTime != -1 && endTime - stTime >= 1000) {
+            Player.getInstance().subSupplies();
+            stTime = System.currentTimeMillis();
+            if (Player.getInstance().getSupplies() == 0) {
+                Player.getInstance().subtractFromGold(100);
+                enterLobby();
+            }
+        }
+
         window.addImageAtPixel(0, 0, 490, 670, back.getImage());
 
         window.addImageAtPixel(0, 0, 490, 40, bar.getImage());
@@ -143,7 +179,7 @@ public class Dungeon implements Scene {
         window.addTextAtPixel("Dungeon", 55, 30, "WHITE", 25f);
 
         int cellSize = 20;
-        int gridSize = 20;
+        int gridSize = SIZE;
         for (int row = 0; row < gridSize; row++) {
             for (int col = 0; col < gridSize; col++) {
                 int x = 40 + col * cellSize;
@@ -154,20 +190,42 @@ public class Dungeon implements Scene {
                     if (maze[row][col] == OBSTACLE) window.addImageAtPixel(x, y, cellSize, cellSize, ic2.getImage());
                     if (maze[row][col] == FREE) window.addImageAtPixel(x, y, cellSize, cellSize, ic1.getImage());
                     if (maze[row][col] == START) window.addImageAtPixel(x, y, cellSize, cellSize, ic4.getImage());
-                    if (maze[row][col] == EXIT) window.addImageAtPixel(x, y, cellSize, cellSize, ic3.getImage());
+                    if (maze[row][col] == EXIT) {
+                        window.addImageAtPixel(x, y, cellSize, cellSize, ic3.getImage());
+                    }
                 }
             }
         }
 
         window.addImageAtPixel(0, 500, 500, 400, wood.getImage());
+
+        window.addImageAtPixel(150, 530, 245, 80, holder.getImage());
+        window.addImageAtPixel(160, 550, 40, 40, ic9.getImage());
+        window.addTextAtPixel("Supplies: " + Player.getInstance().getSupplies(), 210, 575, "WHITE", 25f);
+
     }
 
     void verify(int a, int b) {
-        visible[a][b] = true;
-        if (this.maze[a][b]!= OBSTACLE) {
+        if (!firstMove) {
+            stTime = System.currentTimeMillis();
+            firstMove = true;
+        }
+
+        if (!visible[a][b])
+            Quests.getInstance().updateTileQuest();
+
+        if (this.maze[a][b] != OBSTACLE) {
             height = a;
             width = b;
+
+            if (!visible[a][b]) {
+                Random rand = new Random();
+                if (rand.nextDouble() < 0.15)
+                    enterEncounter();
+            }
         }
+
+        visible[a][b] = true;
     }
 
     private void removeKeyAdaptor() {
@@ -179,6 +237,13 @@ public class Dungeon implements Scene {
         window.clearScreen();
         window.setBackground("assets/Game Menu/GameMenuBackGround.png");
         window.setCurentScene(lobby);
+    }
+
+    private void enterEncounter() {
+        removeKeyAdaptor();
+        window.clearScreen();
+        Encounter enc = new Encounter(window, this, lobby, min(3, Tdungeon + 1));
+        window.setCurentScene(enc);
     }
 
     @Override
@@ -215,6 +280,9 @@ public class Dungeon implements Scene {
 
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                    if (Objects.equals(height, ex) && Objects.equals(width, ey)) {
+                       if (Tdungeon < 5) Player.getInstance().addDungeon(Tdungeon);
+                       Items.getInstance().GenerateBlackSmithArmour();
+                       Items.getInstance().GenerateBlackSmithWeapons();
                        enterLobby();
                    }
                    if (Objects.equals(height, sx) && Objects.equals(width, sy)) {

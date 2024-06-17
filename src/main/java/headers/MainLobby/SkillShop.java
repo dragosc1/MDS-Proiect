@@ -15,14 +15,13 @@ import java.util.ArrayList;
 public class SkillShop implements Scene {
     private final Screen window;
     private final GameLobby lobby;
-    private Integer ind0, inventoryH, checkUpWidth;
+    private Integer inventoryH, checkUpWidth;
     private Boolean ind1, ind2;
     private KeyListener skillListener;
     private ImageIcon back, wood, bar, ic0;
     private ImageIcon holder, ic1, ic2, ic3;
 
     public SkillShop(Screen window, GameLobby _lobby) {
-        this.ind0 = -1;
         this.ind1 = this.ind2 = false;
         this.checkUpWidth = 0;
         this.inventoryH = 0;
@@ -106,7 +105,7 @@ public class SkillShop implements Scene {
         yValue += 120;
         window.addImageAtPixel(0, yValue, 490, 80, holder.getImage());
         window.addImageAtPixel(10, yValue + 20, 40, 40, ic3.getImage());
-        window.addTextAtPixel(((ind0 == 1)? ">" : "") + "Space: " + Player.getInstance().getSInventorySpace(), 55, yValue + 45, "WHITE", 25f);
+        window.addTextAtPixel((ind1? ">" : "") + "Space: " + Player.getInstance().getSInventorySpace(), 55, yValue + 45, "WHITE", 25f);
 
         if (ind1) {
             int popUpYvalue = 40;
@@ -169,21 +168,20 @@ public class SkillShop implements Scene {
                     }
 
                     if (ind1) {
-                        ind0 = -1; ind1 = false;
+                        ind1 = false;
                         return;
                     }
 
-                    ind0 = -1;
                     enterLobby();
                     return;
                 }
 
                 if (e.getKeyCode() == KeyEvent.VK_B) {
-                    ind0 = 1;
+                    ind1 = true;
                     return;
                 }
 
-                if (e.getKeyCode() == KeyEvent.VK_ENTER && ind0 == 1 && ind1 && ind2) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER && ind1 && ind2) {
                     if (checkUpWidth == 0) {
                         ind2 = false;
                         return;
@@ -194,33 +192,32 @@ public class SkillShop implements Scene {
                     }
 
                     Player.getInstance().subtractFromGold(Player.getInstance().applyCharisma(2000));
-                    Player.getInstance().addItem3(Skills.getInstance().getSkill(inventoryH),
-                            Skills.getInstance().getSkillName(inventoryH));
+                    Player.getInstance().addItem3(Skills.getInstance().getSkill(inventoryH), Skills.getInstance().getSkillName(inventoryH));
                     ind2 = false;
                     return;
                 }
 
-                if (e.getKeyCode() == KeyEvent.VK_ENTER && ind0 == 1 && ind1) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER && ind1) {
                     ind2 = true;
                     return;
                 }
 
-                if (e.getKeyCode() == KeyEvent.VK_ENTER && ind0 == 1) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     ind1 = true;
                     return;
                 }
 
-                if (ind2 && ind1 && ind0 == 1 && e.getKeyCode() == KeyEvent.VK_LEFT) {
+                if (ind2 && ind1 && e.getKeyCode() == KeyEvent.VK_LEFT) {
                     checkUpWidth = ((checkUpWidth - 1) % 2 + 2) % 2;
                     return;
                 }
 
-                if (ind2 && ind1 && ind0 == 1 && e.getKeyCode() == KeyEvent.VK_RIGHT) {
+                if (ind2 && ind1 && e.getKeyCode() == KeyEvent.VK_RIGHT) {
                     checkUpWidth = (checkUpWidth + 1) % 2;
                     return;
                 }
 
-                if (ind1 && ind0 == 1 && e.getKeyCode() == KeyEvent.VK_UP) {
+                if (ind1 && e.getKeyCode() == KeyEvent.VK_UP) {
                     if (ind2) {
                         return;
                     }
@@ -229,7 +226,7 @@ public class SkillShop implements Scene {
                     return;
                 }
 
-                if (ind1 && ind0 == 1 && e.getKeyCode() == KeyEvent.VK_DOWN) {
+                if (ind1 && e.getKeyCode() == KeyEvent.VK_DOWN) {
                     if (ind2) {
                         return;
                     }

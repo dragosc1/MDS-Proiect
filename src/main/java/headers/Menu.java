@@ -19,7 +19,7 @@ public class Menu implements Scene {
         currentPosition = -5;
         window = _window;
         addOption("New Game", 180, 460);
-        addOption("Options", 180, 500);
+        addOption("Load Save", 180, 500);
         addOption("Exit", 180, 540);
     }
 
@@ -65,6 +65,12 @@ public class Menu implements Scene {
         }
     }
 
+    void LoadSave() {
+        removeKeyAdaptor();
+        window.clearScreen();
+        window.setCurentScene(new Save(window, this));
+    }
+
     @Override
     public void listenToInput() {
         menuKeyAdapter = new KeyAdapter() {
@@ -78,6 +84,9 @@ public class Menu implements Scene {
                     if (getCurrentPosition() == 2) {
                         window.dispose(); // Close the window
                         Game.running = false;
+                    }
+                    if (getCurrentPosition() == 1) {
+                        LoadSave();
                     }
                     if (getCurrentPosition() == 0) {
                         // Start new game

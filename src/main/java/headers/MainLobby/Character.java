@@ -86,17 +86,17 @@ public class Character implements Scene {
 
         yValue += 50;
         window.addImageAtPixel(10, yValue, 40, 40, ic3.getImage());
-        window.addTextAtPixel("Ad: ", 55, yValue + 30, "WHITE", 25f);
+        window.addTextAtPixel("Ad: " + Player.getInstance().getAd(), 55, yValue + 30, "WHITE", 25f);
 
         window.addImageAtPixel(300, yValue, 40, 40, ic4.getImage());
-        window.addTextAtPixel("Ap: ", 345, yValue + 30, "WHITE", 25f);
+        window.addTextAtPixel("Ap: " + Player.getInstance().getAp(), 345, yValue + 30, "WHITE", 25f);
 
         yValue += 50;
         window.addImageAtPixel(10, yValue, 40, 40, ic5.getImage());
-        window.addTextAtPixel("Arm: ", 55, yValue + 30, "WHITE", 25f);
+        window.addTextAtPixel("Arm: " + Player.getInstance().getArm(), 55, yValue + 30, "WHITE", 25f);
 
         window.addImageAtPixel(300, yValue, 40, 40, ic6.getImage());
-        window.addTextAtPixel("Mr: ", 345, yValue + 30, "WHITE", 25f);
+        window.addTextAtPixel("Mr: " + Player.getInstance().getArm(), 345, yValue + 30, "WHITE", 25f);
 
         yValue += 50;
         window.addImageAtPixel(10, yValue, 40, 40, Player.getInstance().getHeldWeapon());
@@ -170,7 +170,7 @@ public class Character implements Scene {
                 window.addPopUpAtPixel(5, popUpYvalue, 410, 50, holder.getImage());
                 window.addPopUpAtPixel(25, popUpYvalue + 5, 40, 40, x);
                 window.addPopUpTextAtPixel((i == 0? "> " : "") + name, 75, popUpYvalue + 35,  (i == 0? "GREEN" : "WHITE"), 25f);
-                window.addPopUpTextAtPixel("Slot: " + (curr + 1), 280, popUpYvalue + 35,  "WHITE", 25f);
+                window.addPopUpTextAtPixel("Slot: " + (curr + 1), 300, popUpYvalue + 35,  "WHITE", 25f);
                 popUpYvalue += 50;
             }
         }
@@ -234,8 +234,9 @@ public class Character implements Scene {
                         return;
                     }
 
-                    if (Inv != -1 && InventoryH != -1 && !Objects.equals(Player.getInstance().getInventory1Str(InventoryH), "Empty")) {
+                    if (Inv == 0 && InventoryH != -1 && !Objects.equals(Player.getInstance().getInventory1Str(InventoryH), "Empty")) {
                         checkup = true;
+                        checkUpWidth = 0;
                         return;
                     }
 
@@ -280,9 +281,8 @@ public class Character implements Scene {
                         return;
 
                     if (InventoryH != -1) {
-                        int value = Player.getInstance().getInventorySpace();
-                        if (Inv == 1) value = Player.getInstance().getPotionsSpace();
-                        if (Inv == 2) value = Player.getInstance().getSInventorySpace();
+                        int value = 10;
+                        if (Inv == 2) value = Quests.getInstance().getLimit();
                         InventoryH = (InventoryH + 1) % value;
                         return;
                     }

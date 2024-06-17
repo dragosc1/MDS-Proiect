@@ -30,35 +30,39 @@ public class Skills {
         skills.add(new ImageIcon("assets/Skill Shop/AfterShock.png"));
         skills.add(new ImageIcon("assets/Skill Shop/HealingMagic.png"));
 
-        skillName.add("Beginner Magic");
-        skillName.add("Intermediary Magic");
-        skillName.add("Advanced Magic");
-        skillName.add("Explosion Magic");
-        skillName.add("Scholar Ship");
-        skillName.add("Armor Work");
-        skillName.add("Healthy Physique");
-        skillName.add("Deadly Precision");
-        skillName.add("Stone Skin");
-        skillName.add("Pure Muscles");
-        skillName.add("Revitalize");
-        skillName.add("Deadly Precision");
-        skillName.add("After Shock");
-        skillName.add("HealingMagic");
+        skillName.add("Beginner Magic"); // 0
+        skillName.add("Intermediary Magic"); // 1
+        skillName.add("Advanced Magic"); // 2
+        skillName.add("Explosion Magic"); // 3
+        skillName.add("Scholar Ship"); // 4
+        skillName.add("Armor Work"); // 5
+        skillName.add("Healthy Physique"); // 6
+        skillName.add("Deadly Precision"); // 7
+        skillName.add("Stone Skin"); // 8
+        skillName.add("Pure Muscles"); // 9
+        skillName.add("Revitalize"); // 10
+        skillName.add("Deadly Precision"); // 11
+        skillName.add("After Shock"); // 12
+        skillName.add("HealingMagic"); // 13
 
-        skillDescription.add("Deals 75 DMG no cooldown");
-        skillDescription.add("Deals 150 DMG cooldown 3 turns");
-        skillDescription.add("Deals 250 DMG to all enemy's CD 5 turns");
-        skillDescription.add("Deals 400 DMG to all enemy's CD:10 Turns");
-        skillDescription.add("Gains 30 AP (passive)");
-        skillDescription.add("Gains 10 based ARM and MR (passive)");
-        skillDescription.add("Gains 50 based HP (passive)");
-        skillDescription.add("Gains 5% critical rate (passive)");
-        skillDescription.add("Reduce all damage taken by 5% (passive)");
-        skillDescription.add("Gain 30 AD and 30% critical damage (passive)");
-        skillDescription.add("Heals for 1% max HP each combat turn (passive).");
-        skillDescription.add("A precise strike that deals 300% AD and can critical cooldown 5 turns");
-        skillDescription.add("Devastating blow that dela 150% AD to all names, can critical, cooldown 4 turns");
-        skillDescription.add("Heals for 50 HP cooldown 4 turns");
+        skillDescription.add("Deals 75 Dmg no cooldown"); // 0
+        skillDescription.add("Deals 150 Dmg cooldown 3 turns"); // 1
+        skillDescription.add("Deals 250 Dmg to all enemy's cooldown 5 turns"); // 2
+        skillDescription.add("Deals 400 Dmg to all enemy's cooldown 10 Turns"); // 3
+        skillDescription.add("Gains 30 Ap (passive)"); // 4
+        skillDescription.add("Gains 10 based Arm and Mr (passive)"); // 5
+        skillDescription.add("Gains 50 based Hp (passive)"); // 6
+        skillDescription.add("Gains 5% critical rate (passive)"); // 7
+        skillDescription.add("Reduce all damage taken by 5% (passive)"); // 8
+        skillDescription.add("Gain 30 Ad and 30% critical damage (passive)"); // 9
+        skillDescription.add("Heals for 1% max Hp each combat turn (passive)."); // 10
+        skillDescription.add("A precise strike that deals 300% Ad and can critical cooldown 5 turns"); // 11
+        skillDescription.add("Devastating blow that deals 150% Ad to all, can critical, cooldown 4 turns"); // 12
+        skillDescription.add("Heals for 50 Hp cooldown 4 turns"); // 13
+    }
+
+    public int index(String name) {
+        return skillName.indexOf(name);
     }
 
     public Image getSkill(int pos) {

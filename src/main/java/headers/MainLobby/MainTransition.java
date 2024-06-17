@@ -14,9 +14,11 @@ public class MainTransition implements Scene {
     private Boolean buttonIsVisible;
     private KeyListener MainTransitionKeyListener;
     private GameLobby gameLobby;
+    private int FirstTime;
 
-    public MainTransition(Screen window) {
+    public MainTransition(Screen window, int firstTime) {
         this.buttonIsVisible = false;
+        FirstTime = firstTime;
         this.window = window;
         this.currentImage = makeDarkImage(0.0f);
         this.window.setBackground(this.currentImage);
@@ -50,7 +52,7 @@ public class MainTransition implements Scene {
     synchronized void drawEnterButton() {
         window.addTextAtPixel(" ", 100, 44, "WHITE", 0f);
         window.addButton(125, 520, 0, 0, true);
-        window.addTextAtPixel("Begin Journey", 160, 568, "GREEN", 30.0f);
+        window.addTextAtPixel((FirstTime == 0? "Begin Journey" : "Continue"), (FirstTime == 0? 150 : 200), 568, "GREEN", 30.0f);
     }
 
     public ImageIcon makeDarkImage(float darkness) {

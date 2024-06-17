@@ -10,12 +10,9 @@ import java.awt.event.*;
 import java.util.Objects;
 import javax.swing.ImageIcon;
 
-import static java.lang.Math.max;
-import static java.lang.Math.min;
-
 public class Market implements Scene {
     private final Screen window;
-    private GameLobby lobby;
+    private final GameLobby lobby;
     private KeyListener marketKeyListener;
     private ImageIcon back, wood, bar, ic0;
     private ImageIcon holder, ic1, ic2, ic3;
@@ -24,10 +21,9 @@ public class Market implements Scene {
     private Integer popUpHeight, checkUpWidth;
     private Integer InventoryH;
 
-    public Market(Screen window, GameLobby _lobby) {
+    public Market(Screen window, GameLobby lobby) {
+        this.lobby = lobby;
         this.window = window;
-        this.lobby = _lobby;
-        this.window.setBackground("WHITE");
         drawA = checkA = drawB = checkB = false;
         popUpHeight = checkUpWidth = InventoryH = 0;
         loadAssets();
@@ -189,24 +185,25 @@ public class Market implements Scene {
         marketKeyListener = new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
+
                 if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
                     if (checkB) {
                         checkB = false;
                         return;
                     }
 
-                    if (drawB == true) {
+                    if (drawB) {
                         drawB = false;
                         return;
                     }
 
-                    if (checkA == true) {
+                    if (checkA) {
                         checkA = false;
                         checkUpWidth = 0;
                         return;
                     }
 
-                    if (drawA == true) {
+                    if (drawA) {
                         drawA = checkA = false;
                         checkUpWidth = 0;
                         return;
@@ -216,56 +213,56 @@ public class Market implements Scene {
                 }
 
                 if (e.getKeyCode() == KeyEvent.VK_UP) {
-                    if (drawB == true) {
+                    if (drawB) {
                         InventoryH = ((InventoryH - 1) % 10 + 10) % 10;
                         return;
                     }
 
-                    if (checkA == true) {
+                    if (checkA) {
                         return;
                     }
 
-                    if (drawA == true) {
+                    if (drawA) {
                         popUpHeight = ((popUpHeight - 1) % 5 + 5) % 5;
                         return;
                     }
                 }
 
                 if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-                    if (drawB == true) {
+                    if (drawB) {
                         InventoryH = (InventoryH + 1) % 10;
                         return;
                     }
 
-                    if (checkA == true) {
+                    if (checkA) {
                         return;
                     }
 
-                    if (drawA == true) {
+                    if (drawA) {
                         popUpHeight = (popUpHeight + 1) % 5;
                         return;
                     }
                 }
 
                 if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-                    if (checkA == true) {
+                    if (checkA) {
                         checkUpWidth = ((checkUpWidth - 1) % 2 + 2) % 2;
                         return;
                     }
 
-                    if (checkB == true) {
+                    if (checkB) {
                         checkUpWidth = ((checkUpWidth - 1) % 2 + 2) % 2;
                         return;
                     }
                 }
 
                 if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-                    if (checkA == true) {
+                    if (checkA) {
                         checkUpWidth = (checkUpWidth + 1) % 2;
                         return;
                     }
 
-                    if (checkB == true) {
+                    if (checkB) {
                         checkUpWidth = (checkUpWidth + 1) % 2;
                         return;
                     }
@@ -286,7 +283,7 @@ public class Market implements Scene {
                 }
 
                 if (e.getKeyCode() == KeyEvent.VK_ENTER && drawA && !checkA) {
-                    checkA |= (popUpHeight == 0 && Player.getInstance().getGold() >= 250 && Player.getInstance().getInventorySpace() != 0);
+                    checkA = (popUpHeight == 0 && Player.getInstance().getGold() >= 250 && Player.getInstance().getInventorySpace() != 0);
                     checkA |= (popUpHeight == 1 && Player.getInstance().getGold() >= 250 && Player.getInstance().getInventorySpace() != 0);
                     checkA |= (popUpHeight == 2 && Player.getInstance().getGold() >= 250 && Player.getInstance().getInventorySpace() != 0);
                     checkA |= (popUpHeight == 3 && Player.getInstance().getGold() >= 250 && Player.getInstance().getInventorySpace() != 0);
@@ -294,7 +291,7 @@ public class Market implements Scene {
                     return;
                 }
 
-                if (e.getKeyCode() == KeyEvent.VK_ENTER && drawA && checkA) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER && drawA) {
                     if (popUpHeight == 0) {
                         checkA = false;
                         if (checkUpWidth == 1) {
@@ -342,17 +339,17 @@ public class Market implements Scene {
                 }
 
                 if (e.getKeyCode() == KeyEvent.VK_ENTER && drawB && !checkB) {
-                    checkB |= (!Objects.equals(Player.getInstance().getInventory1Str(InventoryH), "Empty"));
+                    checkB = (!Objects.equals(Player.getInstance().getInventory1Str(InventoryH), "Empty"));
                     return;
                 }
 
-                if (e.getKeyCode() == KeyEvent.VK_ENTER && drawB && checkB && checkUpWidth == 0) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER && drawB && checkUpWidth == 0) {
                     checkB = false;
                     checkUpWidth = 0;
                     return;
                 }
 
-                if (e.getKeyCode() == KeyEvent.VK_ENTER && drawB && checkB && checkUpWidth == 1) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER && drawB && checkUpWidth == 1) {
                     Player.getInstance().subtractFromGold(-Player.getInstance().getItemPrice(InventoryH));
                     Player.getInstance().remItem1(InventoryH);
                     checkB = false;
@@ -363,5 +360,4 @@ public class Market implements Scene {
 
         window.addKeyListener(marketKeyListener);
     }
-
 }

@@ -1,5 +1,6 @@
 package headers.MainLobby;
 
+import headers.Player;
 import headers.Scene;
 import headers.Screen;
 
@@ -15,14 +16,21 @@ public class WorldMap implements Scene {
     private final GameLobby lobby;
     private Dungeon dungeon;
     private KeyListener worldMapKeyListener;
-    private ImageIcon back, bar, ic0, ic1;
-    private Integer height, width;
+    private ImageIcon back, bar, ic0, ic1, ic2, ic3, ic4, ic5, ic6;
+    private Integer height, width, curr;
 
     public WorldMap(Screen window, GameLobby _lobby) {
         this.window = window;
         this.lobby = _lobby;
         this.window.setBackground("BLACK");
         height = width = 0;
+        if (Player.getInstance().getCurrPlayerTier() == 1) curr = 2;
+        else if (Player.getInstance().getCurrPlayerTier() == 2) curr = 3;
+        else if (Player.getInstance().getCurrPlayerTier() == 3) curr = 4;
+        else if (Player.getInstance().getCurrPlayerTier() == 4) curr = 5;
+        else if (Player.getInstance().getCurrPlayerTier() == 5) curr = 6;
+        else curr = 6;
+
         loadAssets();
     }
 
@@ -31,6 +39,10 @@ public class WorldMap implements Scene {
         bar  = new ImageIcon("assets/Market/BrownBlackGround.png");
         ic0 = new ImageIcon("assets/Market/Cicon.png");
         ic1 = new ImageIcon("assets/World Map/Dungeon1Icon.png");
+        ic2 = new ImageIcon("assets/World Map/Dungeon1Icon.png");
+        ic3 = new ImageIcon("assets/World Map/Dungeon1Icon.png");
+        ic4 = new ImageIcon("assets/World Map/Dungeon1Icon.png");
+        ic5 = new ImageIcon("assets/World Map/Dungeon1Icon.png");
     }
 
     public static ImageIcon modifyColors(ImageIcon icon) {
@@ -74,7 +86,7 @@ public class WorldMap implements Scene {
         return new ImageIcon(bufferedImage);
     }
 
-    void drawEverything() {
+    synchronized void drawEverything() {
         window.addImageAtPixel(0, 0, 490, 670, back.getImage());
 
         window.addImageAtPixel(0, 0, 490, 40, bar.getImage());
@@ -84,11 +96,24 @@ public class WorldMap implements Scene {
 
         ic0 = new ImageIcon("assets/Market/Cicon.png");
         ic1 = new ImageIcon("assets/World Map/Dungeon1Icon.png");
+        ic2 = new ImageIcon("assets/World Map/Dungeon1Icon.png");
+        ic3 = new ImageIcon("assets/World Map/Dungeon1Icon.png");
+        ic4 = new ImageIcon("assets/World Map/Dungeon1Icon.png");
+        ic5 = new ImageIcon("assets/World Map/Dungeon1Icon.png");
+
         if (width == 0) ic0 = modifyColors(ic0);
-        else ic1 = modifyColors(ic1);
+        else if (width == 1) ic1 = modifyColors(ic1);
+        else if (width == 2) ic2 = modifyColors(ic2);
+        else if (width == 3) ic3 = modifyColors(ic3);
+        else if (width == 4) ic4 = modifyColors(ic4);
+        else if (width == 5) ic5 = modifyColors(ic5);
 
         window.addImageAtPixel(250, 260, 40, 40, ic0.getImage());
         window.addImageAtPixel(100, 300, 40, 40, ic1.getImage());
+        if (curr >= 3) window.addImageAtPixel(80, 360, 40, 40, ic2.getImage());
+        if (curr >= 4) window.addImageAtPixel(150, 200, 40, 40, ic3.getImage());
+        if (curr >= 5) window.addImageAtPixel(200, 250, 40, 40, ic4.getImage());
+        if (curr >= 6) window.addImageAtPixel(300, 300, 40, 40, ic5.getImage());
     }
 
     private void removeKeyAdaptor() {
@@ -105,7 +130,7 @@ public class WorldMap implements Scene {
     private void enterDungeon() {
         removeKeyAdaptor();
         window.clearScreen();
-        dungeon = new Dungeon(window, lobby);
+        dungeon = new Dungeon(window, lobby, width - 1);
         window.setCurentScene(dungeon);
     }
 
@@ -124,17 +149,21 @@ public class WorldMap implements Scene {
                 }
 
                 if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-                    width = ((width - 1) % 2 + 2) % 2;
+                    width = ((width - 1) % curr + curr) % curr;
                 }
 
                 if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-                    width = ((width + 1) % 2);
+                    width = ((width + 1) % curr);
                 }
 
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                    if (width == 1) {
-                       enterDungeon();
+                    if (width == 0) {
+                        enterLobby();
+                        return;
                     }
+
+                   enterDungeon();
+                   return;
                 }
             }
         };
