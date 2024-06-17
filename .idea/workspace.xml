@@ -4,25 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="52acba96-8edc-4f36-ad59-88e433a8f2af" name="Changes" comment="fixed relative position change 2">
-      <change afterPath="$PROJECT_DIR$/AI/S1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AI/S10.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AI/S11.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AI/S12.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AI/S13.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AI/S2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AI/S3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AI/S4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AI/S5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AI/S6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AI/S7.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AI/S8.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AI/S9.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Diagrams/bd_main.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diagrams/Sequence Diagram.sdt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-    </list>
+    <list default="true" id="52acba96-8edc-4f36-ad59-88e433a8f2af" name="Changes" comment="fixed relative position change 2" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -129,29 +111,52 @@
       <command value="mvn compile" />
     </option>
   </component>
-  <component name="RunManager" selected="Application.bd">
-    <configuration name="bd" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="bd" />
+  <component name="RunManager" selected="JUnit.PlayerTest.testGetInstance">
+    <configuration name="PlayerTest.testAddItem2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="belgadrestra_dungeon" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.*" />
-          <option name="ENABLED" value="false" />
-        </pattern>
-        <pattern>
-          <option name="PATTERN" value="bd" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="PlayerTest" />
+      <option name="METHOD_NAME" value="testAddItem2" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PlayerTest.testAddSupplies" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PlayerTest.testGetInstance" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="belgadrestra_dungeon" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="PlayerTest" />
-      <option name="METHOD_NAME" value="testAddSupplies" />
+      <option name="METHOD_NAME" value="testGetInstance" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PlayerTest.testRemItem1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="belgadrestra_dungeon" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="PlayerTest" />
+      <option name="METHOD_NAME" value="testRemItem1" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PlayerTest.testRemItem2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="belgadrestra_dungeon" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="PlayerTest" />
+      <option name="METHOD_NAME" value="testRemItem2" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PlayerTest.testUpgradeStatus" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="belgadrestra_dungeon" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="PlayerTest" />
+      <option name="METHOD_NAME" value="testUpgradeStatus" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -159,8 +164,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.bd" />
-        <item itemvalue="JUnit.PlayerTest.testAddSupplies" />
+        <item itemvalue="JUnit.PlayerTest.testGetInstance" />
+        <item itemvalue="JUnit.PlayerTest.testUpgradeStatus" />
+        <item itemvalue="JUnit.PlayerTest.testRemItem2" />
+        <item itemvalue="JUnit.PlayerTest.testAddItem2" />
+        <item itemvalue="JUnit.PlayerTest.testRemItem1" />
       </list>
     </recent_temporary>
   </component>
@@ -229,7 +237,7 @@
       <workItem from="1718490147080" duration="8284000" />
       <workItem from="1718520982167" duration="49936000" />
       <workItem from="1718589206202" duration="1173000" />
-      <workItem from="1718590409264" duration="1355000" />
+      <workItem from="1718590409264" duration="1704000" />
     </task>
     <task id="LOCAL-00001" summary="Initial files">
       <option name="closed" value="true" />

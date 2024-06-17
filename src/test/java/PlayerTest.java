@@ -39,18 +39,19 @@ public class PlayerTest {
 
     @Test
     public void testGetGold() {
-        assertEquals(10000, player.getGold());
+        assertEquals(500, player.getGold());
     }
 
     @Test
     public void testSubtractFromGold() {
         player.subtractFromGold(500);
-        assertEquals(9500, player.getGold());
+        assertEquals(0, player.getGold());
     }
 
-    @Test(expected = AssertionError.class)
+    @Test()
     public void testSubtractFromGoldInsufficient() {
         player.subtractFromGold(11000);
+        assertEquals(0, player.getGold());
     }
 
     @Test
