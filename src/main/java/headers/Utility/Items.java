@@ -8,36 +8,56 @@ import java.util.*;
 import java.io.File;
 
 public class Items {
+    // Singleton instance
     private static Items single_instance = null;
+
+    // Arrays to store different types of item images
+    // Common items
     private final ArrayList<ImageIcon> swordsCommon = new ArrayList<>();
     private final ArrayList<ImageIcon> staffCommon = new ArrayList<>();
     private final ArrayList<ImageIcon> bowCommon = new ArrayList<>();
     private final ArrayList<ImageIcon> armourCommon = new ArrayList<>();
+
+    // Rare items
     private final ArrayList<ImageIcon> swordsRare = new ArrayList<>();
     private final ArrayList<ImageIcon> staffRare = new ArrayList<>();
     private final ArrayList<ImageIcon> bowRare = new ArrayList<>();
     private final ArrayList<ImageIcon> armourRare = new ArrayList<>();
+
+    // Epic items
     private final ArrayList<ImageIcon> swordsEpic = new ArrayList<>();
     private final ArrayList<ImageIcon> staffEpic = new ArrayList<>();
     private final ArrayList<ImageIcon> bowEpic = new ArrayList<>();
     private final ArrayList<ImageIcon> armourEpic = new ArrayList<>();
+
+    // Legendary items
     private final ArrayList<ImageIcon> swordsLeg = new ArrayList<>();
     private final ArrayList<ImageIcon> staffLeg = new ArrayList<>();
     private final ArrayList<ImageIcon> bowLeg = new ArrayList<>();
     private final ArrayList<ImageIcon> armourLeg = new ArrayList<>();
+
+    // Mythical items
     private final ArrayList<ImageIcon> swordsMyth = new ArrayList<>();
     private final ArrayList<ImageIcon> staffMyth = new ArrayList<>();
     private final ArrayList<ImageIcon> bowMyth = new ArrayList<>();
     private final ArrayList<ImageIcon> armourMyth = new ArrayList<>();
+
+    // List to store item types
     private final static ArrayList<String> types = new ArrayList<>(Arrays.asList("Common", "Rare", "Epic", "Legendary", "Mythical"));
+
+    // Arrays to store item prices by type and tier
     private final ArrayList <Integer> pricesCommon = new ArrayList<>(), pricesCommonT = new ArrayList<>();
     private final ArrayList <Integer> pricesRare = new ArrayList<>(), pricesRareT = new ArrayList<>();
     private final ArrayList <Integer> pricesEpic = new ArrayList<>(), pricesEpicT = new ArrayList<>();
     private final ArrayList <Integer> pricesLeg = new ArrayList<>(), pricesLegT = new ArrayList<>();
     private final ArrayList <Integer> pricesMyth = new ArrayList<>(), pricesMythT = new ArrayList<>();
+
+    // Arrays to store randomly generated blacksmith items
     private final ArrayList <Image> weaponsR = new ArrayList<>(), armourR = new ArrayList<>();
     private final ArrayList <String> nameweaponsR = new ArrayList<>(), namearmourR = new ArrayList<>();
     private final ArrayList <Integer> tierweaponR = new ArrayList<>(), tierarmourR = new ArrayList<>();
+
+    // Arrays to store potion details
     private final ArrayList <ImageIcon> potions = new ArrayList<>();
     private final ArrayList <String> potionsName = new ArrayList<>(), potionDesciption = new ArrayList<>();
     private final ArrayList <Integer> potionsPrice = new ArrayList<>(), potionsProperties = new ArrayList<>();
@@ -93,8 +113,11 @@ public class Items {
         potionsProperties.add(-100);
     }
 
+    // Method to initialize all items (common, rare, epic, legendary, mythical)
     private void initAll() {
+        // Iterate over each item type (Common, Rare, Epic, Legendary, Mythical)
         for (String type : types) {
+            // Initialize common items
             if (Objects.equals(type, "Common")) {
                 for (String string : Arrays.asList("assets/weapon icons/amour/" + type + "Armour" + "NoTier.png", "assets/weapon icons/bows/" + type + "Bow" + "NoTier.png", "assets/weapon icons/staff/" + type + "Staff" + "NoTier.png", "assets/weapon icons/swords/Sword" + type + "NoTier.png")) {
                     assert isImagePathValid(string);
@@ -122,6 +145,7 @@ public class Items {
                 }
             }
 
+            // Initialize rare items
             if (Objects.equals(type, "Rare")) {
                 assert isImagePathValid("assets/weapon icons/amour/" + type + "Armour" + "NoTier.png");
                 assert isImagePathValid("assets/weapon icons/bows/" + type + "Bow" + "NoTier.png");
@@ -150,6 +174,7 @@ public class Items {
                 }
             }
 
+            // Initialize epic items
             if (Objects.equals(type, "Epic")) {
                 assert isImagePathValid("assets/weapon icons/amour/" + type + "Armour" + "NoTier.png");
                 for (String string : Arrays.asList("assets/weapon icons/bows/" + type + "Bow" + "NoTier.png", "assets/weapon icons/staff/" + type + "Staff" + "NoTier.png", "assets/weapon icons/swords/" + type + "Sword" + "NoTier.png")) {
@@ -178,6 +203,7 @@ public class Items {
                 }
             }
 
+            // Initialize legendary items
             if (Objects.equals(type, "Legendary")) {
                 assert isImagePathValid("assets/weapon icons/amour/" + type + "Armour" + "NoTier.png");
                 assert isImagePathValid("assets/weapon icons/bows/" + type + "Bow" + "NoTier.png");
@@ -206,6 +232,7 @@ public class Items {
                 }
             }
 
+            // Initialize mythical items
             if (Objects.equals(type, "Mythical")) {
                 assert isImagePathValid("assets/weapon icons/amour/" + type + "Armour" + "NoTier.png");
                 assert isImagePathValid("assets/weapon icons/bows/" + type + "Bow" + "NoTier.png");
@@ -253,6 +280,7 @@ public class Items {
         return potionsName.get(pos);
     }
 
+    // Get the description of a potion
     public String getDescPotion(int pos) {
         int tier = Player.getInstance().getCurrPlayerTier();
         String prefix = "", suffix = "";
@@ -262,6 +290,7 @@ public class Items {
         return prefix + potionDesciption.get(pos) + suffix;
     }
 
+    // Get price of a portion based on player
     public Integer getPricePotions(int pos) {
         int tier = Player.getInstance().getCurrPlayerTier();
         tier = ((pos != 3 && pos != 4)? tier : 1);
@@ -393,6 +422,7 @@ public class Items {
         return pricesMythT.get(tier);
     }
 
+    // Method to generate random item
     public Image randomItem(String item, int typeQ) {
         Random random = new Random();
         double p = random.nextDouble();
@@ -418,6 +448,7 @@ public class Items {
         return getImagefromtype(type, item, tier);
     }
 
+    // Method to generate random blacksmith weapons
     public void GenerateBlackSmithWeapons() {
         weaponsR.clear();
         Random random = new Random();
@@ -428,6 +459,7 @@ public class Items {
         }
     }
 
+    // Method to generate random blacksmith armour
     public void GenerateBlackSmithArmour() {
         armourR.clear();
         for (int i = 0; i < 4; ++i) {
@@ -498,6 +530,7 @@ public class Items {
         return tierRoman;
     }
 
+    // Get the image representing the item
     public Image getImageFromX(String what, String type, Integer tier) {
         if (what.toLowerCase().contains("bow")) {
             if (type.toLowerCase().contains("common")) {
@@ -574,6 +607,7 @@ public class Items {
         return new ImageIcon("assets/Guild/challangesbackground.png").getImage();
     }
 
+    // Get the rarity of item from it's name
     public String getTypeFromName(String name) {
         if (name.toLowerCase().contains("common"))
             return "Common";
@@ -588,6 +622,7 @@ public class Items {
         return "invalid";
     }
 
+    // Get the type of an item from it's name
     public String getWhatFromName(String name) {
         if (name.toLowerCase().contains("bow"))
             return "Bow";
@@ -600,6 +635,7 @@ public class Items {
         return "Invalid";
     }
 
+    // get the price of an item
     public Integer getPrice(String type, int tier){
         if (type.toLowerCase().contains("common"))
             return getPricesCommonTier(tier);
@@ -628,6 +664,7 @@ public class Items {
         return -1;
     }
 
+    // Get an image of the item from it's type
     public Image getImagefromtype(String type, String item, int tier) {
         if (Objects.equals(type, "Common")) {
             if (item.toLowerCase().contains("armour"))
@@ -683,6 +720,7 @@ public class Items {
         return new ImageIcon("assets/Character/EmptyIcon.png").getImage();
     }
 
+    // Method getInstance() for the singleton design pattern()
     public static synchronized Items getInstance() {
         if (single_instance == null)
             single_instance = new Items();
