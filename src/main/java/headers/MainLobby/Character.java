@@ -13,27 +13,29 @@ import java.awt.event.KeyListener;
 import java.util.Objects;
 
 public class Character implements Scene {
-    private final Screen window;
-    private final GameLobby lobby;
-    private KeyListener characterKeyListener;
+    private final Screen window;  // The window where the character is displayed
+    private final GameLobby lobby;  // The lobby the character belongs to
+    private KeyListener characterKeyListener;  // Key listener for character actions
+    // Image icons for various elements
     private ImageIcon back, wood, bar, ic0;
     private ImageIcon holder, ic1, ic2, ic3, ic4;
     private ImageIcon ic5, ic6, ic7, ic8, ic9;
     private ImageIcon ic10, ic11, ic12, ic13;
-    private Integer Inv;
-    private Integer InventoryH, checkUpWidth;
-    private boolean checkup;
+    private Integer Inv;  // Current inventory
+    private Integer InventoryH, checkUpWidth;  // Height of inventory, width of check-up window
+    private boolean checkup;  // Flag for whether the character is in a check-up state
 
     public Character(Screen window, GameLobby _lobby) {
-        Inv = InventoryH = -1;
-        checkUpWidth = -1;
-        checkup = false;
-        this.window = window;
-        this.lobby = _lobby;
-        this.window.setBackground("BLACK");
-        loadAssets();
+        Inv = InventoryH = -1;  // Initializing inventory and inventory height to -1
+        checkUpWidth = -1;  // Initializing check-up window width to -1
+        checkup = false;  // Character is not in check-up state by default
+        this.window = window;  // Assigning the window
+        this.lobby = _lobby;  // Assigning the lobby
+        this.window.setBackground("BLACK");  // Setting the background color of the window
+        loadAssets();  // Loading necessary assets for the character
     }
 
+    // Method to load assets required for the scene
     void loadAssets() {
         back = new ImageIcon("assets/Character/Chback.png");
         wood = new ImageIcon("assets/Market/woodytexturebackground.jpg");
@@ -57,10 +59,12 @@ public class Character implements Scene {
         ic13 = new ImageIcon("assets/Rune Stone Shop/CharismaIcon.png");
     }
 
+    // Method to remove the key listener
     private void removeKeyAdaptor() {
         window.removeKeyListener(characterKeyListener);
     }
 
+    // Method to transition back to the lobby
     private void enterLobby() {
         removeKeyAdaptor();
         window.clearScreen();
@@ -68,15 +72,20 @@ public class Character implements Scene {
         window.setCurentScene(lobby);
     }
 
+    // Method to draw various elements of the character's interface on the screen
     void drawEverything() {
+        // Drawing background image
         window.addImageAtPixel(0, 0, 500, 400, back.getImage());
 
+        // Drawing top bar
         window.addImageAtPixel(0, 0, 490, 40, bar.getImage());
         window.addImageAtPixel(5, 0, 40, 40, ic0.getImage());
         window.addTextAtPixel("Character", 55, 30, "WHITE", 25f);
 
+        // Drawing wooden background
         window.addImageAtPixel(0, 400, 500, 400, wood.getImage());
 
+        // Drawing traits and stats
         int yValue = 50;
         window.addImageAtPixel(10, yValue, 40, 40, Player.getInstance().getTrait().getImg());
         window.addTextAtPixel("Trait: " +  Player.getInstance().getTrait().getName(), 55, yValue + 30, "WHITE", 25f);
@@ -116,6 +125,7 @@ public class Character implements Scene {
         window.addImageAtPixel(305, yValue - 15, 30, 30, ic13.getImage());
         window.addTextAtPixel("Cha: " + Player.getInstance().getStatus(3), 345, yValue + 10, "WHITE", 25f);
 
+        // Drawing inventory and supplies
         yValue = 400;
         window.addImageAtPixel(0, yValue, 490, 80, holder.getImage());
         window.addImageAtPixel(10, yValue + 20, 40, 40, ic7.getImage());
@@ -133,6 +143,7 @@ public class Character implements Scene {
         window.addImageAtPixel(255, yValue + 20, 40, 40, ic9.getImage());
         window.addTextAtPixel("Supplies: " + Player.getInstance().getSupplies(), 300, yValue + 45, "WHITE", 25f);
 
+        // Drawing inventory pop-up
         if (InventoryH != -1 && Inv == 0) {
             int popUpYvalue = 40;
             for (int i = -2; i < 3; ++i) {
@@ -175,6 +186,7 @@ public class Character implements Scene {
             }
         }
 
+        // Drawing check-up window
         if (checkup) {
             String Item = Player.getInstance().getItemName(InventoryH);
 
@@ -187,11 +199,13 @@ public class Character implements Scene {
         }
     }
 
+    // Method to display the scene
     @Override
     public void display() {
         drawEverything();
     }
 
+    // Method to listen to user inputs
     @Override
     public void listenToInput() {
         characterKeyListener = new KeyAdapter() {

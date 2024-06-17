@@ -13,14 +13,19 @@ import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 
 public class TierUp implements Scene {
-    private final Screen window;
-    private GameLobby lobby;
-    private Guild qguild;
-    private KeyListener tierUpListener;
-    private ImageIcon back, wood, bar, ic0;
-    private ImageIcon holder, ic1, ic2;
-    private Boolean checkA;
+    private final Screen window; // Reference to the game window/screen where the Tier Up scene is displayed
 
+    private GameLobby lobby; // Reference to the game lobby scene, used for transitioning back to the lobby
+    private Guild qguild; // Reference to the guild scene for transitioning to the guild
+
+    private KeyListener tierUpListener; // Key listener to capture user input for the Tier Up scene
+
+    private ImageIcon back, wood, bar, ic0; // Icons for various visual elements
+    private ImageIcon holder, ic1, ic2; // Icons for various visual elements
+
+    private Boolean checkA; // Indicator for whether to display the completion popup
+
+    // Constructor initializes the Tier Up scene with required assets
     public TierUp(Screen window, GameLobby _lobby) {
         this.window = window;
         this.lobby = _lobby;
@@ -29,6 +34,7 @@ public class TierUp implements Scene {
         loadAssets();
     }
 
+    // Method to modify colors of an ImageIcon
     public static ImageIcon modifyColors(ImageIcon icon) {
         Image image = icon.getImage();
         BufferedImage bufferedImage = new BufferedImage(image.getWidth(null), image.getHeight(null), BufferedImage.TYPE_INT_ARGB);
@@ -64,6 +70,7 @@ public class TierUp implements Scene {
         return new ImageIcon(bufferedImage);
     }
 
+    // Load images and icons required for the Tier Up scene
     void loadAssets() {
         back = new ImageIcon("assets/Guild/challangesbg.png");
         wood = new ImageIcon("assets/Market/woodytexturebackground.jpg");
@@ -75,6 +82,7 @@ public class TierUp implements Scene {
         holder = new ImageIcon("assets/Market/itemholder.png");
     }
 
+    // Extract number from a string
     private static int getNr(String str) {
         int number = 0;
         boolean foundNumber = false;
@@ -93,10 +101,12 @@ public class TierUp implements Scene {
         return number;
     }
 
+    // Remove the KeyAdapter from the window
     private void removeKeyAdaptor() {
         window.removeKeyListener(tierUpListener);
     }
 
+    // Method to transition back to the lobby
     private void enterLobby() {
         removeKeyAdaptor();
         window.clearScreen();
@@ -104,6 +114,7 @@ public class TierUp implements Scene {
         window.setCurentScene(lobby);
     }
 
+    // Transition to the guild scene
     void enterGuild() {
         removeKeyAdaptor();
         removeKeyAdaptor();
@@ -112,7 +123,9 @@ public class TierUp implements Scene {
         window.setCurentScene(qguild);
     }
 
+    // Draw all elements of the Tier Up scene on the window
     synchronized void drawEverything() {
+        // Draw background images and icons
         window.addImageAtPixel(0, 40, 500, 400, back.getImage());
         window.addImageAtPixel(0, 0, 490, 40, bar.getImage());
         window.addImageAtPixel(5, 0, 40, 40, ic0.getImage());
@@ -121,11 +134,13 @@ public class TierUp implements Scene {
         window.addImageAtPixel(305, 0, 40, 40, ic2.getImage());
         window.addImageAtPixel(0, 400, 500, 400, wood.getImage());
 
+        // Display current tier progress
         int yValue = 510;
         window.addImageAtPixel(10, yValue, 470, 80, holder.getImage());
         window.addTextAtPixel(Quests.getInstance().getTierUp(), 80, yValue + 45,  "WHITE", 25f);
 
         if (checkA) {
+            // Display completion popup if applicable
             if (Player.getInstance().getCurrPlayerTier() == 10) return;
             window.addPopUpAtPixel(0, 40, 490, 400, holder.getImage());
             window.addPopUpTextAtPixel("You have completed", 150, 90, "WHITE", 25f);
@@ -144,16 +159,19 @@ public class TierUp implements Scene {
         }
     }
 
+    // Display the Tier Up scene
     @Override
     public void display() {
         drawEverything();
     }
 
+    // Listen for user input
     @Override
     public void listenToInput() {
         tierUpListener = new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
+                // Handle Escape key press to return to the lobby or exit popups
                 if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
                     if (checkA) {
                         checkA = false;
@@ -163,6 +181,7 @@ public class TierUp implements Scene {
                     enterLobby();
                 }
 
+                // Handle Enter key press to confirm actions
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     if (!checkA) {
                         if (Player.getInstance().getCurrPlayerTier() == 10)
@@ -172,6 +191,7 @@ public class TierUp implements Scene {
                     }
 
                     if (checkA) {
+                        // Handle completion and progression when the confirmation popup is displayed
                         if (Player.getInstance().getCurrPlayerTier() == 10)
                             return;
 
@@ -194,6 +214,7 @@ public class TierUp implements Scene {
 
                 }
 
+                // Handle '1' key press to enter the guild
                 if (e.getKeyCode() == KeyEvent.VK_1) {
                     enterGuild();
                 }

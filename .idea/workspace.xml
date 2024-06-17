@@ -4,7 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="52acba96-8edc-4f36-ad59-88e433a8f2af" name="Changes" comment="fixed relative position change 2" />
+    <list default="true" id="52acba96-8edc-4f36-ad59-88e433a8f2af" name="Changes" comment="fixed relative position change 2">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/saves/player.ser" beforeDir="false" afterPath="$PROJECT_DIR$/saves/player.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/saves/quest.ser" beforeDir="false" afterPath="$PROJECT_DIR$/saves/quest.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/headers/MainLobby/Blacksmith.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/MainLobby/Blacksmith.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/headers/MainLobby/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/MainLobby/Character.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/headers/MainLobby/Dungeon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/MainLobby/Dungeon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/headers/MainLobby/Encounter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/MainLobby/Encounter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/headers/MainLobby/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/MainLobby/Enemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/headers/MainLobby/GameLobby.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/MainLobby/GameLobby.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/headers/MainLobby/Guild.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/MainLobby/Guild.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/headers/MainLobby/MagicShop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/MainLobby/MagicShop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/headers/MainLobby/MainTransition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/MainLobby/MainTransition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/headers/MainLobby/Market.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/MainLobby/Market.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/headers/MainLobby/RunesShop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/MainLobby/RunesShop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/headers/MainLobby/SkillShop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/MainLobby/SkillShop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/headers/MainLobby/TierUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/MainLobby/TierUp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/headers/MainLobby/WorldMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/MainLobby/WorldMap.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -69,7 +87,9 @@
     &quot;Application.Main.executor&quot;: &quot;Run&quot;,
     &quot;Application.bd.executor&quot;: &quot;Run&quot;,
     &quot;Application.main.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PlayerTest.testAddItem2.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.PlayerTest.testAddSupplies.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PlayerTest.testGetInstance.executor&quot;: &quot;Run&quot;,
     &quot;Maven.Belgadrestra_Dungeon [clean:clean].executor&quot;: &quot;Run&quot;,
     &quot;Maven.Belgadrestra_Dungeon [clean].executor&quot;: &quot;Run&quot;,
     &quot;Maven.Belgadrestra_Dungeon [compile].executor&quot;: &quot;Run&quot;,
@@ -82,7 +102,7 @@
     &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/mihne/OneDrive/Desktop/II/II Sem II/MDS/MDS-Proiect&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Belgradestra Dungeon/MDS-Proiect&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -111,7 +131,7 @@
       <command value="mvn compile" />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.PlayerTest.testGetInstance">
+  <component name="RunManager">
     <configuration name="PlayerTest.testAddItem2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="belgadrestra_dungeon" />
       <option name="PACKAGE_NAME" value="" />
@@ -164,10 +184,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.PlayerTest.testAddItem2" />
         <item itemvalue="JUnit.PlayerTest.testGetInstance" />
         <item itemvalue="JUnit.PlayerTest.testUpgradeStatus" />
         <item itemvalue="JUnit.PlayerTest.testRemItem2" />
-        <item itemvalue="JUnit.PlayerTest.testAddItem2" />
         <item itemvalue="JUnit.PlayerTest.testRemItem1" />
       </list>
     </recent_temporary>
@@ -175,8 +195,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
       </set>
     </attachedChunks>
   </component>
@@ -238,6 +257,15 @@
       <workItem from="1718520982167" duration="49936000" />
       <workItem from="1718589206202" duration="1173000" />
       <workItem from="1718590409264" duration="1704000" />
+      <workItem from="1718596939938" duration="2172000" />
+      <workItem from="1718599347405" duration="371000" />
+      <workItem from="1718600503238" duration="795000" />
+      <workItem from="1718602463083" duration="152000" />
+      <workItem from="1718604239896" duration="1966000" />
+      <workItem from="1718607371251" duration="210000" />
+      <workItem from="1718608523520" duration="6354000" />
+      <workItem from="1718615196489" duration="31000" />
+      <workItem from="1718615339520" duration="4877000" />
     </task>
     <task id="LOCAL-00001" summary="Initial files">
       <option name="closed" value="true" />
