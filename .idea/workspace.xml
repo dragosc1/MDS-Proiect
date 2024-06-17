@@ -5,35 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="52acba96-8edc-4f36-ad59-88e433a8f2af" name="Changes" comment="fixed relative position change 2">
-      <change afterPath="$PROJECT_DIR$/Diagrams/Class-Diagram.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Diagrams/Sequence Diagram.sdt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Inamici Dungeon/Dungeon I/blackBar.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/saves/player.ser" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/saves/quest.ser" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/headers/MainLobby/Encounter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/headers/MainLobby/Enemy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/headers/Save.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AI/S1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AI/S10.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AI/S11.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AI/S12.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AI/S13.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AI/S2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AI/S3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AI/S4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AI/S5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AI/S6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AI/S7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AI/S8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AI/S9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Diagrams/bd_main.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Diagrams/Sequence Diagram.sdt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/headers/MainLobby/Blacksmith.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/MainLobby/Blacksmith.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/headers/MainLobby/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/MainLobby/Character.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/headers/MainLobby/Dungeon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/MainLobby/Dungeon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/headers/MainLobby/GameLobby.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/MainLobby/GameLobby.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/headers/MainLobby/MainTransition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/MainLobby/MainTransition.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/headers/MainLobby/Market.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/MainLobby/Market.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/headers/MainLobby/SkillShop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/MainLobby/SkillShop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/headers/MainLobby/WorldMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/MainLobby/WorldMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/headers/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/headers/NewGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/NewGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/headers/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/headers/Status.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/Status.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/headers/Trait.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/Trait.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/headers/Utility/Items.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/Utility/Items.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/headers/Utility/Quests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/Utility/Quests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/headers/Utility/Skills.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/headers/Utility/Skills.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/PlayerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/PlayerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -240,7 +228,8 @@
       <workItem from="1718465695041" duration="2711000" />
       <workItem from="1718490147080" duration="8284000" />
       <workItem from="1718520982167" duration="49936000" />
-      <workItem from="1718589206202" duration="324000" />
+      <workItem from="1718589206202" duration="1173000" />
+      <workItem from="1718590409264" duration="1355000" />
     </task>
     <task id="LOCAL-00001" summary="Initial files">
       <option name="closed" value="true" />
