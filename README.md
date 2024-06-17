@@ -10,7 +10,9 @@ Pentru mai multe detalii despre progresul proiectului, backlog și user stories 
 
 ## ([Documentatie](https://github.com/dragosc1/MDS-Proiect/wiki/Begadrestra-Wiki))
 
+[link](https://github.com/dragosc1/MDS-Proiect/wiki/Begadrestra-Wiki)
+
 ## Demo
 
-https://www.youtube.com/watch?v=_xb_0pcFm_A
+[link](https://www.youtube.com/watch?v=_xb_0pcFm_A)
 
